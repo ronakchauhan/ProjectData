@@ -1,0 +1,15 @@
+<?php 
+
+// echo"<pre/>"; print_r("test");exit;
+?> 
+<div class="bag-block-title">
+	<h3><?php echo __("Where has your bag been?")?></h3>
+</div>	
+<form action="<?php echo $block->getFormAction() ?>" method="post" enctype="multipart/form-data" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+	<input name ="name" class="input-text" data-validate="{required:true}" type="text" placeholder="Nickname" required="required">
+	<input name ="email" type="text" placeholder="Email" data-validate="{required:true, 'validate-email':true}">
+	<textarea name ="comment" cols="4" rows="4"></textarea>
+	<input name ="bag_image" type="file">
+	<input type ="submit" value="Send">
+</form>

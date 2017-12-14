@@ -1,0 +1,67 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@checkout-sidebar__margin: @indent__base;
+@checkout-sidebar__margin__xl: 46px;
+@checkout-sidebar__columns: 5.8;
+
+
+.opc-sidebar{
+  background: #f5f5f5;
+}
+
+.opc-block-shipping-information .shipping-information-title{
+  border-bottom: none;
+  margin: 0;
+}
+
+.opc-block-shipping-information .shipping-information-title .action-edit:before{
+  color: #3682ab;
+  content: "\e911";
+  font-size: 16px;
+}
+.opc-block-shipping-information .shipping-information-title .action-edit:hover:before, .shipping-information-title .action-edit:focus:before{
+color: #000;
+}
+
+.opc-block-shipping-information .shipping-information-title{
+
+ .action-edit, .action-edit:focus, .action-edit:active{
+   color: #3682ab;
+}
+
+}
+
+.opc-block-shipping-information .shipping-information-content {
+    color: #666;
+    font-size: 13px;
+}
+
+.opc-block-shipping-information{
+  .shipping-information{
+    border-top: solid 1px #e2dfdf;
+    padding-top: 12px;
+    margin: 0 -30px; 
+    padding: 20px;
+  }
+
+}
+
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .opc-sidebar {
+        .lib-css(margin, @checkout-sidebar__margin__xl 0 @checkout-sidebar__margin);
+        .lib-layout-column(2, 2, @checkout-sidebar__columns);
+    }
+}
+

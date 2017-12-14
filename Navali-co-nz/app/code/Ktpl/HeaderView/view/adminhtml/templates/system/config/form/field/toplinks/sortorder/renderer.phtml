@@ -1,0 +1,120 @@
+<?php $_elementId = $this->getElement()->getId(); ?>
+<?php $_elementName = $this->getElement()->getName(); ?>
+
+<input id="<?php echo $_elementId; ?>" name="<?php echo $_elementName; ?>" value="<?php echo htmlspecialchars($this->getElement()->getValue()); ?>" type="hidden" />
+
+<div id="manage-options-panel" data-index="attribute_options_select_container">
+    <table class="admin__control-table" data-index="attribute_options_select">
+        <colgroup>
+            <col width="1" />
+            <col />
+            <col width="1" />
+        </colgroup>
+        <thead>
+            <tr id="attribute-options-table">
+                <th class="col-draggable"></th>
+                <th class="col-block">
+                    <span><?php echo $block->escapeHtml(__('Element')) ?></span>
+                </th>
+            </tr>
+        </thead>
+        <tbody data-role="options-container" class="ignore-validate"></tbody>
+    </table>
+    <input type="hidden" id="option-count-check" value="" />
+</div>
+
+<script id="row-template" type="text/x-magento-template">
+     <tr>
+        <td class="col-draggable">
+            <div data-role="draggable-handle" class="draggable-handle" title="<?php echo $block->escapeHtml(__('Sort Option')); ?>"></div>
+            <input data-role="order" type="hidden" class="sort-order" value="<%- data.sort_order %>" />
+        </td>
+        <td class="col-element">
+        	<span><%- data.element %></span>
+            <input data-role="element" type="hidden" class="element" value="<%- data.element %>" />
+            <input data-role="element_code" type="hidden" class="element-code" value="<%- data.element_code %>" />
+        </td>
+    </tr>
+</script>
+
+<script>
+require([
+    'jquery',
+    'mage/template',
+    'uiRegistry',
+    'jquery/ui',
+    'prototype',
+    'form',
+    'validation'
+], function (jQuery, mageTemplate, rg) {
+    'use strict';
+
+    var attributeOption = {
+        table: $('attribute-options-table'),
+        itemCount: 0,
+        totalItems: 0,
+        rendered: 0,
+        template: mageTemplate('#row-template'),
+        add: function (data, render) {
+        	var isNewOption = false, element;
+
+        	element = this.template({
+                data: data
+            });
+
+            this.itemCount++;
+            this.totalItems++;
+            this.elements += element;
+
+            if (render) {
+                this.render();
+                this.updateItemsCountField();
+                this.setLayoutJSON();
+            }
+        },
+        render: function () {
+            Element.insert($$('[data-role=options-container]')[0], this.elements);
+            this.elements = '';
+        },
+        updateItemsCountField: function () {
+            $('option-count-check').value = this.totalItems > 0 ? '1' : '';
+        },
+        setLayoutJSON: function() {
+            var layoutValues = new Array();
+            jQuery('[data-role=options-container] tr').each(function (index, element) {
+                var element = {
+                    'sort_order': jQuery(this).find('.sort-order').val(),
+                    'element': jQuery(this).find('.element').val(),
+                    'element_code': jQuery(this).find('.element-code').val()
+                };
+                layoutValues.push(element);
+            });
+            jQuery('#<?php echo $_elementId; ?>').val(JSON.stringify(layoutValues))
+        }
+    };
+
+    if(jQuery('#<?php echo $_elementId; ?>').val() != undefined && jQuery('#<?php echo $_elementId; ?>').val() != "") {
+        var layoutValues = jQuery('#<?php echo $_elementId; ?>').val();
+        console.log(layoutValues);
+        layoutValues = jQuery.parseJSON(layoutValues);
+        jQuery(layoutValues).each(function(index, element) {
+            attributeOption.add(element, true);
+        });
+    }
+
+    jQuery(function ($) {
+        $('[data-role=options-container]').sortable({
+            distance: 8,
+            tolerance: 'pointer',
+            cancel: 'input',
+            axis: 'y',
+            update: function () {
+                $('[data-role=options-container] [data-role=order]').each(function (index, element) {
+                    $(element).val(index + 1);
+                });
+                attributeOption.setLayoutJSON();
+            }
+        });
+    });
+});
+</script>

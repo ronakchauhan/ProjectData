@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Customer\Block\Account\Link" name="my-account-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">My Account</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="top.links">
+            <block class="Magento\Customer\Block\Account\Link" name="my-account-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">My Account</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <!--  <referenceBlock name="logo">
+              <arguments>
+                  <argument name="logo_img_width" xsi:type="number">148</argument>
+                  <argument name="logo_img_height" xsi:type="number">43</argument>
+              </arguments>
+          </referenceBlock>-->
+        <referenceContainer name="footer">   
+            <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links"
+                   template="switch/stores.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer_links_social_links" after="form.subscribe">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_links_social_links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <move element="copyright" destination="before.body.end"/>
+        <move element="header.panel" destination="header-wrapper" />
+         <referenceBlock name="register-link" remove="true" />
+           <referenceBlock name="wish-list-link" remove="true" />
+           <referenceBlock name="catalog.leftnav" remove="true"/>
+
+           <referenceBlock name="breadcrumbs" remove="true"/>
+
+
+
+    </body>
+</page>
+
+
+ 

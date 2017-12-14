@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 ktpl (http://www.jakesharp.co/) All rights reserved.
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend/etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_Core::admin" title="ktpl" module="Ktpl_Core" sortOrder="100" resource="Ktpl_Core::admin" />
+    </menu>
+</config>

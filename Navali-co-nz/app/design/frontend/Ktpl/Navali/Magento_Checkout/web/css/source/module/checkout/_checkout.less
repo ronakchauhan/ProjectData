@@ -1,0 +1,236 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@checkout-wrapper__margin: @indent__base;
+@checkout-wrapper__columns: 18.2;
+
+
+@checkout-step-title__border: @border-width__base solid @color-gray80;
+@checkout-step-title__font-size: 26px;
+@checkout-step-title__font-weight: @font-weight__light;
+@checkout-step-title__padding: @indent__s;
+
+@checkout-step-title-mobile__font-size: 18px;
+
+@checkout-step-content-mobile__background: @color-gray-light01;
+@checkout-step-content-mobile__margin-s: 15px;
+@checkout-step-content-mobile__margin: @indent__base -(@checkout-step-content-mobile__margin-s) @checkout-step-content-mobile__margin-s;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    .checkout-index-index,
+    .checkout-onepage-success {
+        .page-title-wrapper {
+            /*&:extend(.abs-visually-hidden all); */
+        }
+    }
+
+    .checkout-container {
+        &:extend(.abs-add-clearfix all);
+        .lib-css(margin, 0 0 @checkout-wrapper__margin);
+    }
+
+    .opc-wrapper {
+        .lib-css(margin, 19px 0 @checkout-wrapper__margin);
+
+
+        .opc {
+            &:extend(.abs-reset-list all);
+        }
+
+        .step-title {
+            &:extend(.abs-checkout-title all);
+           border-bottom: solid 1px #e1e1e1;
+            font-size: 14px;
+            color: #000;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding-bottom: 12px;
+        }
+
+        .step-content {
+            margin: 0 0 @indent__xl;
+        }
+    }
+
+    .checkout-index-index {
+        .nav-sections,
+        .nav-toggle {
+            display: none;
+        }
+
+        .logo {
+            margin-left: 0;
+        }
+    }
+
+
+.checkout-index-index{
+
+  .header.content {
+    padding: 11px 20px 15px;
+    height: 35px;
+    }
+
+    .logo {
+    left: 18px;
+    right: auto;
+    }
+
+}
+
+.free-shp{
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    text-transform: uppercase;
+    float: right;
+    position: relative;
+    margin-top: 8px;
+
+    &:before{
+       font-family: @icons__font-name;
+       font-size: 28px;
+       color: #fff;
+       content: "\e929";
+       left: -34px;
+       top: -9px;
+       position: absolute;
+    }
+
+}
+
+
+
+}    /* End comman */
+
+
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .opc-wrapper {
+        &:extend(.abs-add-box-sizing-desktop-m all);
+        .lib-layout-column(2, 1, @checkout-wrapper__columns);
+        padding-right: 18px;
+    }
+}
+@media(max-width:1024px){
+	.opc-wrapper{
+		width:70% !important; 
+		.form-discount{
+			width:100%;
+		}
+	}
+	.opc-sidebar{
+		width:30% !important;
+	}
+}
+
+@media(max-width:1023px)and(min-width:768px){
+	.opc-wrapper{
+		width:60% !important; 
+	}
+	.opc-sidebar{
+		width:40% !important;
+	} 
+}
+@media(max-width:767px){
+	.checkout-index-index{
+		.page-title-wrapper{
+			display:none;
+		}
+		.page-main{
+			padding:0;
+		}
+		.minicart-wrapper{
+			margin-right: 7px;
+		}
+		.opc-sidebar {
+			width: auto !important;
+		}
+		.opc-wrapper{
+			width: 100% !important;
+			box-sizing: border-box; 
+			.checkout-shipping-address{
+				padding:0 10px; 
+			}
+			.step-title{
+				font-weight:400;
+			}
+			.form-login, .form-shipping-address{
+				margin-top:15px;
+			}
+			.step-content{
+				margin:0;
+			}
+			.form-discount{
+				width:100%;
+			}
+		}
+		label.label, legend.label{
+			font-size:12px !important;
+			color:#333 !important;
+			font-weight:400 !important; 
+		}
+		#opc-shipping_method{
+			background:#f6f6f6;
+			padding:20px 10px 0 10px;
+		}
+		.checkout-container{
+			margin:0;
+		}
+		.fieldset > .field{
+			margin:0 0 20px;
+		}
+		.modal-custom .action-close::before{
+			color:#333;
+		}
+	}
+		
+}
+@media(max-width:480px){
+	.checkout-index-index{
+		.header.content{
+			text-align:center;
+			height:84px;
+			.text-center{
+				width:100%; 
+				text-align:center;
+				float:left;
+				position: relative;
+				bottom: -50px;
+				.free-shp{
+					float:none;
+					display:inline-block;
+					position: relative;
+					left: 17px;
+				}
+			}
+			.logo{
+				float:none;
+				display:inline-block;
+				left:inherit;
+				position: relative;
+				top: -35px;
+			}
+		}
+	}
+}
+.checkout-index-index{
+	.product-item-name{
+		height:auto;
+	}
+}

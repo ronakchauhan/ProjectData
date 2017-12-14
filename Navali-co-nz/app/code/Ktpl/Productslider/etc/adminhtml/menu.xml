@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © 2016 ktpl (http://www.ktpl.co/) All rights reserved.
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend/etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_Productslider::productslider" title="Product Sliders" module="Ktpl_Productslider" resource="Ktpl_Productslider::productslider" parent="Ktpl_Core::admin" />
+        <add id="Ktpl_Productslider::manage_sliders" title="Manage Sliders" module="Ktpl_Productslider" resource="Ktpl_Productslider::manage_sliders" parent="Ktpl_Productslider::productslider" action="productslider/slider/index"/>
+        <add id="Ktpl_Productslider::config" title="Settings" module="Ktpl_Productslider" resource="Ktpl_Productslider::config" sortOrder="20" parent="Ktpl_Productslider::productslider" action="adminhtml/system_config/edit/section/productslider"/>
+    </menu>
+</config>

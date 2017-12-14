@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="mage/gallery/gallery.css"/>
+        <css src="Ktpl_Additional::css/slick.css" />
+        <css src="Ktpl_Additional::css/slick-theme.css" />
+        <css src="Ktpl_Additional::css/lightbox.css" />
+    </head>    
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Framework\View\Element\Template" name="social-share-product" after="-" template="Ktpl_Additional::product/view/social_share.phtml">
+                <block class="Magento\Cms\Block\Block" name="cms_free_shipping_product_detail">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">free_shipping_product_detail</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+         <referenceBlock name="product.info.details">
+            <block class="Ktpl\Additional\Block\Product\View" name="ktpl_aditional_tab_function" template="Ktpl_Additional::product/view/features.phtml" group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Features</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceContainer name="product.info.media">
+            <referenceContainer name="product.info.media">
+                <referenceBlock name="product.info.media.image">
+                    <action method="setTemplate">
+                        <argument name="template" xsi:type="string">Ktpl_Additional::product/view/gallery.phtml</argument>
+                    </action>
+                </referenceBlock>
+            </referenceContainer>
+        </referenceContainer>
+        <referenceContainer name="content.aside">
+            <referenceBlock name="catalog.product.related">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Ktpl_Additional::product/list/items.phtml</argument>
+                </action>
+            </referenceBlock>
+            <referenceBlock name="product.info.upsell">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Ktpl_Additional::product/list/items.phtml</argument>
+                </action>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

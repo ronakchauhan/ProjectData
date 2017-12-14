@@ -1,0 +1,15 @@
+<div class="cms-shipping-static-block">
+    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('home-Shipping-banner')->toHtml();?>
+</div>
+<script>
+    require([
+        'jquery'        
+    ], function($) {
+        $(document).ready(function(){
+
+      		$(document).on("click", ".shipping-block-close", function() {
+      			$(".cms-shipping-static-block").hide();
+      		})
+        });
+    })
+</script>

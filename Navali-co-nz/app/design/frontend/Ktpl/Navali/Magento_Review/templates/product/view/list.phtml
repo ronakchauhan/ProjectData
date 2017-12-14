@@ -1,0 +1,150 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * @description:
+ *
+ */
+?>
+<?php
+    $_items = $block->getReviewsCollection()->getItems();
+    $format = $block->getDateFormat() ?: \IntlDateFormatter::SHORT;
+?>
+<?php if (count($_items)):?>
+<div class="block review-list" id="customer-reviews">
+    <div class="block-title">
+        <strong><?php /* @escapeNotVerified */ echo __('Customer Reviews') ?></strong>
+    </div>
+    <div class="block-content">
+        <div id="loading" style="text-align: center; padding:40px 0 40px 0; display: none">
+            <img src="<?php echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                 alt="<?php /* @escapeNotVerified */ echo __('Loading...'); ?>">
+        </div>
+        <div class="toolbar review-toolbar" style="display: none">
+            <?php echo $block->getChildHtml('toolbar') ?>
+        </div>
+        <ol class="items review-items">
+        <?php foreach ($_items as $_review):?>
+            <li class="item review-item" itemscope itemprop="review" itemtype="http://schema.org/Review">
+                <div class="review-title" itemprop="name"><?php echo $block->escapeHtml($_review->getTitle()) ?></div>
+                <?php if (count($_review->getRatingVotes())): ?>
+                    <div class="review-ratings">
+                    <?php foreach ($_review->getRatingVotes() as $_vote): ?>
+                    <div class="rating-summary item" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                        <span class="label rating-label"><span><?php echo $block->escapeHtml($_vote->getRatingCode()) ?></span></span>
+                        <div class="rating-result" title="<?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%">
+	                        <meta itemprop="worstRating" content = "1"/>
+	                        <meta itemprop="bestRating" content = "100"/>
+                            <span style="width:<?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%">
+                                <span itemprop="ratingValue"><?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%</span>
+                            </span>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                        <p class="review-date">
+                            <span class="review-details-label"><?php /* @escapeNotVerified */ echo __('Posted on') ?></span>
+                            <time class="review-details-value" itemprop="datePublished" datetime="<?php /* @escapeNotVerified */ echo $block->formatDate($_review->getCreatedAt(), $format) ?>"><?php /* @escapeNotVerified */ echo $block->formatDate($_review->getCreatedAt(), $format) ?></time>
+                        </p>
+                    </div>
+                <?php endif; ?>
+
+                <div class="review-content" itemprop="description">
+                    <p class="review-author">
+                        <span class="review-details-label"><?php /* @escapeNotVerified */ echo __('Review by')?></span>
+                        <strong class="review-details-value" itemprop="author"><?php echo $block->escapeHtml($_review->getNickname()) ?></strong>
+                        <span class="refiew-details-verified"><?php /* @escapeNotVerified */ echo __(' - Verified Purchase')?></span>
+                    </p>
+                    <?php echo nl2br($block->escapeHtml($_review->getDetail())) ?>
+                </div>
+            </li>
+        <?php endforeach; ?>
+        </ol>
+        
+        <div class="toolbar review-toolbar custom-tool">
+            <div class="show-more-reviews" style="display: none">
+                <button><span><?php /* @escapeNotVerified */ echo __('Show More Reviews')?></span></button>
+            </div>
+            <?php echo $block->getChildHtml('toolbar') ?>
+        </div>
+    </div>
+</div>
+<?php endif;?>
+<script>
+    require(['jquery'], function ($) {
+        $(document).ready(function () {            
+            var isMore = false;
+            $(".custom-tool .pager").css("visibility", "hidden");
+
+            $(".custom-tool .pages-items .item").each(function( index ) {
+                if($(this).hasClass("pages-item-next"))
+                {
+                    isMore = true;
+                }
+                else
+                {
+                    isMore =  false;
+                }
+            });
+            
+           if (isMore ==  true) {
+                $(".custom-tool .show-more-reviews").css("display","block");
+           }
+           else{
+                $(".custom-tool .show-more-reviews").css("display","none");
+           }
+
+            $(".custom-tool .show-more-reviews button").click(function(){
+                    var oldHtml = $(".review-list .review-items").html();
+                    var isMore = false;
+                    $(".custom-tool .pages-items .pages-item-next a").trigger("click");
+
+                    var newHtml = "";
+
+                    $( document ).ajaxStop(function() {
+                            newHtml = $(".review-list .review-items").html();
+                            console.log(newHtml);
+                            $(".review-list .review-items").prepend(oldHtml);
+                            oldHtml = '';
+                            $(".custom-tool .pages-items .item").each(function( index ) {
+                       
+                                if($(this).hasClass("pages-item-next"))
+                                {
+                                    isMore = true;
+                                }
+                                else
+                                {
+                                    isMore =  false;
+                                }
+                            });
+                        
+                           if (isMore ==  true) {
+                                $(".custom-tool .show-more-reviews").css("display","block");
+                           }
+                           else{
+                                $(".custom-tool .show-more-reviews").css("display","none");
+                           } 
+                        $(".block-content .review-items").css("display","block");
+                        $(".block-content #loading").css("display","none");   
+                    });
+                return false;
+            });
+
+            $( document ).ajaxStart(function() {
+                $(".block-content .review-items").css("display","none");
+                $(".block-content #loading").css("display","block");   
+            });
+
+            $( document ).ajaxStop(function() {
+                $(".block-content .review-items").css("display","block");
+                $(".block-content #loading").css("display","none");   
+            });
+        });
+    });
+</script>

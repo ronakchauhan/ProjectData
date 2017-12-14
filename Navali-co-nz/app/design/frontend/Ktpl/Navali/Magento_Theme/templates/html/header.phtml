@@ -1,0 +1,53 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header $block
+ */
+$welcomeMessage = $block->getWelcome();
+?>
+<?php switch ($block->getShowPart()):
+    case 'welcome': ?>
+
+    <?php break; ?>
+
+    <?php case 'other': ?>
+        <?php echo $block->getChildHtml(); ?>
+    <?php break; ?>
+
+<?php endswitch; ?>
+
+
+
+
+
+<script type="text/javascript">
+require(['jquery'], function($) {
+    jQuery(document).ready(function() {
+
+        /** Sticky topmenu*/
+        jQuery(window).scroll(function(){
+           if (jQuery(this).scrollTop() > 110) {
+                jQuery('body').addClass('stickyyyy');
+            }
+            else {
+                $('body').removeClass('stickyyyy');
+            }
+
+            if ($(this).scrollTop() > 175) {
+               $('body').addClass('slideDown');
+            }
+            else {
+               $('body').removeClass('slideDown');
+            }
+
+        });
+       
+    });
+});
+</script>

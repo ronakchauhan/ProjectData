@@ -1,0 +1,174 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //  PayPal Review Order page
+    .paypal-review {
+        .block {
+            &:extend(.abs-account-blocks all);
+            .actions-toolbar {
+                .action {
+                    &.primary {
+                        &:extend(.abs-revert-secondary-color all);
+                    }
+                }
+            }
+        }
+
+        .paypa-review-title {
+            > strong {
+                .lib-heading(h3);
+                display: inline-block;
+            }
+        }
+
+        .items-qty {
+            &:extend(.abs-reset-list all);
+
+            .item {
+                white-space: nowrap;
+            }
+
+            .title {
+                &:after {
+                    content: ': ';
+                }
+            }
+        }
+
+        .paypal-review-title {
+            > strong {
+                .lib-heading(h3);
+                display: inline-block;
+            }
+        }
+
+        .actions-toolbar {
+            margin-top: @indent__s;
+        }
+
+        .item-options {
+            dt {
+                display: inline-block;
+                &:after {
+                    content: ': ';
+                }
+            }
+
+            dd {
+                margin: 0;
+            }
+        }
+    }
+
+    //  Discounts
+    .paypal-review-discount {
+        border:none;
+        margin: @indent__base 0;
+
+        .block {
+            &:extend(.abs-discount-block all);
+            margin-bottom: 0;
+
+            .fieldset {
+                padding: @indent__s 0 @indent__base; 
+            }
+        }
+    }
+	.paypal-review{ 
+		.block-order-details-view{
+			margin-bottom:20px !important;
+		}
+	}
+	.paypal-review-discount{
+		.content{
+			display:block !important;
+			max-width: 50%;
+		}
+	}
+	.paypal-express-review{
+		.cart.table-wrapper{
+			border-top:0;
+		}
+	}
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .paypal-review {
+        .paypal-review-title {
+            margin-bottom:20px;
+			.edit{
+				float:right;
+			}
+			strong{
+				margin:0;
+			}
+        }
+
+        .block-content {
+            &:extend(.abs-add-clearfix-desktop all);
+            .box-order-shipping-address,
+            .box-order-shipping-method,
+            .box-order-shipping-method + .box-order-billing-address {
+                box-sizing: border-box;
+                float: left;
+                width: 33%;
+            }
+
+            .box-order-shipping-address {
+                padding: 0 5%;
+                width: 34%;
+            }
+        }
+
+        .column.main & {
+            .actions-toolbar {
+                &:extend(.abs-reset-left-margin-desktop all);
+            }
+        }
+
+        .col.subtotal,
+        .mark,
+        .amount {
+            text-align: right;
+        }
+    }
+}
+
+@media(max-width:1200px){
+	.paypal-review-discount{
+		.content{
+			max-width:100% !important; 
+		}
+	}
+}
+
+@media(max-width:767px){ 
+	.page-title-wrapper{
+		.page-title{
+			margin:20px 0; 
+		}
+	}
+	 .paypal-review-discount{
+		.block{
+			.actions-toolbar{
+				.action.primary{
+					padding:12px 10px;
+					font-size: 10px;
+					height: 40px;
+				}
+			} 
+		} 
+	 } 
+}

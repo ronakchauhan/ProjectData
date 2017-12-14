@@ -1,0 +1,189 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Luma theme overrides
+//  _____________________________________________
+
+//  Theme file should contain declarations (overrides) ONLY OF EXISTING variables
+//  Otherwise this theme won't be available for parent nesting
+//  All new variables should be placed in local theme lib or local theme files
+
+//
+//  Typography
+//  ---------------------------------------------
+
+//  Fonts
+@icons__font-path: '@{baseDir}fonts/navali-icon';
+@icons__font-name: 'navali-icon';
+
+//  Color nesting
+@panel__background-color: @color-gray-light0;
+@border-color__base: @color-gray80;
+
+
+
+
+
+
+//
+//  Layout grid
+//  ---------------------------------------------
+
+@total-columns: 24;
+
+//  Variables for layout columns
+@layout-column__sidebar-width: 5;
+
+//  Checkout columns width
+@layout-column-checkout__width-left: 6;
+
+//
+//  Navigation
+//  ---------------------------------------------
+
+@navigation__background: @color-gray94;
+@navigation-level0-item__active__color: @primary__color;
+@submenu-item__active__color: @navigation-level0-item__active__color;
+
+@theme-color: #89cce2;
+@theme-blue: #3682ab;
+
+ @icon-cart: '\e906';
+ @icon-search: '\e92a';
+ @icon-star: '\e92c';
+ @icon-star-empty: '\e92c';
+ @icon-trash: '\e90d';
+@icon-trash-cart: '\e92e';
+@icon-edit: '\e923';
+@icon-checkmark-check: '\e90b';
+@icon-menu: '\e919';
+
+
+
+ @minicart-icons-color:#fff;
+ @minicart-icons-color-hover: #fff;
+
+
+/* @navigation-desktop__background: rgba(0, 10, 25, 0.31);*/
+ @navigation-desktop__background: transparent;
+
+ @navigation-desktop__font-weight: @font-weight__regular;
+ @navigation-desktop-level0-item__line-height: 49px;
+@navigation-desktop-level0-item__margin: 0 25px 0 25px;
+@navigation-desktop-level0-item__padding: 0 0px;
+
+@navigation-desktop-level0-item__color: #89cce2;
+@navigation-desktop-level0-item__hover__color: #fff;
+
+@navigation-level0-item__font-size: 18;
+
+@navigation-desktop-level0-item__active__border-width: 0 0 0px;
+
+
+// mobile menu
+
+@navigation-level0-item__font-size: 16;
+@navigation-level0-item__font-weight: @font-weight__regular;
+@navigation-level0-item__background: transparent;
+@navigation__background:  transparent;
+@navigation-level0-item__border: 1px solid #fff;
+@navigation-level0-item__color: #fff;
+
+@navigation-level0-item__active__border-color: #fff;
+@navigation-level0-item__active__color: #fff;       
+
+
+
+//  Default = secondary button
+@button__color:  @color-white;
+@button__background: @theme-blue;
+@button__border: 0px solid @color-gray-darken2;
+
+@button__hover__color: @color-white;
+@button__hover__background: #999999;;
+@button__hover__border: @button__border;
+
+@_button-l-padding: 12px 13px 11px;
+
+
+//  Primary button
+@button-primary__background: @theme-blue;
+@button-primary__border: 0px solid @color-blue1;
+@button-primary__color: @color-white;
+
+
+@button-primary__hover__background: #999999;
+@button-primary__hover__border: 0px solid @color-blue2;
+@button-primary__hover__color: @color-white;
+
+@button-primary__active__background: #626262;
+@button-primary__active__border: @button-primary__hover__border;
+@button-primary__active__color: @color-white;
+
+
+@button__padding: 13px 17px 14px;
+@button__border-radius: 3px;
+@button__font-size: 13px;
+@button__font-weight: @font-weight__regular;
+
+
+//  Tabs controls
+@tab-control__font-size: 14px;
+@tab-control__font-weight: @font-weight__regular;
+@tab-control__height: 35px;
+
+@tab-control__margin-right: -4px;
+@tab-control__padding-top: @indent__xs;
+@tab-control__padding-right: 32px;
+@tab-control__padding-bottom: @tab-control__padding-top;
+@tab-control__padding-left: 32px;
+@tab-control__border-color: #999;
+@tab-control__border-width: @border-width__base;
+
+//  Current tab
+@tab-control__background-color: #f5f5f5;
+@tab-control__color: #000;
+
+@tab-control__hover__background-color: #fff;
+@tab-control__hover__color: #3682ab;
+
+@tab-control__active__background-color: #fff;
+@tab-control__active__color: #3682ab;
+
+@tab-content__background-color:#f5f5f5;
+
+@tab-content__border: @tab-control__border-width solid @tab-control__border-color;
+
+@tab-content__margin-top: @tab-control__height + @tab-control__border-width + @tab-control__padding-top + @tab-control__padding-bottom;
+
+@tab-content__padding-top:50px;
+@tab-content__padding-right: @indent__base;
+@tab-content__padding-bottom: @tab-content__padding-top;
+@tab-content__padding-left: @tab-content__padding-right;
+
+
+
+@rating-icon__font-size: 19px;
+@rating-icon__letter-spacing: -7px;
+@rating-icon__color: #999999;
+
+@rating-icon__active__color: #3682ab;
+
+
+
+
+@form-element-input__height: 40px;
+@form-element-input__border-color: #e4e4e4;
+
+@form-element-input__focus__border:false;
+@input-text__focus__border:false;
+
+@form-field-label__font-weight: @font-weight__bold;
+@form-field-label__font-size: 12px;
+@form-field-label__color: #333;
+
+@account-title-border-color: #e1e1e1;
+

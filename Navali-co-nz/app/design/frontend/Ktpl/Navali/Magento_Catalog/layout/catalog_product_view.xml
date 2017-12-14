@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+
+        <move element="product.info.media" destination="product.info.main" after="page.main.title"/>
+
+        <move element="product.info.stock.sku" destination="product.info.price" after="product.price.final"/>
+        <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
+        <move element="product.info.options.wrapper" destination="product.info.addtocart.additional" after="-"/>
+        <referenceContainer name="product.info.extrahint" remove="true" /> 
+        <referenceContainer name="product.info.stock.sku" remove="true" />
+        <referenceBlock name="product.info.overview" remove="true" />
+        <referenceBlock name="product.info.review" remove="true" />        
+	    <referenceBlock name="product.info.details">
+            <referenceBlock name="product.info.description">
+                <arguments>
+                    <argument name="title" translate="true" xsi:type="string">Products Description</argument>
+                </arguments>
+            </referenceBlock>            
+        </referenceBlock>
+
+        <referenceContainer name="page.bottom.container">
+           <!-- <container name="page.bottom" label="Before Page Footer" htmlTag="div" htmlClass="content"/>  -->
+
+              <container name="catalog_bottom" htmlTag="div" htmlClass="catalog_bottom" before="-"></container>
+              <container name="catalog_bottom-white" htmlTag="div" htmlClass="catalog_bottom-white" after="catalog_bottom">
+                    <container name="catalog_bottom-white-inner" htmlTag="div" htmlClass="color-white-div"></container>
+              </container>
+
+        </referenceContainer>
+
+        <move element="product.info.details" destination="catalog_bottom" before="-"/>
+        <move element="catalog.product.related" destination="catalog_bottom-white-inner" before="-"/>
+        <move element="product.info.upsell" destination="catalog_bottom-white-inner" after="catalog.product.related"/>
+
+
+    </body>
+</page>

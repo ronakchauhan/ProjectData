@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    	<preference for="Magento\Sales\Model\ResourceModel\Order\Grid\Collection" type="Ktpl\Sales\Model\ResourceModel\Order\Grid\Collection"/>
+
+    	<preference for="Magento\Sales\Model\ResourceModel\Order\Invoice\Grid\Collection" type="Ktpl\Sales\Model\ResourceModel\Order\Invoice\Grid\Collection"/>
+
+    	<!-- Change in Invoice Print -->
+    	<preference for="Magento\Sales\Model\Order\Pdf\Invoice" type="Ktpl\Sales\Model\Invoice"/>
+    	<preference for="Magento\Sales\Model\Order\Pdf\Items\Invoice\DefaultInvoice" type="Ktpl\Sales\Model\DefaultInvoice"/>
+    	<!-- END  -->
+</config>

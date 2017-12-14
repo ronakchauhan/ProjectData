@@ -1,0 +1,39 @@
+<?php
+/**
+ * PL Development.
+ *
+ * @category    PL
+ * @author      Linh Pham <plinh5@gmail.com>
+ * @copyright   Copyright (c) 2016 PL Development. (http://www.polacin.com)
+ */
+?>
+<?php $jsonHelper = $this->helper('\Magento\Framework\Json\Helper\Data');?>
+<?php $_info = $this->getInfo();?>
+<dl class="payment-method">
+    <dt class="title"><?php echo $block->escapeHtml($block->getMethod()->getTitle()) ?></dt>
+    <dd>
+        <?php
+        if ($_info->getAdditionalInformation('payment_additional_info')):
+            $paymentInfo = $jsonHelper->jsonDecode($_info->getAdditionalInformation('payment_additional_info'));
+            ?>
+
+            <?php if (isset($paymentInfo['vpc_Card'])):?>
+            Card Type:<?php echo $paymentInfo['vpc_Card']?><br/>
+        <?php endif;?>
+            <?php if (isset($paymentInfo['vpc_AuthorizeId'])):?>
+            Authorize Id:  <?php echo $paymentInfo['vpc_AuthorizeId']?><br/>
+        <?php endif;?>
+            <?php if (isset($paymentInfo['vpc_ReceiptNo'])):?>
+            Receipt No:  <?php echo $paymentInfo['vpc_ReceiptNo']?><br/>
+        <?php endif;?>
+            <?php if (isset($paymentInfo['vpc_TransactionNo'])):?>
+            Transaction No: <?php echo $paymentInfo['vpc_TransactionNo']?><br/>
+        <?php endif;?><?php if (isset($paymentInfo['vpc_BatchNo'])):?>
+            Batch No:  <?php echo $paymentInfo['vpc_BatchNo']?><br/>
+        <?php endif;?>
+            <?php if (isset($paymentInfo['vpc_Message'])):?>
+            Text Message:  <?php echo $paymentInfo['vpc_Message']?>
+        <?php endif;?>
+        <?php endif;?>
+    </dd>
+</dl>

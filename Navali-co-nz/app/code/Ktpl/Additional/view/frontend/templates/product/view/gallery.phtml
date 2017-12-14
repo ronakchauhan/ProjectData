@@ -1,0 +1,173 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php
+$galleryImages = json_decode($block->getGalleryImagesJson());
+?>
+<div class="gallery-placeholder _block-content-loading product-gallery-slider" data-gallery-role="gallery-placeholder">
+    <?php 
+        if(count($galleryImages)> 3):?>
+            <ol class="product-slider list items " style="display: none">
+        <?php else:?>
+            <ol class="product-slider list items no-slider-items" style="display: none">
+        <?php endif;?>
+        <?php $i = 0;?>
+    <?php foreach ($galleryImages as $key => $galleryImage):?> 
+        <?php //echo"<pre/>"; print_r($galleryImage->img);exit;?>
+        <li class="product-image">
+            <img src="<?php echo $galleryImage->img?>" alt="product-img" img-number="<?php echo $i;?>" class="hover-shadow product-image-modal cursor">
+        </li>
+        <?php $i++;?>
+    <?php endforeach;?>
+        <div id="loading" class="loader" style="text-align: center; padding:40px 0 40px 0">
+            <img src="<?php echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                 alt="<?php /* @escapeNotVerified */ echo __('Loading...'); ?>"                 
+                 >
+        </div>
+    </ol>
+     <ul class="slider-nav-thumbnails list items" style="display: none">
+          <?php $i = 0;?>
+          <?php foreach ($galleryImages as $key => $galleryImageThumb):?> 
+          <?php $i++?>
+               <div> 
+                    <img src="<?php echo $galleryImageThumb->thumb?>" alt="product-img-thumb<?php echo $i;?>">
+               </div>
+          <?php endforeach;?>
+            <div id="thumb-loading" style="text-align: center; padding:40px 0 40px 0">
+                <img src="<?php echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                     alt="<?php /* @escapeNotVerified */ echo __('Loading...'); ?>"
+                     >
+            </div>
+     </ul>    
+</div>
+<div id="popup-modal">
+</div>
+<script type="text/javascript">
+   require(['jquery', 'slickproduct'], function($){
+            $(function(){
+               $('.product-slider').slick({
+                    centerMode: true,
+                    centerPadding: '5%',
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    slide: 'li',
+                    speed: 500,
+                    autoplay: false,  
+                    autoplaySpeed: 2000,
+                    cssEase: 'linear',
+                    arrows:true,
+                    responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 2
+                                }
+                            },
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 1
+                                }
+                            },
+                            {
+                                breakpoint: 767,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    asNavFor: '.slider-nav-thumbnails',
+                                }
+                            }
+                        ]
+                })
+                       
+               $(".gallery-placeholder .product-slider").css("display","block");
+               $("#loading").css("display","none");
+
+               if(window.screen.width < 767){                                 
+                    $('.slider-nav-thumbnails').slick({
+                         slidesToShow: 5,
+                         slidesToScroll: 1,
+                         infinite: true,
+                         speed: 500,
+                         autoplay: false,
+                         cssEase: 'linear',
+                         arrows:true,
+                         asNavFor: '.product-slider',
+                         focusOnSelect: true
+                     });
+
+                    // Remove active class from all thumbnail slides
+                     $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+
+                     // Set active class to first thumbnail slides
+                     $('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');
+
+                     // On before slide change match active thumbnail to current slide
+                     $('.product-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+                        var mySlideNumber = nextSlide;
+                        $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+                        $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
+                    });
+
+                    $(".gallery-placeholder .slider-nav-thumbnails").css("display","block");
+                    $("#thumb-loading").css("display","none");
+               }               
+            })
+        });
+
+</script>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+
+            $(".product-image-modal").click(function(){
+                var imgUrl = $(this).attr("src");
+                var productName = $(".page-title span").text();
+                var slideNumber = $(this).attr("img-number");
+                console.log(imgUrl);
+                /* Modal Form*/
+                var htmlModal = "";
+
+                htmlModal += "<div class='image-modal-box mySlides'>";
+                htmlModal += "<img src='" + imgUrl + "' style='width:100%''>";
+                htmlModal += "</div>";
+    
+                $('#popup-modal').html(htmlModal);               
+
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: false,
+                    buttons: []
+                };
+
+                var popup = modal(options, $('#popup-modal'));
+
+                $('#popup-modal').modal('openModal');
+
+                $('#popup-modal').show();                
+            
+           }); 
+        });
+</script>

@@ -1,0 +1,32 @@
+<?php
+/**
+ * PL Development.
+ *
+ * @category    PL
+ * @author      Linh Pham <plinh5@gmail.com>
+ * @copyright   Copyright (c) 2016 PL Development. (http://www.polacin.com)
+ */
+?>
+
+<form name="migs_hosted" id="migs-hosted-form" method="post"
+      action="<?php echo $block->getFormUrl()?>" accept-charset="utf-8">
+
+    <?php foreach ($block->getFormFields() as $field => $value) : ?>
+        <input type="hidden" name="<?php echo($field); ?>" value="<?php echo($value); ?>" />
+    <?php endforeach;?>
+    <input type="submit"
+           value="<?php echo __('Please click here if you are not automatically redirected after a few seconds...'); ?>"/>
+</form>
+
+<script type="text/javascript">
+    function postTransaction() {
+        document.migs_hosted.submit();
+    }
+    if (window.addEventListener) {
+        window.addEventListener('load', postTransaction, false);
+    }else if (window.attachEvent){
+        window.attachEvent('onload', postTransaction);
+    }else {
+        window.onload = postTransaction;
+    }
+</script>

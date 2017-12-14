@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <migs>
+                <active>1</active>
+                <model>PL\Migs\Model\Migs</model>
+                <payment_action>authorize_capture</payment_action>
+                <title>ANZ eGate Payment (2-Party Payments)</title>
+                <cctypes>VI,MC</cctypes>
+                <ssl_enabled>0</ssl_enabled>
+                <debug>0</debug>
+                <allowspecific>0</allowspecific>
+            </migs>
+            <migs_hosted>
+                <active>1</active>
+                <model>PL\Migs\Model\Hosted</model>
+                <title>ANZ eGate Payment (3-Party Payments)</title>
+                <payment_action>order</payment_action>
+                <processing_status>processing</processing_status>
+                <use_3d>0</use_3d>
+                <debug>0</debug>
+                <allowspecific>0</allowspecific>
+            </migs_hosted>
+        </payment>
+    </default>
+</config>

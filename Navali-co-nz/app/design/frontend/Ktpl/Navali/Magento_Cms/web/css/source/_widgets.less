@@ -1,0 +1,290 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .block-static-block,
+    .block-cms-link {
+        &.widget {
+            .links & {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .block-cms-link-inline {
+        &.widget {
+            margin: 0;
+        }
+    }
+
+.big_banner {
+    width: 50%;
+    position: relative;
+    float: left;
+	padding:10px;
+	box-sizing:border-box;
+	a{
+		img{
+			width:100%;
+			&.b{
+				display:none;
+			}
+		}
+	}
+}
+.boxes{
+	.grid_4{
+		width:33.33%;
+		padding:10px;
+		margin:0 !important;
+		box-sizing:border-box;
+		img{
+			width:100%;
+			&.b{
+				display:none;
+			}
+		}
+		div{
+			a{
+				height:405px;
+				position:relative;
+				width:100%;
+				float:left;
+				img{
+					position:absolute;
+					top:0;
+					left:0;
+					right:0;
+					bottom:0;
+					margin:auto;
+					max-height:405px;
+					max-width:100%; 
+				}
+			}
+		}
+	}
+}
+
+.about_container{
+/*   max-width: 940px; */   
+  margin: 0 auto;
+
+
+ .grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12, .grid_13, .grid_14, .grid_15, .grid_16 {
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.alpha {
+    margin-left: 0;
+}
+.omega {
+    margin-right: 0;
+}
+ 
+
+}
+
+.container_12 .grid_4 {
+    width: 300px;
+}
+
+
+
+.meet_the_team {
+	/*
+    height: 510px;
+    width: 300px;
+    background-color: #dbd1ba;
+    color: #121212;
+    position: relative;
+	*/
+}
+.press {
+	/*
+    height: 180px;
+    width: 300px;
+    margin-bottom: 20px;
+    position: relative; 
+	*/
+}
+.your_bag {
+	/*
+    height: 310px;
+    width: 300px;
+    background-color: #dbd1ba;
+    margin-bottom: 20px;
+    position: relative;
+	*/
+}
+.testimonials {
+	/*
+    height: 310px;
+    width: 300px;
+    background-color: #dbd1ba;
+    margin-bottom: 20px;
+    position: relative;
+	*/
+}
+.partners {
+    height: 180px;
+    width: 300px;
+    background-color: #dbd1ba;
+    margin-bottom: 20px;
+    position: relative;
+}
+.container_12 .grid_4 {
+    width: 300px;
+}
+}
+
+.cms-bag-care {
+	hr{
+		display:none; 
+	}
+}
+.how-we-started-wrapper{
+	.how-we-left{
+		float:right; width:35%;
+	}
+	.how-we-right{
+		float:left; width:65%; padding-right: 3%;box-sizing: border-box;
+	}
+}
+.modal-custom .action-close::before, .modal-popup .action-close::before, .modal-slide .action-close::before { color:#000 !important; }  
+
+.where_bagbeen {
+	float: left;
+	width: 100%;
+	padding: 40px 0px;
+	.left{
+		float:left;
+		width:50%;
+		padding-right:3%;
+		box-sizing:border-box;
+		input{
+			margin:10px 0;
+			width:100%;
+		}
+		textarea{
+			margin:10px 0;
+		}
+		input[type="submit"]{
+			background: #3682ab !important;
+			border: 0px solid #1979c3;
+			color: #ffffff;
+			cursor: pointer;
+			display: inline-block;
+			font-family: 'Montserrat', sans-serif, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			font-weight: 400;
+			padding: 10px 30px 11px;
+			font-size: 1.3rem;
+			box-sizing: border-box;
+			vertical-align: middle;
+			width: auto;
+			text-transform: uppercase;
+			float:right;
+			&:hover{
+				background: #999999;
+				border: 0px solid #cdcdcd;
+				color: #ffffff;
+			}
+		}
+		input[type="file"]{
+			width:auto; 
+			float:left;
+		}
+	}
+	.right{
+		float:right;
+		width:50%;
+		padding-left:3%;
+		box-sizing:border-box;
+		img {
+			width:100%;
+		}
+	}
+}
+
+
+@media(max-width:1023px){
+	.about_container{ 
+		.boxes{
+			float:left; width:100%;
+			.big_banner{
+				width:50%;
+				height:auto;
+				padding:0 1%;
+				box-sizing:border-box;
+				background-color:transparent;
+				&:last-child{
+					margin:0;
+				}
+				img.b{
+					display:none;
+				}
+			}
+			.grid_4{
+				width:33.33%;
+				margin: 0;
+				padding: 0 1%;
+				box-sizing: border-box;
+				.press{
+					height:auto;
+					width:100%;
+				}
+				.meet_the_team, .your_bag, .testimonials, .partners{
+					height:auto;
+					width:auto;
+					background: none;
+				}
+				img{
+					width:100%;
+					&.b{
+						display:none;
+					}
+				}
+			}
+		}
+	}
+	.contact-index-index .page-title-wrapper { margin:20px 0 !important;
+		.page-title{
+			margin:0;
+		}
+	}
+}
+@media(max-width:767px){
+	.cms-page-view{
+		h1 {
+			margin:20px 0;
+		}
+	}
+	.how-we-started-wrapper{
+		.how-we-left{
+			float:left; width:100%; text-align:center; 
+			
+		}
+		.how-we-right{
+			float:left; width:100%; padding-right: 0;box-sizing: border-box; padding-top:20px; 
+		}
+	}
+	.where_bagbeen{
+		padding:40px 0 0 0;
+		.left, .right{
+			padding:10px 0; 
+			width:100%;
+		}
+	}
+}
+@media(max-width:500px){
+	.about_container .boxes .big_banner, .about_container .boxes .grid_4{ width:100%;} 
+}

@@ -1,0 +1,131 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+<div class="box-tocart">
+    <div class="fieldset">        
+		<?php if ($block->shouldRenderQuantity()): ?>
+        <div class="field qty">
+            <label class="label" for="qty"><span><?= /* @escapeNotVerified */ __('Quantity') ?></span></label>
+            <div class="control" data-mage-init='{
+                                        "qtyInput":{"qtyInputSelector": "#qty",
+                                        "qtyIncrementSelector":"#inc-qty-<?php /* @escapeNotVerified */ echo $_product->getId() ?>",
+                                        "qtyDecrementSelector":"#dec-qty-<?php /* @escapeNotVerified */ echo $_product->getId() ?>"
+                                        }
+                                    }'>
+                <input type="number"
+                       name="qty"
+                       id="qty"
+                       maxlength="12"
+                       value="<?php /* @escapeNotVerified */ echo 1 ?>"
+                       title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty"
+                       data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                       />
+                       <div class="quantity-panel">
+                            <span class="inc-qty" id="inc-qty-<?php /* @escapeNotVerified */ echo $_product->getId() ?>">+</span>
+                            <span class="dec-qty" id="dec-qty-<?php /* @escapeNotVerified */ echo $_product->getId() ?>">-</span>
+                        </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php if ($_product->getGroupId()):?>
+            <div class="color-grouped">
+                <div class="color-list fieldset">
+                    <div class="color-swatch-options field">
+                         <?php 
+                            $_helper = $this->helper('Ktpl\Additional\Helper\Data');
+
+                            $optionIdvalue = $_product->getColor();
+
+                            $swatchImg = $_helper->getCurrentProductSwatchImage($optionIdvalue);
+                                
+                            // echo"<pre/>"; print_r($_product->getCategoryIds());exit;
+                            /* Group product swatches list with Url*/
+                            $otherProductsIds = $_helper->getGroupProductsSwatch($_product);
+                            // echo"<pre/>"; print_r($otherProductsIds);exit;
+                        ?>
+                        <?php if ($swatchImg):?>
+                            <div class="color-swatch-option selected">
+                                <img src="<?php /* @escapeNotVerified */ echo $swatchImg;?>" >
+                            </div>
+                        <?php endif;?>
+                        <?php if(count($otherProductsIds) > 0):?>
+                            <?php foreach ($otherProductsIds as $otherProductId):?>
+                                <?php                                 
+                                    $otherProduct = $_helper->getProductLoad($otherProductId);
+                                    $optionIdvalue = $otherProduct->getColor();
+                                    $swatchImg = "";
+                                    // echo"<pre/>"; print_r($optionIdvalue);exit;
+                                    $swatchImg = $_helper->getCurrentProductSwatchImage($optionIdvalue);
+
+                                ?>
+                                <div class="color-swatch-option">
+                                    <a href="<?php /* @escapeNotVerified */ echo $otherProduct->getProductUrl()?>"/>
+                                        <img src="<?php /* @escapeNotVerified */ echo $swatchImg;?>" >
+                                    </a>
+                                </div>
+                            <?php endforeach;?>
+                        <?php endif;?>
+                    </div>
+                </div>
+            </div>
+        <?php endif;?>
+        <?php
+            $required = '';
+            if ($block->hasRequiredOptions()) {
+                $required = ' data-hasrequired="' . __('* Required Fields') . '"';
+            }
+            ?>
+            
+        <div class="actions">
+            <button type="submit"
+                    title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>"
+                    class="action primary tocart"
+                    id="product-addtocart-button">
+                <span><?php /* @escapeNotVerified */ echo $buttonTitle ?></span>
+            </button>
+            <?php //echo $block->getChildHtml('', true) ?>
+        </div>
+		<div class="product-options-wrapper" id="product-options-wrapper"<?php /* @escapeNotVerified */ echo $required; ?>>
+			<div class="fieldset" tabindex="0">
+				<?php echo $block->getChildHtml('', true);?>
+			</div>
+		</div>
+    </div>
+</div>
+<?php else:?>
+    <div class="product-out-of-stock">
+            <div class="out-of-stock">
+                <?php /* @escapeNotVerified */ echo __("Out of stock");?>
+            </div>
+    </div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/product/view/validation": {
+                "radioCheckboxClosest": ".nested"
+            }
+        }
+    }
+</script>
+<?php if (!$block->isRedirectToCartEnabled()) : ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "catalogAddToCart": {
+                "bindSubmit": true
+            }
+        }
+    }
+</script>
+<?php endif; ?>

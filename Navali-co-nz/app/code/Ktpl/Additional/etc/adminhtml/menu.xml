@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © 2016 ktpl (http://www.ktpl.co/) All rights reserved.
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend/etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_Additional::bags" title="Bags Inquiry" module="Ktpl_Additional" resource="Ktpl_Additional::bags" parent="Ktpl_Core::admin" />
+        <add id="Ktpl_Additional::manage_bags" title="Manage Bag Inquiries" module="Ktpl_Additional" resource="Ktpl_Additional::manage_bags" parent="Ktpl_Additional::bags" action="additional/blog/index"/>
+    </menu>
+</config>
