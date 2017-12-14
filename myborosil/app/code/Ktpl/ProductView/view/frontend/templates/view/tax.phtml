@@ -1,0 +1,6 @@
+<?php
+$_product = $block->getProduct();
+?>
+<div class="bundle-product-tax">
+    <?php if($_product->getTaxClassId() != 0): ?><span><?php echo __('Inclusive of taxes') ?></span><?php endif; ?>
+</div>

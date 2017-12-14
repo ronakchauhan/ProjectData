@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!--
+
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+
+ -->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="buttons" xsi:type="array">
+            <item name="preview" xsi:type="string">Plumrocket\PrivateSale\Block\Adminhtml\Product\Edit\PreviewButton</item>
+        </item>
+    </argument>
+
+    <fieldset name="flash-sale-event">
+        <field name="privatesale_date_start">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">datetime</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="backend" xsi:type="object">Magento\Eav\Model\Entity\Attribute\Backend\Datetime</item>
+                    <item name="label" xsi:type="string" translate="true">Start Date</item>
+                </item>
+            </argument>
+        </field>
+        <field name="privatesale_date_end">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">3</item>
+                    <item name="dataType" xsi:type="string">datetime</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="backend" xsi:type="object">Magento\Eav\Model\Entity\Attribute\Backend\Datetime</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">End Date</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

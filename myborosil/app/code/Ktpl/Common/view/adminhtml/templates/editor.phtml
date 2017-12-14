@@ -1,0 +1,98 @@
+<?php $editorConfig = $block->getEditorConfig(); ?>
+
+<?php if(!$editorConfig): ?>
+	<p class="note"><?php echo __('ERROR: Editor not configured properly.'); ?></p>
+<?php endif; ?>
+
+<?php $image = $editorConfig->getImage(); ?>
+<?php $path = $editorConfig->getPath(); ?>
+<?php $editor = $editorConfig->getEditor(); ?>
+
+<?php if(!isset($image) || !isset($path) || !isset($editor)): ?>
+	<p class="note"><?php echo __('ERROR: Editor not configured properly.'); ?></p>
+<?php endif; ?>	
+
+<?php $object = $editorConfig->getObject(); ?>
+
+<?php if($object && $object->getId()): ?>
+	<?php $imageUrl = $block->getImageUrl($object->getData($image), $path); ?>
+	<?php if($imageUrl): ?>
+		<?php $imageSize = $block->getImageSize($object->getData($image), $path); ?>
+
+		<div class="editor_container" data-role="editor">
+			<div class="editor_toolbar page-main-actions">
+				<div class="editor_toolbar-wrapper toolbar">
+					<div class="editor_toolbar-section">
+						<?php echo $block->getButtonHtml(['id' => 'bold_element', 'label' => __("Bold")]) ?>
+						<?php echo $block->getButtonHtml(['id' => 'italic_element', 'label' => __("Italic")]) ?>
+						<?php echo $block->getButtonHtml(['id' => 'underline_element', 'label' => __("Underline")]) ?>
+					</div>
+					<div class="editor_toolbar-section">
+						<?php echo $block->getButtonHtml(['id' => 'horizontal_align', 'label' => __("Horizonal Align")]) ?>
+						<?php echo $block->getButtonHtml(['id' => 'vertical_align', 'label' => __("Vertical Align")]) ?>
+					</div>
+					<div class="editor_toolbar-section">
+						<?php echo $block->getButtonHtml(['id' => 'edit_element', 'label' => __("Edit")]) ?>
+						<?php echo $block->getButtonHtml(['id' => 'delete_element', 'label' => __("Delete")]) ?>
+					</div>
+				</div>
+				<div class="actions">
+					<?php echo $block->getButtonHtml(['id' => 'add_text', 'label' => __("Add Text")]) ?>
+					<?php echo $block->getButtonHtml(['id' => 'add_button', 'label' => __("Add Button")]) ?>
+				</div>				
+			</div>
+
+			<div class="editor_position">
+				<?php echo $block->getButtonHtml(['id' => 'close_position', 'label' => __("Close")]) ?>
+				<?php echo $block->getButtonHtml(['id' => 'open_position', 'label' => __("Open")]) ?>
+				<h3><?php echo __('Position'); ?></h3>
+				<div class="admin__field">
+    				<label class="admin__field-label" for="editor_position_left"><span><?php echo __('Left') ?></span></label>
+    				<div class="admin__field-control">
+						<input class="admin__control-text" type="text" name="editor_position_left" id="editor_position_left" />
+					</div>
+				</div>
+				<div class="admin__field">
+    				<label class="admin__field-label" for="editor_position_top"><span><?php echo __('Top') ?></span></label>
+    				<div class="admin__field-control">
+						<input class="admin__control-text" type="text" name="editor_position_top" id="editor_position_top" />
+					</div>
+				</div>
+			</div>
+
+			<div class="editor_wrapper" style="width: <?php echo $imageSize[0]; ?>px; height: <?php echo $imageSize[1]; ?>px;" >
+				<img id="editor_image" src="<?php echo $imageUrl; ?>" <?php echo (count($imageSize) > 4? $imageSize[3]: ""); ?> />
+			</div>
+		</div>
+
+		<div id="add_text_popup" class="editor_form_container">
+			<?php echo $block->getChildBlockHtml(\Ktpl\Common\Block\Adminhtml\Editor::BLOCK_TEXT); ?>
+		</div>
+
+		<div id="add_button_popup" class="editor_form_container">
+			<?php echo $block->getChildBlockHtml(\Ktpl\Common\Block\Adminhtml\Editor::BLOCK_BUTTON); ?>
+		</div>
+
+		<script>
+			require([
+			    'jquery'
+			], function ($) {
+				var savedData = '<?php echo $object->getData($editor); ?>';
+				if(savedData == undefined || savedData == '')
+					savedData = '[]'
+
+				$('.editor_container').editor({ 
+					savedData: savedData,
+					setData: function (data) { 
+						var editorContentField = $('input[name=<?php echo $editor; ?>]');
+						if(editorContentField != undefined)
+							editorContentField.val(data).trigger('change');
+					}
+				});
+			});
+		</script>
+
+	<?php endif; ?>
+<?php else: ?>
+	<p class="note"><?php echo __('Your image will be display here.'); ?></p>
+<?php endif; ?>

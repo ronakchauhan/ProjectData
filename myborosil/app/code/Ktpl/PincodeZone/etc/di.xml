@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Ktpl\PincodeZone\Model\ResourceModel\Zone\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">ktpl_pincode_zone</argument>
+            <argument name="resourceModel" xsi:type="string">Ktpl\PincodeZone\Model\ResourceModel\Zone</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="pincodezone_zone_listing_data_source" xsi:type="string">Ktpl\PincodeZone\Model\ResourceModel\Zone\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- <type name="Magento\Framework\File\Uploader">
+        <plugin name="pincode_csv_upload" type="Ktpl\PincodeSearch\Model\File\Upload" sortOrder="1" />
+    </type>
+    <virtualType name="Ktpl\PincodeSearch\CsvUpload" type="Ktpl\PincodeSearch\Model\CsvUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">pincodesearch/tmp/pincode</argument>
+            <argument name="basePath" xsi:type="string">pincodesearch/pincode</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="csv" xsi:type="string">csv</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Ktpl\PincodeSearch\Controller\Adminhtml\Pincode\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Ktpl\PincodeSearch\CsvUpload</argument>
+        </arguments>
+    </type> -->
+</config>

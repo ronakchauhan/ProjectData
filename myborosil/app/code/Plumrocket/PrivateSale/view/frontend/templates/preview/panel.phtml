@@ -1,0 +1,41 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<div class="previewer-panel" id="previewer-panel">
+	<div class="holder">
+		<span class="h1-prew"><span style="color:#FFFA00;"><?php echo __('THIS IS PREVIEW MODE.');?></span>&nbsp;<?php echo __('SALES DATE:');?></span>
+		<input type="text" name="cal_date" id="panel-cal-date" style="width: 100px;" value="<?php echo $this->helper('Plumrocket\PrivateSale\Helper\Preview')->getPreviewDate(); ?>"/>
+		<a class="button-view" id="panel-update-button"><?php echo __('Update');?></a>
+		<a class="close-link " id="panel-close" ><?php echo __('X Exit preview');?></a>
+		<div style="display: none; padding: 10px 0px 5px;" class="loading" id="offset_loading" style="text-align:center;">
+			<?php /*<img src="<?php echo $this->getSkinUrl('images/plumrocket/privatesales/prew-loader.gif') ?>" alt="loader"/> */ ?>
+		</div>
+
+		<script type="text/x-magento-init">
+		    {
+		        "#previewer-panel": {
+		            "privatesalePreviewPanel": {
+				 			"dateFieldSelector": "#panel-cal-date",
+				 			"updateButtonSelector": "#panel-update-button",
+				 			"closeLinkSelector": "#panel-close"
+			 		}
+		        }
+		    }
+		</script>
+	</div>
+</div>

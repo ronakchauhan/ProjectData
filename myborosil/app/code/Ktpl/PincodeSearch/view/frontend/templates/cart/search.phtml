@@ -1,0 +1,27 @@
+<div class="cart-check-box">
+    <div class="block check">
+        <div class="title"><strong><?php echo __('Check Availability'); ?></strong></div>
+        <div class="content">
+            <div class="field">
+                <input id="pincode_number" name="pincode_number" placeholder="Enter your pincode" type="text">
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="pincode-search" type="button" value="<?php /* @escapeNotVerified */ echo __('Check') ?>">
+                        <span><?php /* @escapeNotVerified */ echo __('Check') ?></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="cellStyle checkTxt"></div>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'Ktpl_PincodeSearch/js/pincode'
+    ], function($, pincode) {
+        pincode.pincodeData('<?php echo $block->getSubmitUrl() ?>');
+    }); 
+</script>

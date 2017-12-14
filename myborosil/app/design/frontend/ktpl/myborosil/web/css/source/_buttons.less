@@ -1,0 +1,142 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //  Using buttons mixins
+    button,
+    a.action.primary {
+        
+    }
+
+    button {
+		background: @color-theme-green;
+		box-sizing: border-box;
+		color: @color-white; 					
+		border: none;		
+		border-radius: 0;
+		.lib-font-size(14);
+		font-weight: 400; font-family: 'SourceSans-Regular';
+		letter-spacing: 0.8px;
+		padding: 10px 25px;
+		text-transform: uppercase;
+		transition: all 0.2s ease-in-out 0s;
+		-webkit-transition: all 0.2s ease-in-out 0s;
+		&:hover, &:focus, &:active{
+			border: none;	
+			color: @color-white;
+			background: @color-theme-blue;
+			text-decoration: none;			
+		} 		
+    }
+
+    body {
+        &:not(._keyfocus) {
+            button {
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+	
+	.actions-toolbar{
+		.secondary{
+			a.action {
+				color: #474747;
+				&:hover{					
+					color: @color-theme-blue;
+					text-decoration: none;			
+				} 	
+			}
+		}
+	}
+	
+	.element-button{
+		a{
+			background: @color-theme-green;
+			box-sizing: border-box;
+			color: @color-white; 			
+			font-size:1.2em; line-height: 1.42857;
+			border: 1px solid transparent;	white-space:nowrap;vertical-align:middle;				
+			font-family: 'PTSans-Regular';
+			padding: 6px 12px; margin: 0px 0 0; 
+			display: inline-block;
+			text-transform: uppercase;
+			transition: all 0.2s ease-in-out 0s;
+			-webkit-transition: all 0.2s ease-in-out 0s;
+			&:hover, &:focus, &:active{
+				border: 1px solid transparent;		
+				color: #004778;			
+				background: @color-theme-green;
+				text-decoration: none;			
+			}
+		}
+	}
+
+    a.action.primary {
+        .lib-link-as-button();
+    }
+
+    .action.primary, .action-primary{
+        background: @color-theme-green;
+		box-sizing: border-box;
+		color: @color-white; 					
+		border: none;		
+		border-radius: 0;
+		.lib-font-size(14);
+		letter-spacing: 0.8px;
+		padding: 10px 25px;
+		text-transform: uppercase;
+		transition: all 0.2s ease-in-out 0s;
+		-webkit-transition: all 0.2s ease-in-out 0s;
+		&:hover, &:focus, &:active{
+			border: none !important;			
+			background: @color-theme-blue;
+			text-decoration: none;			
+		} 	
+    }
+	
+	.modal-content{
+		color: #474747;
+		.lib-font-size(16);
+	}
+	
+	.action-secondary {
+        background: @color-theme-green;
+		color: @color-white; 					
+		border: none;		
+		border-radius: 0;
+		.lib-font-size(14);
+		letter-spacing: 0.8px;
+		padding: 10px 25px;
+		transition: all 0.2s ease-in-out 0s;
+		-webkit-transition: all 0.2s ease-in-out 0s;
+		&:hover, &:focus, &:active{
+			border: none;			
+			background: @color-theme-blue;
+			text-decoration: none;			
+		} 
+    }
+}
+
+@media all and (max-width: 1366px){
+	.element-button{
+		a{
+			font-size: 14px;
+		}
+	}
+}
+@media all and (max-width: 768px){
+	.element-button{
+		a{
+			font-size: 16px;
+		}
+	}
+}

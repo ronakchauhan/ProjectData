@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customerview_account"/>
+    <body>
+        <referenceBlock name="page.main.title" remove="true" />
+        
+        <referenceContainer name="content">
+        	<block class="Magento\Customer\Block\Form\Edit" name="customer_edit" template="Ktpl_CustomerView::account/mydetail/edit.phtml" cacheable="false">
+                <container name="form.additional.info" as="form_additional_info"/>
+            </block>
+        	<block class="Magento\Customer\Block\Address\Book" name="customerview_account_mydetail_address" as="mydetail_address" template="Ktpl_CustomerView::account/mydetail/address.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

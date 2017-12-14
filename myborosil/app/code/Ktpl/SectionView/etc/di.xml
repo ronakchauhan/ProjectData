@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sections_index_listing_data_source" xsi:type="string">Ktpl\SectionView\Model\ResourceModel\Section\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Ktpl\SectionView\Model\ResourceModel\Section\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">ktpl_section</argument>
+            <argument name="eventPrefix" xsi:type="string">ktpl_section_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">section_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Ktpl\SectionView\Model\ResourceModel\Section</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Ktpl\SectionView\SectionImageUploader" type="Ktpl\SectionView\Model\Section\Image\Uploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">sections/tmp/image</argument>
+            <argument name="basePath" xsi:type="string">sections/image</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Ktpl\SectionView\Controller\Adminhtml\Index\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Ktpl\SectionView\SectionImageUploader</argument>
+        </arguments>
+    </type>
+</config>

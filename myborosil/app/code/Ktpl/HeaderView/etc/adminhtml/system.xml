@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="header" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Header</label>
+            <tab>ktpl_tabs</tab>
+            <resource>Ktpl_HeaderView::config_header</resource>
+            <group id="navigation" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Navigation</label>
+                <field id="static_links" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Links</label>
+                    <frontend_model>Ktpl\HeaderView\Block\Adminhtml\System\Config\Form\Field\Navigation\Links</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>
+                        <![CDATA[
+                            <b>NOTES:</b>
+                            <ul style="font-size: 11px;margin-left: 20px;">
+                                <li>SIDE field defined side to display LINKS based on category navigation. So, if you have set Left side of LINK, then LINK will add LEFT SIDE of the CATEGORY MENU and same for RIGHT SIDE.</li>
+                                <li>To set the HOME LINK, Set the URL Path "/" in ROOT CATEGORY</li>
+                            </ul>
+                        ]]>
+                    </comment>
+                </field>
+            </group>
+            <group id="top_links" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Top Links</label>
+                <field id="sort_order" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sort Order</label>
+                    <frontend_model>Ktpl\HeaderView\Block\Adminhtml\System\Config\Form\Field\TopLinks\SortOrder</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

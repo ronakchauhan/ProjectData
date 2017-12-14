@@ -1,0 +1,8 @@
+<div class="product-care">
+	<h3>
+		<?php echo __("Care");?>
+	</h3>
+	<div class="product-care-data">
+		<?php /* @escapeNotVerified */ echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getCare(), 'care') ?>
+	</div>
+</div>

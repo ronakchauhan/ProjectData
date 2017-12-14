@@ -1,0 +1,228 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    .message.info {
+        .lib-message-icon-inner(info);
+    }
+
+    .message.error {
+        .lib-message-icon-inner(error);
+    }
+
+    .message.warning {
+        .lib-message-icon-inner(warning);
+    }
+
+    .message.notice {
+        .lib-message-icon-inner(notice);
+    }
+
+    .message.success {
+        .lib-message-icon-inner(success);
+    }
+	
+	div[data-bind="scope: 'messages'"] {
+        .message{		
+			&.success{
+				background: @color-theme-green;
+				box-sizing: border-box;
+				color: @color-white;
+				.lib-font-size(16);
+				height: 90px;
+				line-height: 50px;
+				margin: 0 0 1px 0;
+				padding: 17px 20px 17px 45px;
+				position: relative;
+				right: 0;
+				text-align: center;
+				top: 0;
+				width: 100%;
+				> *:first-child::before	{
+					top: 25px;
+					color: @color-white;
+				}
+				div{
+					display: inline-block;
+					padding-left: 40px;
+					position: relative;
+				}
+				a{
+					color: #373737;
+				}
+			}
+			&.error{
+				background: #fe7d68;			
+				box-sizing: border-box;
+				color: @color-white;
+				.lib-font-size(16);
+				height: 90px;
+				line-height: 50px;
+				margin: 0 0 1px 0;
+				padding: 17px 20px 17px 45px;
+				position: relative;
+				right: 0;
+				text-align: center;
+				top: 0;
+				width: 100%;
+				> *:first-child::before	{
+					top: 25px;
+					color: @color-white;
+				}
+				div{
+					display: inline-block;
+					padding-left: 40px;
+					position: relative;
+				}
+				a{
+					color: #373737;
+				}
+			}
+			&.info, &.notice, &.warning{ 
+				background: #f4d280;			
+				box-sizing: border-box;
+				color: @color-white;
+				.lib-font-size(16);
+				height: 90px;
+				line-height: 50px;
+				margin: 0 0 1px 0;
+				padding: 17px 20px 17px 45px;
+				position: relative;
+				right: 0;
+				text-align: center;
+				top: 0;
+				width: 100%;
+				> *:first-child::before	{
+					top: 25px;
+					color: @color-white;
+				}
+				div{
+					display: inline-block;
+					padding-left: 40px;
+					position: relative;
+				}
+				a{
+					color: #373737;
+				}
+			}
+		}
+    }
+
+	
+	.page{
+		&.messages{ 
+			left: 0;
+			margin: 0 auto; 
+			position: relative; 
+			max-width: 100%;
+			top: 0px;
+			width: 100%;
+			z-index: 0;
+			transition: all 0.2s ease-in-out 0s;
+			-webkit-transition: all 0.2s ease-in-out 0s;
+			&.active{
+				top: 30px;
+				transition: all 0.2s ease-in-out 0s;
+				-webkit-transition: all 0.2s ease-in-out 0s;
+			}
+			.messages{
+				margin: 0 auto;				
+			}			
+		}
+	}
+	.message{		
+		&.success{
+			background: @color-theme-green;		
+			border-radius: 0;
+			display: block;
+			color: @color-white;
+			.lib-font-size(16);
+			margin: 0;
+			padding: 15px 20px 15px 45px;
+			position: relative;
+			> *:first-child::before	{
+				top: 25px;
+				color: @color-white;
+			}
+			a{
+				color: #373737;
+			}
+		}
+		&.error{
+			background: #fe7d68;		
+			border-radius: 0;
+			display: block;
+			color: @color-white;
+			.lib-font-size(16);
+			margin: 0;			
+			padding: 15px 20px 15px 45px;
+			position: relative;
+			> *:first-child::before	{
+				top: 25px;
+				color: @color-white;
+			}
+			a{
+				color: #373737;
+			}
+		}
+		&.info, &.notice, &.warning{ 
+			background: #f4d280;				
+			border-radius: 0;
+			display: block;
+			color: @color-white;
+			.lib-font-size(16);
+			margin: 10px 0;			
+			padding: 15px 20px 15px 45px;
+			position: relative;
+			> *:first-child::before	{
+				top: 25px;
+				color: @color-white;
+			}
+			a{
+				color: #373737;
+			}
+		}
+	}
+}
+
+
+@media all and (max-width: 767px){
+	div[data-bind="scope: 'messages'"] {
+		.message{
+			&.success{
+				padding: 20px 20px 20px 0;
+				.lib-font-size(14);
+				line-height: 20px;
+				height: auto;
+				> *:first-child::before	{
+					top: 10px;					
+				}
+			}
+			&.error{
+				padding: 20px 20px 20px 0;
+				.lib-font-size(14);
+				line-height: 20px;
+				height: auto;
+				> *:first-child::before	{
+					top: 10px;					
+				}
+			}
+			&.info, &.notice, &.warning{
+				padding: 20px 20px 20px 0;
+				.lib-font-size(14);
+				line-height: 20px;
+				height: auto;
+				> *:first-child::before	{
+					top: 10px;					
+				}
+			}
+		}
+	}
+}

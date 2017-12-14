@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="prprivatesale" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+	<head>
+		<css src="Plumrocket_PrivateSale::css/splashpage.css" />
+	</head>
+
+    <body>
+    	<referenceContainer name="root">
+    		<block class="Plumrocket\PrivateSale\Block\Splashpage" name="privatesale.splashpage" template="Plumrocket_PrivateSale::splashpage/login.phtml">
+    			<block class="Plumrocket\PrivateSale\Block\Splashpage\Register" name="splashpage.form.register" template="Plumrocket_PrivateSale::splashpage/login/register.phtml">
+                    <block class="Magento\Customer\Block\Form\Register" name="customer_form_register" template="Plumrocket_PrivateSale::splashpage/login/register/form.phtml">
+                        <container name="form.additional.info" as="form_additional_info">
+                            <block class="Plumrocket\PrivateSale\Block\Splashpage" name="splashpage.additional" template="Plumrocket_PrivateSale::splashpage/login/register/additional.phtml" />
+                        </container>
+                    </block>
+                </block>
+				<block class="Plumrocket\PrivateSale\Block\Splashpage" name="splashpage.form.forgotpassword" template="Plumrocket_PrivateSale::splashpage/login/forgotpassword.phtml" />
+    		</block>
+            <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"
+                   template="Magento_Customer::js/section-config.phtml"/>
+            <block name="customer.customer.data"
+                   class="Magento\Customer\Block\CustomerData"
+                   template="Magento_Customer::js/customer-data.phtml"/>
+    	</referenceContainer>
+        <referenceBlock name="copyright" remove="true" />
+	</body>
+</page>

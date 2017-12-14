@@ -1,0 +1,26 @@
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+
+.previewer-panel{position:fixed; z-index:100; background-color:#DA0004;  left:0px; top:0px;  width:100%; border-bottom:1px solid #8A0003; -moz-box-shadow: inset 0px 0px 20px -5px #000000;
+-webkit-box-shadow: inset 0px 0px 20px -5px #000000; box-shadow: inset 0px 0px 20px -5px #000000;}
+.previewer-panel a {text-decoration:none;}
+.previewer-panel .holder { padding:5px 0; position:relative; text-align:center}
+.previewer-panel span.h1-prew{ font-size:16px; color:#fff; font-weight:700; vertical-align:middle; text-shadow:0 1px 1px #790003;}
+.previewer-panel a.button-view {background: #000000; color: #FFFFFF; cursor: pointer; display: inline-block; font-size: 14px; font-weight: 700; height: 28px; line-height: 28px; padding: 0px 20px; vertical-align: middle; -webkit-box-shadow: 0 1px 0px rgba(255,255,255,0.1) inset, 0 0px 1px rgba(0,0,0,0.7); 	-moz-box-shadow: 0 1px 0px rgba(255,255,255,0.1) inset, 0 0px 1px rgba(0,0,0,0.7); box-shadow: 0 1px 0px rgba(255,255,255,0.1) inset, 0 0px 1px rgba(0,0,0,0.7); 	background: #191919;	border: 1px solid #141414;}
+.previewer-panel a.button-view:hover {background: #2d2d2d; text-decoration:none;}
+.previewer-panel a.close-link {position:absolute; top:9px; font-size:14px; right:17px; color:#FFF; cursor: pointer; text-shadow: 0px 1px 1px #790003; font-weight:700;}
+.previewer-panel input {border:1px solid #A60004; padding:5px; font-size:16px;}
+

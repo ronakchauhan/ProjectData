@@ -1,0 +1,277 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@checkout-summary__background-color: @color-white-smoke;
+@checkout-summary__padding: 22px @indent__l;
+
+@checkout-summary-title__margin: @indent__s;
+@checkout-summary-mark-value__color: @color-gray60;
+
+@checkout-summary-items__max-height: 370px;
+@checkout-summary-items__padding: 15px;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //
+    //  Order Summary
+    //  ---------------------------------------------
+
+    .opc-block-summary {
+        &:extend(.abs-add-box-sizing all);
+		background: #fcfcfc;
+		border: 1px solid #eeeeee;
+		padding: 0 60px;
+
+        > .title {
+            &:extend(.abs-checkout-title all);
+            display: block;
+			background: @color-theme-blue;
+			border: 1px solid #eee;
+			color: @color-white;
+			.lib-font-size(17);
+			font-weight: 600;font-family: 'SourceSans-SemiBold';
+			letter-spacing: 0.5px;
+			padding: 23px 60px;
+			margin: 0 -60px;
+			text-transform: uppercase;
+        }
+
+        //  Totals table
+        .table-totals {
+            &:extend(.abs-sidebar-totals all);
+			border-top: none;
+			padding-top: 0;
+			.grand{
+				.mark{
+					border-top: 1px solid #e6e6e6;
+					.lib-font-size(25);
+				}
+				.amount{
+					border-top: 1px solid #e6e6e6;
+				}
+				strong{
+					font-weight: 400;
+					color: @color-theme-darkgray;
+					.lib-font-size(25);
+				}
+			}
+        }
+
+        .mark {
+            .value {
+                color: #9a9a9a;
+				display: block;
+				.lib-font-size(13);
+				padding-bottom: 15px;
+            }
+        }
+
+        .grand.incl {
+            & + .grand.excl {
+                .mark,
+                .amount {
+                    border-top: 0;
+                    .lib-font-size(14);
+                    padding-top: 0;
+
+                    strong {
+                        font-weight: @font-weight__regular;
+                    }
+                }
+            }
+        }
+
+        .not-calculated {
+            font-style: italic;
+        }
+
+        //
+        //  Items list
+        //  ---------------------------------------------
+
+        //  Block title
+        .items-in-cart {
+			margin-bottom: 20px !important;
+            > .title {
+                border-bottom: @border-width__base solid @border-color__base;
+                .lib-css(padding, @indent__s @indent__xl @indent__s 0);
+                cursor: pointer;
+                .lib-icon-font(
+                @icon-down,
+                @_icon-font-size: 12px,
+                @_icon-font-line-height: 12px,
+                @_icon-font-text-hide: true,
+                @_icon-font-margin: 3px 0 0,
+                @_icon-font-position: after,
+                @_icon-font-display: block
+                );
+                margin-bottom: 0;
+                position: relative;
+				display: none;
+
+                &:after {
+                    position: absolute;
+                    right: 0;
+                    top: @indent__s;
+                }
+
+                strong {
+                    .lib-font-size(18);
+                    font-weight: @font-weight__light;
+                    margin: 0;
+                }
+            }
+
+            &.active {
+                > .title {
+                    .lib-icon-font-symbol(
+                    @_icon-font-content: @icon-up,
+                    @_icon-font-position: after
+                    );
+                }
+            }
+
+            .product {
+                position: relative;
+            }
+        }
+
+        //  Cart items
+        .minicart-items-wrapper {
+            padding-right: 0;			
+        }
+		
+		.minicart-items{
+			.product-item {
+				border-bottom: 1px solid #e6e6e6;
+				padding: 45px 0;
+			}
+			.product-item-name{
+				color: @color-theme-gray;
+				.lib-font-size(17);
+				font-weight: 600;font-family: 'SourceSans-SemiBold';
+				line-height: 2;
+				margin-bottom: 0;
+				margin-top: 0;
+			}
+			.box-qty{				
+				display: inline-block;
+				vertical-align: top;				
+			}			
+			.qty-item-display {
+				background: transparent;
+				margin-right: 0;
+				text-align: left;
+				width: 70px;
+				font-weight: 400;
+				color: @color-theme-darkgray;
+				.lib-font-size(15);
+			}
+		}
+
+        .column.main & {
+            .product-item {
+                margin: 0;
+                padding-left: 0;
+            }
+        }
+
+        .product-item {
+            .product-item-inner {
+                display: table;
+                margin: 0 0 @indent__s;
+                width: 100%;
+            }
+
+            .product-item-name-block {
+                display: inline-block;                
+                text-align: left;
+            }
+
+            .subtotal {
+                display: inline-block;
+                text-align: left;
+				vertical-align: top;
+				padding-left: 15px;
+				position: relative;
+				&:before{
+					color: #868686;
+					content: "-";
+					.lib-font-size(20);
+					font-weight: 700;
+					left: 3px;
+					position: absolute;
+					top: 2px;
+				}
+            }
+
+            .price {
+                color: @color-theme-gray;
+				.lib-font-size(17);
+				font-weight: 600;font-family: 'SourceSans-SemiBold';
+            }
+
+            .price-including-tax {
+                & + .price-excluding-tax {
+                    .price {
+                        .lib-font-size(10);
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .opc-block-summary {
+        > .title {
+            border-bottom: 0;
+            .lib-css(font-size, @checkout-step-title-mobile__font-size);
+            margin-bottom: @indent__base;
+            padding-bottom: 0;
+        }
+
+        .totals {
+            &:extend(.abs-sidebar-totals-mobile all);
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .opc-summary-wrapper {
+        .modal-header {
+            .action-close {
+                display: none;
+            }
+        }
+    }
+}
+
+
+@media all and (min-width: 1025px) and (max-width: 1619px){
+	.opc-block-summary{
+		padding: 0 40px;
+		> .title{
+			padding: 18px 40px;	
+			margin: 0 -40px;
+		}
+	}
+}

@@ -1,0 +1,14 @@
+<script>
+    requirejs(['jquery', 'ktplQuickview' ],
+        function($, quickview) {
+            $(document).ready(function() {
+                $('.ktpl-quickview').bind('click', function() {
+                    var prodUrl = $(this).attr('data-quickview-url');
+                    var updateCartUrl = '<?php echo $block->getUpdateCartUrl(); ?>';
+                    if (prodUrl.length) {
+                        quickview.displayContent(prodUrl, updateCartUrl);
+                    }
+                });
+            });
+        });
+</script>

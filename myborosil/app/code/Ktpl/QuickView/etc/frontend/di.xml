@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="ktpl-quickview-block-product-list" type="Ktpl\QuickView\Plugin\BlockProductList" sortOrder="10"/>
+    </type> -->
+
+    <type name="Magento\Catalog\Block\Product\ProductList\Related">
+        <plugin name="ktpl-quickview-block-product-related" type="Ktpl\QuickView\Plugin\BlockRelated" sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\ProductList\Upsell">
+        <plugin name="ktpl-quickview-block-product-upsell" type="Ktpl\QuickView\Plugin\BlockUpsell" sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\ProductList\Crosssell">
+        <plugin name="ktpl-quickview-block-product-related" type="Ktpl\QuickView\Plugin\BlockCrosssell" sortOrder="10"/>
+    </type>
+</config>

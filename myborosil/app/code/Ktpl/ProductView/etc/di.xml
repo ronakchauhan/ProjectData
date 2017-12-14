@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Bundle\Ui\DataProvider\Product\Form\Modifier\BundleCustomOptions">
+        <plugin name="addLabelToBundleOptions" type="Ktpl\ProductView\Plugin\Bundle\Ui\DataProvider\Product\Form\Modifier\BundleCustomOptions" />
+    </type>
+
+    <preference for="Magento\Bundle\Model\Product\OptionList" type="Ktpl\ProductView\Model\Catalog\Product\OptionList" />
+
+    <type name="Magento\Bundle\Ui\DataProvider\Product\Form\Modifier\Composite">
+        <plugin name="getLabelToBundleOptions" type="Ktpl\ProductView\Plugin\Bundle\Ui\DataProvider\Product\Form\Modifier\Composite" />
+    </type>
+
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="addOptionLabelToConfigurableProductOption" type="Ktpl\ProductView\Plugin\ConfigurableProduct\Catalog\Product\View\Type\Configurable" />
+    </type>
+
+    <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle">
+        <plugin name="addOptionLabelToBundleOption" type="Ktpl\ProductView\Plugin\Bundle\Catalog\Product\View\Type\Bundle" />
+    </type>
+
+    <type name="Ktpl\ProductView\Helper\Layout">
+        <arguments>
+            <argument name="templateProcessor" xsi:type="object">Magento\Widget\Model\Template\Filter</argument>
+        </arguments>
+    </type>
+
+    <preference for="Magento\ConfigurableProduct\Helper\Data" type="Ktpl\ProductView\Helper\ConfigureData"/>
+
+    <preference for="Magento\ConfigurableProduct\Model\ConfigurableAttributeData" type="Ktpl\ProductView\Model\ConfigurableAttributeData"/>
+    
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="xdescConfigurable" type="Ktpl\ProductView\Block\Product\View\Type\Configurable"/>
+    </type>
+</config>

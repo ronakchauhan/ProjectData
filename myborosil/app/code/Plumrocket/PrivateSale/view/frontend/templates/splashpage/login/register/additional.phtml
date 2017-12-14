@@ -1,0 +1,29 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<div class="registration-description">
+	<?php echo $block->filter($this->splashPage->getBecomeText()); ?>
+</div>
+
+<div class="prpop-ajax-loader-wrapper">
+	<img class="prpop-ajax-loader" src="<?php echo $block->getViewFileUrl('Plumrocket_PrivateSale::images/loader.gif');?>" alt="loader">
+</div>
+
+<div class="prpop-back-hld prpop-desktop" <?php if ($this->splashPage->getEnabledLaunchingSoon()): ?> style="display: none;" <?php endif; ?>>
+  <a href="#" class="backtologin"  data-role="change-form" data-show="login" >Back to login page</a>
+</div>

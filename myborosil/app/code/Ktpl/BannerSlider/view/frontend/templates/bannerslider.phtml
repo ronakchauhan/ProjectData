@@ -1,0 +1,100 @@
+<?php $banners = $this->getItemCollection(); ?>
+<?php if($banners->count()): ?>
+	<div id="banners-slider" class="block-banners-slider">
+	     <div id="loading" style="text-align: center; padding:40px 0 40px 0">
+	        <img src="<?php echo $block->getViewFileUrl('images/Eclipse.gif'); ?>"
+	             alt="<?php /* @escapeNotVerified */ echo __('Loading...'); ?>"
+	             >
+	    </div>
+	    <?php $bannersData = []; ?>
+	    <div id="owlbannerslider" class="block-content owl-carousel" style="display: none">
+	        <?php foreach ($banners as $banner):?>
+	            <div class="item">
+	                <?php $bannerId = "banner-container-" . rand(); ?>
+	                <?php $videoId = "video-container-" . rand(); ?>
+	                <?php $designContent = json_decode($banner->getDesignContent(), true); ?>
+	                <?php 
+	                	$bannersData[$bannerId] = [
+	                		'video_id' => $videoId, 
+	                		'video_url' => $banner->getVideoUrl(),
+                            'video_status' => $banner->getVideoStatus()
+	                	];
+                	?>
+
+	                <?php $imageSize = $block->getImageSize($banner->getImage(), 'banners/image'); ?>
+
+	                <div id="<?php echo $bannerId; ?>" class="banner-container <?php echo $banner->getCustomClass(); ?>" data-width="<?php echo $imageSize[0]; ?>" data-height="<?php echo $imageSize[1]; ?>" style="<?php echo $banner->getCustomCss(); ?>; background: url('<?php echo $block->getImageUrl($banner->getImage(), 'banners/image'); ?>');">
+	                    <div class="banner-wrapper">
+	                        <?php if($banner->getVideoStatus()): ?>              
+	                            <iframe id="<?php echo $videoId ?>" frameborder="0" style="width: 100%;"></iframe>
+	                            <button class="close-iframe" style="display: none;">x</button>
+	                        <?php endif; ?>
+						    <?php if(count($designContent)): ?>
+	                            <?php foreach($designContent as &$design): ?>
+	                                <?php $elementId = "banner-element-" . rand(); ?>
+	                                <?php $design['id'] = $elementId; ?>
+	                                <div id="<?php echo $elementId; ?>" class="banner-element-container element-<?php echo $design['type']; ?> <?php echo $elementId; ?>">
+	                                    <?php $customCss = (isset($design['css']) ? $design['css']: ''); ?>
+	                                    <?php $customCss .= (isset($design['bold'])? 'font-weight: bold; ': ''); ?>
+	                                    <?php $customCss .= (isset($design['italic'])? 'font-style: italic; ': ''); ?>
+	                                    <?php $customCss .= (isset($design['underline'])? 'text-decoration: underline; ': ''); ?>
+
+	                                    <?php if($design['type'] == \Ktpl\Common\Block\Adminhtml\Editor::BLOCK_TEXT): ?>
+	                                        <?php $customCss .= (isset($design['width'])? 'width: ' . $design['width'] . 'px; ': ''); ?>
+	                                        <?php $customCss .= (isset($design['height'])? 'height: ' . $design['height'] . 'px; ': ''); ?>
+	                                        <span style="<?php echo $customCss; ?>; display: inline-block;"><?php echo $design['content']; ?></span>
+	                                    <?php else: ?>
+	                                        <a href="<?php echo $design['href']; ?>" style="<?php echo $customCss; ?>"><?php echo $design['title']; ?></a>
+	                                    <?php endif; ?>
+	                                </div>
+	                            <?php endforeach; ?>
+
+	                        <?php endif; ?>
+	                    </div>
+
+	                    <?php $bannersData[$bannerId]['design_content'] = $designContent; ?>
+	                </div>
+	            </div>	            
+	        <?php endforeach; ?>      
+	  	</div> 
+		<a class="home-banner-arrow">down</a>
+	</div>
+	<div id="home-arrow-target"></div>
+	<script>
+	    require([
+	    	'jquery', 
+	    	'Ktpl_BannerSlider/js/view', 
+	    	'OwlCarousel'
+    	], function($, BannerSliderView) {
+	        $(function(){
+                $('#owlbannerslider').owlCarousel({
+                    "autoplay": true,
+                    "autoplayTimeout":3000,
+                    "autoplaySpeed":400,
+                    "navSpeed":400,
+                    "dotsSpeed":400,
+					"animateIn": 'fadeIn',
+					"animateOut": 'fadeOut',    				
+                    "items": 1,
+					"loop":true,
+					"nav": true,
+					"onRefreshed": function() {
+	            		<?php if(count($bannersData)): ?>
+								<?php foreach($bannersData as $key => $bannerData): ?>
+	                			BannerSliderView({
+		                            "container": "#<?php echo $key; ?>",
+		                            "videoContainer": "#<?php echo $bannerData['video_id']; ?>",
+		                            "videoUrl": "<?php echo $bannerData['video_url']; ?>",
+		                            "isVideoEnable": <?php echo $bannerData['video_status']; ?>,
+		                            "elements": <?php echo json_encode($bannerData['design_content']); ?>
+		                        });
+	            			<?php endforeach; ?>
+						<?php endif; ?>
+					}
+                });
+	            $(".block-banners-slider .block-content").css("display","block");
+	            $(".block-banners-slider #loading").css("display","none");
+	        })
+	    });
+	</script>
+<?php endif; ?>

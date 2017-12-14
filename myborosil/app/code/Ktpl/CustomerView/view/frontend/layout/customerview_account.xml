@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)">
+    <body>
+        <attribute name="class" value="customer-view"/>
+        <referenceContainer name="page.wrapper">
+        	<block class="Magento\Framework\View\Element\Html\Links" name="customerview_account_navigation" after="header.container" template="Ktpl_CustomerView::account/navigation.phtml">
+                <block class="Magento\Framework\View\Element\Html\Link\Current" name="customerview-account-navigation-account-link" before="-">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">My Details</argument>
+                        <argument name="path" xsi:type="string">customerview/account</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Html\Link\Current" name="customerview-account-navigation-order-history" after="customerview-account-navigation-account-link">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Order History</argument>
+                        <argument name="path" xsi:type="string">customerview/account/orders</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Html\Link\Current" ifconfig="wishlist/general/active" name="customerview-account-navigation-wishlist-link" after="customerview-account-navigation-order-history">
+                    <arguments>
+                        <argument name="path" xsi:type="string">wishlist</argument>
+                        <argument name="label" xsi:type="string">Product Wishlist</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Html\Link\Current" ifconfig="wishlist/general/active" name="customerview-account-navigation-wishlist-ideas-link" after="customerview-account-navigation-wishlist-link">
+                    <arguments>
+                        <argument name="path" xsi:type="string">blog/post/wishlist</argument>
+                        <argument name="label" xsi:type="string">Saved Ideas</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

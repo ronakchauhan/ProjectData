@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<script src="Magento_Theme::js/myborosil.js"/>	
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+	</head>
+    <body>
+		<move element="navigation.sections" destination="header-wrapper" after="logo"  />
+		<move element="header.panel.wrapper" destination="header-wrapper" after="-" />        
+		<move element="navigation.sections" destination="header-wrapper" before="logo" />
+		<!-- <move element="top.search" destination="header.panel" before="-"/> -->
+		
+		<referenceBlock name="breadcrumbs" remove="true"/>
+		<referenceBlock name="footer_links" remove="true"/>
+		<referenceBlock name="form.subscribe" remove="true"/>
+		<referenceBlock name="wish-list-link" remove="true"/>
+		<referenceBlock name="catalog.compare.link" remove="true"/>
+		
+		<referenceContainer name="after.body.start">
+			<block class="Magento\Cms\Block\Block" name="register_your_product" before="-">
+	           	<arguments>
+	               	<argument name="block_id" xsi:type="string">register_your_product</argument>
+				</arguments>
+	        </block>
+		</referenceContainer>
+		
+		<referenceContainer name="footer">				
+	    	<block class="Magento\Cms\Block\Block" name="footer_links_block" before="-">
+	           	<arguments>
+	               	<argument name="block_id" xsi:type="string">footer_links_block</argument>
+				</arguments>
+	        </block>			
+	    </referenceContainer>
+    </body>
+</page>

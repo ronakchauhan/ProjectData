@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_Testimonial::testimonials" title="Testimonials" module="Ktpl_Testimonial" resource="Ktpl_Testimonial::testimonials" parent="Ktpl_Common::common_nav" />
+        
+        <add id="Ktpl_Testimonial::manage_testimonials" title="Manage Testimonials" module="Ktpl_Testimonial" resource="Ktpl_Testimonial::manage_testimonials" parent="Ktpl_Testimonial::testimonials" action="testimonial/index/index"/>
+        <add id="Ktpl_Testimonial::manage_config" title="Configurations" module="Ktpl_Testimonial" resource="Ktpl_Testimonial::manage_config" parent="Ktpl_Testimonial::testimonials" action="adminhtml/system_config/edit/section/testimonials"/>
+    </menu>
+</config>

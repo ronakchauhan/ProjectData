@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Cms\Block\Page" type="Ktpl\PageView\Block\Cms\Page" />
+    <type name="Ktpl\PageView\Block\Cms\Page\Renderer">
+	    <arguments>
+	        <argument name="templateProcessor" xsi:type="object">Magento\Widget\Model\Template\Filter</argument>
+	    </arguments>
+	</type>
+</config>

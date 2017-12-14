@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+	<head>
+		<css src="Plumrocket_PrivateSale::css/homepage.css" />
+	</head>
+
+	<body>
+
+		<referenceContainer name="after.body.start">
+			<block class="Plumrocket\PrivateSale\Block\Init" name="privatesale.init" template="Plumrocket_PrivateSale::init.phtml" />
+		</referenceContainer>
+
+		<referenceContainer name="catalog.leftnav" remove="true"/>
+        <referenceContainer name="content">
+        	<referenceBlock name="category.products">
+		        <action method="setTemplate">
+	                <argument name="template" xsi:type="string">Plumrocket_PrivateSale::homepage/view.phtml</argument>
+	            </action>
+	            <block class="Plumrocket\PrivateSale\Block\Homepage" name="homepage.events" template="Plumrocket_PrivateSale::homepage/events.phtml">
+					<block class="Plumrocket\PrivateSale\Block\Homepage\Event\Item" name="homepage.event.item" template="Plumrocket_PrivateSale::homepage/event/item/default.phtml" />
+					<block class="Plumrocket\PrivateSale\Block\Homepage\DefaultEvent" name="homepage.default" template="Plumrocket_PrivateSale::homepage/event/default.phtml" />
+					<block class="Plumrocket\PrivateSale\Block\Homepage\Group" name="homepage.group" template="Plumrocket_PrivateSale::homepage/event/group.phtml" />
+					<block class="Plumrocket\PrivateSale\Block\Homepage\Comingsoon" name="homepage.coming.soon" template="Plumrocket_PrivateSale::homepage/event/coming_soon.phtml">
+						<action method="setBlockTitle">
+			                <argument name="title" xsi:type="string">Coming Soon</argument>
+			            </action>
+					</block>
+					<block class="Plumrocket\PrivateSale\Block\Homepage\Endingsoon" name="homepage.ending.soon" template="Plumrocket_PrivateSale::homepage/event/default.phtml">
+						<action method="setBlockTitle">
+			                <argument name="title" xsi:type="string">Ending Soon</argument>
+			            </action>
+					</block>
+
+					<action method="setComingSoonDays">
+		                <argument name="days" xsi:type="string">3</argument>
+		            </action>
+					<action method="setEndingSoonDays">
+		                <argument name="days" xsi:type="string">3</argument>
+		            </action>
+					<action method="setEventItemBlock">
+		                <argument name="days" xsi:type="string">homepage.event.item</argument>
+		            </action>
+				</block>
+        	</referenceBlock>
+        </referenceContainer>
+	</body>
+</page>

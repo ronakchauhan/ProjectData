@@ -1,0 +1,147 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@checkout-modal-popup__width: 800px;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .checkout-index-index {
+        .modal-popup {
+			.modal-inner-wrap {
+				.fieldset{
+					> .field{						
+						float: left;
+						margin: 0 1% 15px;
+						width: 48%;
+						&.street{
+							.additional{
+								display: none;
+							}
+						} 
+						&.choice{
+							margin-top: 40px;
+						}
+					}					
+				}					
+			}
+			
+			.modal-title {
+			  border-bottom: medium none;
+			  color: #3e3e3e;
+			  .lib-font-size(18);
+			  font-weight: 600;	font-family: 'SourceSans-SemiBold';		
+			  text-transform: uppercase;
+			}
+			
+			.modal-content{
+				background: #fcfcfc;
+				border-bottom: 1px solid #eeeeee;
+				border-top: 1px solid #eeeeee;
+				overflow-y: auto;
+				padding: 3rem;
+			}
+			
+            .field-tooltip {
+                .field-tooltip-content {
+                    &:extend(.abs-checkout-tooltip-content-position-top all);
+                }
+            }
+
+            .fieldset {
+                .field {
+                    .label {
+                        font-weight: @font-weight__regular;
+                    }
+                }
+            }
+			
+			&.modal-slide{
+				.modal-footer {
+					border-top: medium none;
+					.action-hide-popup {
+						background-color: #b0b0b0;
+						margin: 0 0 0 10px;						
+						&:hover{
+							background-color: @color-theme-blue;
+						}
+					}
+				}
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-index-index {
+        .modal-popup {
+			.modal-inner-wrap {
+                margin: 2% auto 0;
+				max-height: 90%;
+				max-width: 100%;
+            }
+            .modal-footer {
+                .action-save-address {
+                    width: 100%;
+                }
+
+                .action-hide-popup {
+                    margin-top: @indent__base;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-index-index {
+        .modal-popup {
+			.modal-footer {
+                .action-save-address {
+                    float: right;
+                    margin: 0 0 0 10px;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .checkout-index-index {
+        .modal-popup {
+            .modal-inner-wrap {
+                margin: 5% auto 0;
+				max-height: 80%;
+				max-width: 70%;
+            }
+        }
+    }
+}
+
+
+@media all and (min-width: 1025px) and (max-width: 1619px){
+	.checkout-index-index{
+		.modal-popup{
+			.modal-inner-wrap {		  
+			  max-width: 90% !important;
+			  width: 100%;
+			}
+		}
+	}
+}

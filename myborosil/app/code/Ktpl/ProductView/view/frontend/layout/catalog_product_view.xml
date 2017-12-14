@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+        <referenceBlock name="product.info.overview" remove="true" />
+		<!-- <referenceContainer name="product.info.stock.sku" remove="true" /> -->
+        <referenceBlock name="product.info.review" remove="true"/>
+        <referenceBlock name="product.attributes" remove="true"/>
+        
+        <referenceContainer name="product.info.price">
+            <block class="Magento\Catalog\Block\Product\View" name="product.volume" template="Ktpl_ProductView::view/product/volume.phtml" after="product.price.final" />
+
+            <container name="product.info.tax.warranty" label="Product info tax warranty container" htmlTag="div" htmlClass="product-info-tax-warranty" after="product.volume">
+                <block class="Magento\Catalog\Block\Product\View" name="product.info.tax" template="Ktpl_ProductView::view/tax.phtml" after="-" />
+                <block class="Magento\Catalog\Block\Product\View" name="product.info.warranty" template="Ktpl_ProductView::view/warranty.phtml" after="product.info.tax" />
+            </container>
+            <container name="product.info.check.availibility" label="Product info availibility container" htmlTag="div" htmlClass="product-info-check-availibility" after="product.info.tax.warranty">
+               <!--  <block class="Magento\Catalog\Block\Product\View" name="product.check.availibility" template="Ktpl_ProductView::view/check/availibility.phtml" before="-" /> -->
+            </container>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Ktpl\ProductView\Block\Product\View\Attributes" name="ktpl_catalog_product_promotional_block" template="Ktpl_ProductView::layout_2/catalog/product/view/promotional_block.phtml" before="product.info.details" />
+        </referenceContainer>
+        <referenceBlock name="catalog.product.related">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ktpl_ProductView::default/catalog/product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="product.info.upsell">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ktpl_ProductView::default/catalog/product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="product.info.addtocart">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ktpl_ProductView::default/catalog/product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
+        
+        <referenceBlock name="product.info.addtocart.additional">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ktpl_ProductView::default/catalog/product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="product.info.details">
+            <referenceBlock name="product.info.description">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">About</argument>
+                </arguments>
+            </referenceBlock>
+            
+            <referenceBlock name="reviews.tab" remove="true"/>
+            <block class="Ktpl\ProductView\Block\Product\View\Attributes" name="ktpl_catalog_product_tab_features" template="Ktpl_ProductView::view/features.phtml" group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Features</argument>
+                </arguments>
+            </block>
+            <block class="Ktpl\ProductView\Block\Product\View\Attributes" name="ktpl_catalog_product_tab_care" template="Ktpl_ProductView::view/care.phtml" group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Usage Instructions and Care</argument>
+                </arguments>
+            </block>            
+            <block class="Ktpl\ProductView\Block\Product\View\Attributes" name="ktpl_catalog_product_tab_returns" template="Ktpl_ProductView::view/returns.phtml" group="detailed_info">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string"><![CDATA[Shipping & Returns]]></argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        
+        <referenceContainer name="page.bottom">
+            <block class="Ktpl\Blog\Block\Catalog\Product\RelatedPosts" name="related.blog"  before="-" template="Ktpl_Blog::related/blog_posts.phtml"/>
+        </referenceContainer>
+        
+        <referenceContainer name="footer-container">
+            <!-- <container name="testimonial-footer-container" label="Testimonial Footer container" htmlTag="div" htmlClass="block-testimonial-slider" before="footer">
+                <block class="Ktpl\Testimonial\Block\Testimonial" name="testimonial.slider" template="Ktpl_Testimonial::testimonial_slider.phtml" />
+            </container> -->
+        </referenceContainer>
+    </body>
+</page>

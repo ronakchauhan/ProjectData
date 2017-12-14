@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="3columns" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="my.smile" destination="header-wrapper" after="minicart" />       
+        
+        <referenceContainer name="header-wrapper">
+            <block class="Ktpl\Customerlogin\Block\Html\Index" name="my.smile" template="Ktpl_Customerlogin::html/mysmile.phtml" >
+                <block class="Magento\Framework\View\Element\Html\Link\Current" name="my-smile-account-link">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">My Details</argument>
+                        <argument name="path" xsi:type="string">customerview/account</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Html\Link\Current" name="my-smile-orders-link">
+                    <arguments>
+                        <argument name="path" xsi:type="string">customerview/account/orders</argument>
+                        <argument name="label" xsi:type="string" translate="true">Order History</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Html\Link\Current" ifconfig="wishlist/general/active" name="my-smile-wish-list-link">
+                    <arguments>
+                        <argument name="path" xsi:type="string">wishlist</argument>
+                        <argument name="label" xsi:type="string">Product Wishlist</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

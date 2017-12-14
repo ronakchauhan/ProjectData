@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_Common::common_nav" title="Ktpl" translate="title" module="Ktpl_Common" sortOrder="60" resource="Ktpl_Common::common_nav" />
+    </menu>
+</config>

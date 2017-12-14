@@ -1,0 +1,96 @@
+<?php
+$categories = $block->getCategories();
+$categoriesData = $categories['filterCategories']
+?>
+<div class="filter filter-options-item-category" role="presentation">
+    <?php foreach ($categoriesData as $category):?>
+	    <?php if (!empty($category['subcategories'])):?>
+		    <div data-role="title" class="block-subtitle main-filter-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0" aria-id="<?php echo __($category['id']);?>" ><?php echo __($category['name']);?></div>
+		    <div data-role="content" class="filter-options-content content-<?php echo __($category['id']);?>" role="tabpanel" aria-hidden="true" style="display: none;">
+				<ol class="items ktpl_filter_items_attr_price">
+					<?php 
+					$subcategories = $category['subcategories']['filterChildCategories'];?>
+					<?php foreach ($subcategories as  $subcategory):?>
+					    <li class="item" data-label="<?php echo __($subcategory['name']);?>">
+                            <a class="ktpl_filter_item" href="<?php echo __($subcategory['url']);?>">
+		                        <span class="label"><?php echo __($subcategory['name']);?></span>
+                        	</a>            
+						</li>
+					<?php endforeach;?>
+				</ol>
+			</div>
+	<?php else:?>
+			<a href="<?php echo __($category['url']);?>">
+				<div data-role="title" class="block-subtitle" role="tab" aria-selected="false" tabindex="0"><?php echo __($category['name']);?></div>
+			</a>
+	<?php endif;?>
+	<?php endforeach;?>
+</div>
+<script>
+    require(['jquery'], function($){
+        $(function(){
+            $(document).ready(function(){
+                if($(window).width() <= 768){
+                    
+                    $('.page-with-filter .sidebar-main .filter-subtitle').clone().appendTo('.page-with-filter .columns');
+                    $(".page-with-filter .columns .filter-subtitle").addClass("filter-heading");
+                    $(".page-with-filter .columns .filter-subtitle.filter-heading").not('.main-filter-title').text("Filter");
+                    $('.filter-navigation').prepend($('<a href="javascript:void(0);" class="filter-close"><i aria-hidden="true" class="fa fa-times"></i></a>'));    
+                }
+                $('.page-with-filter .sidebar-main .filter-subtitle').addClass("main-filter-title");
+
+                $(".sidebar-main .filter-content .filter-subtitle.main-filter-title").text("<?php echo $block->getCurrentCategory()->getName();?>");
+
+                $(".sidebar-main .filter-content .filter-subtitle.main-filter-title").attr("area-id", "<?php echo $block->getCurrentCategory()->getId();?>")
+
+                $(document).on("click", ".page-with-filter .filter-subtitle", function(){                    
+                    $(this).toggleClass("active");
+                    $(this).next(".filter-options").slideToggle();
+                    $('.page-with-filter .sidebar-main').addClass("show");                    
+                })
+				
+				$(document).on("click", ".page-with-filter .filter-close", function(){                     
+                    $('.page-with-filter .sidebar-main').removeClass("show");                                        
+                })
+
+                $(document).on("click", ".filter-options-item-category .block-subtitle", function(){        			
+                    $(this).toggleClass("active");
+        			$(this).next(".filter-options-content").slideToggle();
+        		})
+            })
+            $(window).on('resize', function(){
+                var win = $(this); //this = window
+                if (win.width() >= 769) {                    
+                    if($('.page-with-filter .columns .filter-subtitle.filter-heading').not(".main-filter-title").length > 0)
+                    {
+                        $('.page-with-filter .columns .filter-subtitle.filter-heading').not(".main-filter-title").text("");
+                    }  
+                }
+                else
+                {
+                    $('.page-with-filter .sidebar-main .filter-subtitle .main-filter-title').clone().appendTo('.page-with-filter .columns');
+                    $(".page-with-filter .columns .filter-subtitle").addClass("filter-heading");
+                    $(".page-with-filter .columns .filter-subtitle.filter-heading").not('main-filter-title').text("Filter");
+                    $('.filter-navigation').prepend($('<a href="javascript:void(0);" class="filter-close"><i aria-hidden="true" class="fa fa-times"></i></a>'));                   
+                }
+                $(".sidebar-main .filter-content .filter-subtitle.main-filter-title").text("<?php echo $block->getCurrentCategory()->getName();?>");
+                $(".sidebar-main .filter-content .filter-subtitle.main-filter-title").attr("area-id", "<?php echo $block->getCurrentCategory()->getId();?>")
+
+                $(document).on("click", ".page-with-filter .filter-subtitle", function(){                    
+                    $(this).toggleClass("active");
+                    $(this).next(".filter-options").slideToggle();
+                    $('.page-with-filter .sidebar-main').addClass("show");                    
+                })
+                
+                $(document).on("click", ".page-with-filter .filter-close", function(){                     
+                    $('.page-with-filter .sidebar-main').removeClass("show");                                        
+                })
+
+                $(document).on("click", ".filter-options-item-category .block-subtitle", function(){                    
+                    $(this).toggleClass("active");
+                    $(this).next(".filter-options-content").slideToggle();
+                })
+            });
+        })
+    });
+</script>

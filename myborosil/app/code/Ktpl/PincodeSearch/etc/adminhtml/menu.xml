@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_PincodeSearch::pincode_search" title="Pincode Search" translate="title" module="Ktpl_PincodeSearch" sortOrder="60" parent="Ktpl_Common::common_nav" resource="Ktpl_PincodeSearch::pincode_search"/>
+
+        <add id="Ktpl_PincodeSearch::manage_pincodes" title="Manage Pincodes" module="Ktpl_PincodeSearch" resource="Ktpl_PincodeSearch::manage_pincodes" parent="Ktpl_PincodeSearch::pincode_search" action="pincodesearch/pincode"/>
+    </menu>
+</config>

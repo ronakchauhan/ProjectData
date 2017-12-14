@@ -1,0 +1,27 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+
+use \Amasty\Shopby\Plugin\BlockHtmlTitlePlugin as TitlePlugin;
+
+/** @var $block \Magento\Framework\View\Element\Template */
+$optionsData = $block->getData('options_data');
+?>
+
+<?php foreach ($optionsData as $setting) : ?>
+<?php $title = $block->stripTags($setting[TitlePlugin::TITLE]) ?>
+<div class="amshopby-option-link">
+    <a href="<?php   echo $setting[TitlePlugin::IMAGE_PATH] ?>">
+        <img
+            title="<?php echo $title; ?>"
+            alt="<?php   echo $title; ?>"
+            src="<?php   echo $setting[TitlePlugin::IMAGE_URL] ?>"
+        />
+    </a>
+</div>
+<?php endforeach; ?>

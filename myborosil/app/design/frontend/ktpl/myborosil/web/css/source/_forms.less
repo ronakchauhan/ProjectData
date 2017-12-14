@@ -1,0 +1,291 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@legend-border-bottom: 1px solid @color-gray-light6;
+@form-field__vertical-indent__desktop: 29px;
+@form-calendar-icon__color: @primary__color;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .fieldset {
+        .lib-form-fieldset();
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        > .field,
+        > .fields > .field {
+            .lib-form-field();
+            &.no-label {
+                > .label {
+                    .lib-visually-hidden();
+                }
+            }
+
+            &.choice {
+                .label {
+                    display: inline;
+                    font-weight: normal;
+                    margin: 0;
+                }
+            }
+
+            .label {
+                .column:not(.main) & {
+                    font-weight: normal;
+                }
+            }
+
+            .field.choice {
+                margin-bottom: @indent__s;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+	
+	
+	input[type="checkbox"], input[type="radio"] {
+		left: -9999px;
+		position: absolute;
+		visibility: hidden;
+	}
+	
+	input[type="checkbox"] + .label, input[type="radio"] + .label{
+		line-height: 1;
+		.lib-font-size(17);
+		color: @color-theme-gray;
+		padding-left: 40px;
+		padding-top: 0;
+		position: relative;
+		cursor: pointer;
+	}
+	
+	input[type="checkbox"] + .label:before {
+		.checkbox-uncheck; 
+	}				
+
+	input[type="checkbox"]:checked + .label:before {					  
+	  .checkbox-checked;	 
+	} 
+	
+	input[type="radio"] + .label:before {
+		.checkbox-uncheck; 
+	}				
+
+	input[type="radio"]:checked + .label:before {					  
+	  .checkbox-checked;	 
+	} 
+	
+	
+
+    .legend + .fieldset,
+    .legend + div {
+        clear: both;
+    }
+
+    .legend {
+        > span {
+            margin-right: @indent__xs;
+        }
+    }
+
+    fieldset.field {
+        border: 0;
+        padding: 0;
+    }
+
+    .field {
+        &.date {
+            .time-picker {
+                display: inline-block;
+                margin-top: @indent__s;
+                white-space: nowrap;
+            }
+        }
+
+        .message {
+            &.warning {
+                margin-top: @indent__s;
+            }
+        }
+    }
+	
+	input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"]{
+		background: @color-white;
+		border: 1px solid #ededed;
+		border-radius: 0;
+		box-sizing: border-box;
+		color: @color-theme-darkgray;		
+		.lib-font-size(15);
+		font-weight: 300;
+		height: 40px;
+		line-height: 1.42857;
+		padding: 0 9px;
+		vertical-align: baseline;
+		width: 100%;
+	}
+
+	textarea{
+		background: @color-white;
+		border: 1px solid #ededed;
+		border-radius: 0;
+		box-sizing: border-box;
+		color: @color-theme-darkgray;		
+		.lib-font-size(15);
+		font-weight: 300;		
+		line-height: 1.42857;
+		padding: 10px;
+		vertical-align: baseline;
+		width: 100%;
+	}
+	
+	._keyfocus *:focus, input:focus:not([disabled]), textarea:focus:not([disabled]), select:focus:not([disabled]){
+		border-color: @color-theme-green;
+		box-shadow: none;
+	}
+	
+    .select-styling() {
+        .lib-css(appearance, none, 1);
+        appearance: none;
+        background: @color-white url('../images/select-bg.svg') no-repeat 100% 45%;
+        background-size: 30px 60px;        
+		border: 1px solid #ededed;
+		border-radius: 0;
+		box-sizing: border-box;
+		color: @color-theme-darkgray;		
+		.lib-font-size(15);
+		font-weight: 300;
+		height: 40px;
+        padding-right: 25px;
+        text-indent: .01em;
+        text-overflow: '';
+
+        &::-ms-expand {
+            display: none;
+        }
+
+        .lt-ie10 & {
+            background-image: none;
+            padding-right: 4px;
+        }
+    }
+
+    select {
+        .select-styling();
+    }
+
+    div.mage-error[generated] {
+        margin-top: 7px;
+    }
+
+    //  TEMP
+
+    .field .tooltip {
+        .lib-tooltip(right);
+        .tooltip-content {
+            min-width: 200px;
+            white-space: normal;
+        }
+    }
+
+    input:focus ~ .tooltip .tooltip-content,
+    select:focus ~ .tooltip .tooltip-content {
+        display: block;
+    }
+
+    ._has-datepicker {
+        ~ .ui-datepicker-trigger {
+            .lib-button-reset();
+            .lib-icon-font(
+            @_icon-font-content: @icon-calendar,
+            @_icon-font-color: @primary__color__lighter,
+            @_icon-font-size: @icon-calendar__font-size,
+            @_icon-font-line-height: @icon-calendar__font-size,
+            @_icon-font-display: block,
+            @_icon-font-text-hide: true
+            );
+            display: inline-block;
+            margin-top: -4px;
+            vertical-align: middle;
+
+            &:focus {
+                box-shadow: none;
+                outline: 0;
+            }
+        }
+    }
+
+    .field.date,
+    .field-dob {
+        ._has-datepicker {
+            &:extend(.abs-field-date-input all);
+        }
+    }
+
+    //
+    //  Sidebar forms
+    //  ---------------------------------------------
+
+    .sidebar {
+        .fieldset {
+            margin: 0;
+
+            > .field:not(.choice) >,
+            .fields > .field {
+                &:not(:last-child) {
+                    margin: 0 0 @form-field__vertical-indent;
+                }
+
+                .label {
+                    margin: 0 0 4px;
+                    padding: 0 0 @indent__xs;
+                    text-align: left;
+                    width: 100%;
+                }
+
+                .control {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .legend {
+        .lib-css(border-bottom, @legend-border-bottom);
+    }
+	.field.date ._has-datepicker, .field-dob ._has-datepicker, .abs-field-date input, .form-giftregistry-search .fields-specific-options .datetime-picker, .form-giftregistry-edit .field.date input, .form.search.advanced .fields.range .field.date input {
+	  margin-right: 10px;
+	  width: 93% !important;
+	}
+	
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+	.field.date ._has-datepicker, .field-dob ._has-datepicker, .abs-field-date input, .form-giftregistry-search .fields-specific-options .datetime-picker, .form-giftregistry-edit .field.date input, .form.search.advanced .fields.range .field.date input {
+	  margin-right: 10px;
+	  width: 86% !important;
+	}
+}

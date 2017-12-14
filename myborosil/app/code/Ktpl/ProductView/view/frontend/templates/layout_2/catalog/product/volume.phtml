@@ -1,0 +1,36 @@
+<?php $_product = $block->getProduct();?>
+
+<?php
+$attr = $_product->getResource()->getAttribute('volume');
+
+if($_product->getTypeId() == "configurable"){
+	$_children = $_product->getTypeInstance()->getUsedProducts($_product);
+	$price = null;
+	$volume  = [];
+	
+	foreach ($_children as $child){
+	   if($price)
+	   {
+	   		if($price > $child->getPrice()){
+				if ($attr->usesSource()) {
+				   $volume = $attr->getSource()->getOptionText($child->getVolume());
+				}
+	   		}
+	   }
+	   else
+	   {	
+	   		if ($attr->usesSource()) {
+			   $volume = $attr->getSource()->getOptionText($child->getVolume());
+			}
+	   }
+	}
+}
+else{
+	$volume = $attr->getSource()->getOptionText($_product->getVolume());
+}
+?>
+<?php if(!empty($volume) && $volume):?>
+<div class="product-volume">
+	<span><?php echo $volume; ?></span>
+</div>
+<?php endif;?>

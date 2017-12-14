@@ -1,0 +1,83 @@
+<?php
+/**
+ * Blog post list template
+ *
+ * @var $block \Ktpl\Blog\Block\Catalog\Product\RelatedPosts
+ */
+?>
+
+<?php
+$_postCollection = $block->getPostCollection();
+?>
+<?php if($_postCollection->count()): ?>
+
+ <div id="related-blog-slider" class="favourite-blog-slider" >
+    <div id="loading" style="text-align: center; padding:40px 0 40px 0">
+        <img src="<?php echo $block->getViewFileUrl('images/Eclipse.gif'); ?>"
+             alt="<?php /* @escapeNotVerified */ echo __('Loading...'); ?>"
+             >
+    </div>
+
+    <div id="owl-related-blog-slider" class="block-content owl-carousel" style="display: none">
+        <?php foreach ($_postCollection as $_post):?>
+        	<?php 
+                $_postName = $block->escapeHtml($_post->getTitle(), null, true);
+        	?>
+        	<?php $_postUrl = $_post->getPostUrl();?>
+            
+        	<div class="item custom_css_<?php echo $_post->getId();?> <?php echo $_post->getCustomClass();?>">
+	        	<div class="post-category-title">
+                    <?php 
+                    $catTitle = $block->getCategoryName($_post->getCategories());
+                    $_categoryName = $block->escapeHtml($catTitle['title'], null, true);?>
+                    <h4><?php echo $_title = ($_categoryName == 'Home') ? 'Ideas' : $_categoryName;?></h4>
+                </div>
+                <?php if ($featuredImage = $_post->getFeaturedImage()): ?>
+					<?php $featuredImage = str_replace('\\',"/",$featuredImage);?>
+		        	<div class="post-ftimg-hld" style="background-image: url('<?php echo $featuredImage ?>')">			                
+                        <div class="custom-post-text">
+                            <?php echo $_post->getPostText();?>
+                            <?php if($_post->getShowExploreButton()):?>
+                                <a href="<?php echo $_postUrl ?>" title="<?php echo $_postName ?>"><?php echo $_post->getExploreButtonText(); ?></a>
+                            <?php endif;?>
+                        </div>
+            		</div>
+	            <?php endif;?>
+        	</div>
+        <?php endforeach;?> 
+	</div>
+</div>
+<script>
+    require([
+    	'jquery', 
+    	'OwlCarousel'
+	], function($) {
+        $(function(){
+            $('#owl-related-blog-slider').owlCarousel({
+                "autoplay": true,
+                "autoplayTimeout":3000,
+                "autoplaySpeed":400,
+                "navSpeed":400,
+                "dots":false,				
+                "items": 2,
+                "slideBy": 2,
+                "loop":true,
+				"nav": true,				
+				"responsive":
+				{
+					0:{
+						items:1,
+						dots: false,
+					},						
+					1023:{
+						items:2
+					},					
+				}
+            });
+
+            $(".favourite-blog-slider .block-content").css("display","block");
+            $(".favourite-blog-slider #loading").css("display","none");
+        })
+    });
+</script>
+<?php endif; ?>

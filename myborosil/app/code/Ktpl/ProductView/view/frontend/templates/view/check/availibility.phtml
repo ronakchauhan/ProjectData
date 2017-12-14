@@ -1,0 +1,10 @@
+<?php 
+$_product = $block->getProduct();
+?>
+<div class="check-product-availability">
+	<form method="post">
+		<h3><?php echo __("Enter your pincode to check availability.");?></h3>
+		<input type="hidden" name="product_id" value="<?php echo $_product->getId();?>"/>
+		<input type="text" name="check_pincode" placeholder="eg.400025" />
+	</form>
+</div>

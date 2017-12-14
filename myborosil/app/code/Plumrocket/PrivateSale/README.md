@@ -1,0 +1,1 @@
+Private Sales Extension for Magento 2

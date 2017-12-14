@@ -1,0 +1,67 @@
+<?php
+/**
+ * Ktpl account login dropup
+ */
+?>
+<?php 
+$login = $block->getCustomerLoggedIn();
+$_logInUrl = 'customer/account/login';
+$buttonTitle = "Login";
+$_isLoggedIn = "no";
+if($login) {
+    $_isLoggedIn = "yes";
+    $buttonTitle = "Log Out";
+    $_logInUrl = 'customer/account/logout';
+}
+?>
+<div id="minilogin" class="minilogin-wrapper">
+    <a id="minilogin-toggle" class="action" href="javascript:void(0)"><span class="text"><i class="fa fa-user-o" aria-hidden="true"></i></span></a>
+    <div id="minilogin-content-wrapper" style="display: none;">
+         <a href="<?php echo $block->getUrl($_logInUrl);?>" id="minilogin-login" class="minilogin-login button btn">
+           <?php echo $buttonTitle;?></a>       
+        <div class="minilogin-links-wrapper">
+            <ul class="minilogin-links">
+            <?php echo $this->getChildHtml();?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function($) {
+        $(document).ready(function($) {
+            $('#minilogin-toggle').click(function(e) 
+            {
+                if (!$(this).hasClass('active')) 
+                {
+                    $('#minilogin-toggle').removeClass('active');
+                }
+                $(this).next().slideToggle('fast');
+                $(this).toggleClass('active');
+                e.stopPropagation();
+
+				$('.block-minicart').hide(); 
+				$('.mage-dropdown-dialog').css('display', 'none');
+				$('.switcher-options').removeClass('active');
+				$('.switcher-trigger').removeClass('active');
+				
+            });
+            $("body").mouseup(function() {
+                $('#minilogin').mouseup(function(eve){ 
+                    eve.stopPropagation();
+                    return false;
+                });
+             	$('#minilogin-toggle').next().slideUp('fast');
+                $('#minilogin-toggle').removeClass('active');   
+            });
+			
+			
+			$('.minicart-wrapper a.showcart').click(function(e) 
+            {
+				$('.block-minicart').show();
+			});	
+        });
+    });
+</script>

@@ -1,0 +1,16 @@
+{
+    "name": "ktpl/module-blog",
+    "description": "Implements Blog functionality on Magento 2 store",
+    "type": "magento2-module",
+    "version": "2.5.1",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Ktpl\\Blog\\": ""
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="catalog_product_view"/>
+    <body>
+        <referenceBlock name="catalog.product.related" remove="true"/>
+        <referenceBlock name="product.info.upsell" remove="true"/>
+        <referenceBlock name="header.container" remove="true"/>
+        <referenceBlock name="footer-container" remove="true"/>
+        <referenceBlock name="page.top" remove="true" />
+        <referenceBlock name="copyright" remove="true" />
+        <referenceBlock name="authentication-popup" remove="true" />
+        <referenceBlock name="product.info.details" remove="true"/>
+        <referenceBlock name="favourite.blog" remove="true"/>
+        
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="ktpl.quickview.beforebodyend" template="Ktpl_QuickView::beforebodyend.phtml" />
+        </referenceContainer>
+    </body>
+</page>

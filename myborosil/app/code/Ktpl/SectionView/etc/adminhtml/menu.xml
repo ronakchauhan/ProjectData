@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Ktpl_SectionView::sections_title" title="Section View" translate="title" module="Ktpl_SectionView" sortOrder="50" parent="Ktpl_Common::common_nav" resource="Ktpl_SectionView::sections_title"/>
+
+        <add id="Ktpl_SectionView::sections" title="Sections" translate="title" module="Ktpl_SectionView" sortOrder="55" parent="Ktpl_SectionView::sections_title" action="sections" resource="Ktpl_SectionView::sections"/>
+    </menu>
+</config>

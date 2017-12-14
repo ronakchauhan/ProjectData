@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <header>
+            <top_links>
+                <sort_order>[{"sort_order":"1","element":"Search","element_code":"topSearch"},{"sort_order":"2","element":"My Account","element_code":"my.smile"},{"sort_order":"3","element":"Wishlist","element_code":"topWishlist"},{"sort_order":"4","element":"Minicart","element_code":"minicart"}]</sort_order>
+            </top_links>
+        </header>
+    </default>
+</config>

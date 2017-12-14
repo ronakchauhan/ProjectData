@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="cms_page">
+            <block class="Ktpl\PageView\Block\Cms\Page\Renderer" name="block.layout.before.renderer" before="main.content">
+            	<arguments>
+                    <argument name="block_layout_position" xsi:type="string">0</argument>
+                </arguments>
+            </block>
+            <block class="Ktpl\PageView\Block\Cms\Page\Renderer" name="block.layout.after.renderer" after="main.content">
+            	<arguments>
+                    <argument name="block_layout_position" xsi:type="string">1</argument>
+                </arguments>
+            </block>
+            <block class="Ktpl\PageView\Block\Cms\Page\Scrollify" name="ktpl.pageview.scrollify" template="Ktpl_PageView::cms/page/scrollify.phtml" />
+        </referenceBlock>
+    </body>
+</page>

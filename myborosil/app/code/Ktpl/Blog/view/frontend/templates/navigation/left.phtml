@@ -1,0 +1,107 @@
+<div class="post-tag-filter">
+	<?php
+		$_postCollection = $block->getTags();
+		$tags = $_postCollection->getData();
+		$types = $block->getTypes();
+		$currentCategory = $block->getCategory();
+		$params = $block->getFilterParams();
+		$filterParams = explode(",", $params);
+		// echo"<pre/>"; print_r($filterParams);exit;
+		$typeTitle = "";
+		$oldTitle = "";
+		$filterExist = "";
+	?>
+	<div class="filtered-options">
+		<?php if(!empty($filterParams[0])):?>
+			<ul>
+				<?php foreach($filterParams as $param):?>
+				<?php 
+					$filtededTag = $block->getTag($param);
+					$filtededTagData = $filtededTag->getData();
+				?>
+					<li class="tag-filtered-<?php echo $filtededTagData[0]['tag_id'];?>">
+						<?php if(in_array($filtededTagData[0]['tag_id'], $filterParams)):?>
+							<?php 
+								$filterRemoveParams = explode(",",$params);
+								$filterParam = implode(",", array_diff($filterRemoveParams, array($filtededTagData[0]['tag_id'])));
+								//echo"<pre/>"; print_r($filterParam);exit;
+							?>
+						<?php if(count($filterRemoveParams) > 1):?>
+							<a href="?tags=<?php echo $filterParam ;?>"><?php echo $filtededTagData[0]['title'];?></a>
+						<?php else:?>
+							<a href="<?php echo $this->getUrl('*/*/*', ['_current' => false, '_use_rewrite' => true]);?>"><?php echo $filtededTagData[0]['title'];?></a>
+						<?php endif;?>
+					<?php endif;?>
+					</li>
+				<?php endforeach;?>
+			</ul>
+		<?php endif;?>
+	</div>
+	<ul class="filter-data">
+	<?php $subItems = true;?>
+	<?php foreach($types as $type):?>
+		<?php $visible = true;?>
+		<?php 
+			if($type->getVisibility() == 2)
+			{
+				$categories = explode(",", $type->getHideCategory());
+				if(in_array($currentCategory->getId(),$categories))
+				{
+					$visible = false;
+				}
+			}
+			elseif($type->getVisibility() == 1)
+			{
+				$categories = explode(",", $type->getVisibleCategory());
+				if(in_array($currentCategory->getId(),$categories))
+				{
+					$visible = true;
+				}
+				else{
+					$visible = false;
+				}
+			}
+		?>
+		<?php if($visible):?>
+			<?php if(!$filterExist){$filterExist = true;} ?>
+			<li>
+				<hr>
+				<?php 
+					$tagData = $block->getTagByType($type->getTagTypeId());
+				?>
+				<div class="tag-filter-type">
+					<h3><?php echo $type->getTitle() ;?></h3>
+				</div>
+				<ul class="filter-items">
+				<?php foreach($tagData as $tag):?>
+						<?php if(!in_array($tag->getTagId(), $filterParams)):?>
+							<li class="tag-filter-<?php echo $tag['tag_id'];?>">
+								<a href="?tags=<?php echo $filter = ($params != '') ? $params . ',' . $tag['tag_id'] : $tag['tag_id'] ;?>";><?php echo $tag['title'];?></a>
+							</li>
+						<?php endif;?>
+				<?php endforeach;?>
+				</ul>
+			</li>
+		<?php endif;?>
+	<?php endforeach;?>
+		<?php if(!empty($filterParams) && $filterExist):?>
+			<li class="reset-filter">
+				<hr>
+				<a href="<?php echo $this->getUrl('*/*/*', ['_current' => false, '_use_rewrite' => true]);?>"><?php echo __("Reset All Filters");?></a>
+			</li>
+		<?php endif;?>
+	</ul>
+</div>
+<script>
+    require([
+        'jquery'
+    ], function($) {
+        $(function(){
+            $(".post-tag-filter .tag-filter-type").click(function(){
+				$(this).toggleClass('active');							
+				$(this).next('.filter-items').slideToggle('fast');							
+				
+			});
+        });
+    });
+</script>

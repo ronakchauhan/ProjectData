@@ -1,0 +1,72 @@
+<?php $sectionObject = $block->getSection(); ?>
+
+<?php if($sectionObject && $sectionObject->getIsActive()): ?>
+	<?php $sectionId = "section-container-" . rand(); ?>
+	<?php $videoId = "video-container-" . rand(); ?>
+	<?php $designContent = json_decode($sectionObject->getDesignContent(), true); ?>
+
+	<?php $imageSize = $block->getImageSize($sectionObject->getImage(), 'sections/image'); ?>
+	<?php if($block->isHomepage()):?>
+		<div id="<?php echo $sectionId; ?>" class="section-container section<?php echo ($block->getScrollable()? 'scrollify-container': '') ?> <?php echo $sectionObject->getCustomClass(); ?>" data-width="<?php echo $imageSize[0]; ?>" data-height="<?php echo $imageSize[1]; ?>" style="<?php echo $sectionObject->getCustomCss(); ?>; background: url('<?php echo $block->getImageUrl($sectionObject->getImage(), 'sections/image'); ?>');">
+
+		<div class="section-wrapper">
+	<?php else:?>
+		<?php if($sectionObject->getImagePosition() && $sectionObject->getImagePosition() == 1): ?>
+		<div id="<?php echo $sectionId; ?>" class="section-container section<?php echo ($block->getScrollable()? 'scrollify-container': '') ?> <?php echo $sectionObject->getCustomClass(); ?>" data-width="<?php echo $imageSize[0]; ?>" data-height="<?php echo $imageSize[1]; ?>" style="<?php echo $sectionObject->getCustomCss(); ?> background: url('<?php echo $block->getImageUrl($sectionObject->getImage(), 'sections/image'); ?>');">
+			
+			<div class="section-wrapper">
+		<?php else:?>
+			<div id="<?php echo $sectionId; ?>" class="section-container section<?php echo ($block->getScrollable()? 'scrollify-container': '') ?> <?php echo $sectionObject->getCustomClass(); ?>" data-width="<?php echo $imageSize[0]; ?>" data-height="<?php echo $imageSize[1]; ?>" style="<?php echo $sectionObject->getCustomCss(); ?>">
+		
+			<div class="section-wrapper">
+				<img src="<?php echo $block->getImageUrl($sectionObject->getImage(), 'sections/image'); ?>" style="width: 100%" class="section-main-image" />
+		<?php  endif;?>
+	<?php endif;?>
+
+			<?php if($sectionObject->getVideoStatus()): ?>
+                <div class="section-video-trigger"></div>
+                <iframe id="<?php echo $videoId ?>" frameborder="0" style="width: 100%; display: none;"></iframe>
+				<button class="close-iframe" style="display: none;">x</button>
+			<?php endif; ?>
+
+			<?php if(count($designContent)): ?>
+				<?php foreach($designContent as &$design): ?>
+					<?php $elementId = "section-element-" . rand(); ?>
+
+					<?php $design['id'] = $elementId; ?>
+					
+					<div id="<?php echo $elementId; ?>" class="section-element-container element-<?php echo $design['type']; ?>" style="position: absolute; top: <?php echo $design['top'] ?>px; left: <?php echo $design['left'] ?>px;">
+
+						<?php $customCss = (isset($design['css']) ? $design['css']: ''); ?>
+						<?php $customCss .= (isset($design['bold'])? 'font-weight: bold; ': ''); ?>
+						<?php $customCss .= (isset($design['italic'])? 'font-style: italic; ': ''); ?>
+						<?php $customCss .= (isset($design['underline'])? 'text-decoration: underline; ': ''); ?>
+
+						<?php if($design['type'] == \Ktpl\Common\Block\Adminhtml\Editor::BLOCK_TEXT): ?>
+							<?php $customCss .= (isset($design['width'])? 'width: ' . $design['width'] . 'px; ': ''); ?>
+							<?php $customCss .= (isset($design['height'])? 'height: ' . $design['height'] . 'px; ': ''); ?>
+							<span style="display: inline-block;"><?php echo $design['content']; ?></span>
+						<?php else: ?>
+							<a href="<?php echo $design['href']; ?>" style="<?php echo $customCss; ?>"><?php echo $design['title']; ?></a>
+						<?php endif; ?>
+					</div>
+				<?php endforeach; ?>
+
+			<?php endif; ?>
+		</div>
+	</div>
+	<script type="text/x-magento-init">
+	{ 
+		"#<?php echo $sectionId; ?>": 
+		{ 
+			"Ktpl_SectionView/js/view": {
+				"container": "#<?php echo $sectionId; ?>",
+				"videoContainer": "#<?php echo $videoId; ?>",
+				"videoUrl": "<?php echo $sectionObject->getVideoUrl(); ?>",
+				"isVideoEnable": <?php echo $sectionObject->getVideoStatus(); ?>,
+				"elements": <?php echo json_encode($designContent); ?>
+			}
+		}
+	}
+	</script>
+<?php endif; ?>

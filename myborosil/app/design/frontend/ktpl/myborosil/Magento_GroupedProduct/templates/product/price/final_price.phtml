@@ -1,0 +1,18 @@
+<?php
+$_helper = $this->helper('Ktpl\ProductView\Helper\Data');
+?>
+<?php if ($_helper->getCurrentProductPage() == "catalog_product_view"):?>
+	<?php
+		$products = $block->getSaleableItem()->getTypeInstance()->getAssociatedProducts($block->getSaleableItem());
+		$currentProduct = $_helper->getCurrentProduct();
+		$priceForAll = 0;
+		foreach ($products as $product) {
+		    $priceForAll += $product->getFinalPrice();
+		}
+		?>
+		<span class="price-container price-final_price tax weee">
+		        <span id="product-price-<?php echo $currentProduct->getId();?>" data-price-amount="<?php echo $priceForAll?>" data-price-type="finalPrice" class="price-wrapper parent_grouped_price">
+		            <span class="price">Rs <?php echo number_format($priceForAll,0,',',',')?></span>
+		        </span>
+		</span>
+<?php endif;?>

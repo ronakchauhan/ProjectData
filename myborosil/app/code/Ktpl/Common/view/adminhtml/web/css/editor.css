@@ -1,0 +1,19 @@
+.editor_container .editor_toolbar .editor_toolbar-wrapper { float: left; display: none; }
+.editor_container .editor_toolbar .editor_toolbar-wrapper .editor_toolbar-section { float: left; margin-right: 20px; }
+.editor_container .editor_toolbar .editor_toolbar-wrapper .editor_toolbar-section:last-child { margin-right: 0px; }
+.editor_container .editor_toolbar .actions { float: right; }
+
+.editor_container .draggable-container { border: solid 1px transparent; }
+.editor_container .draggable-container.selected { border: dashed 1px #000000; background-color: rgba(255, 255, 255, 0.4); }
+
+.editor_form_container { display: none; }
+
+.editor_container .editor_position { width: 200px; left: -112px; top: 160px; position: fixed; padding: 1.5rem; background: #f8f8f8; border: 1px solid #e3e3e3; z-index: 20; }
+
+.editor_container .editor_wrapper .front-text {font-size: 26px;font-weight: 300;}
+.editor_container .editor_wrapper a.front-button {background: #d6e35a;box-sizing: border-box;color: #fff;font-size: 24px;padding: 10px 25px;text-transform: uppercase;}
+
+.editor_container .editor_position #close_position { position: absolute; top: -1px; right: -66px; display: none; }
+.editor_container .editor_position.open #close_position { display: inline-block; }
+.editor_container .editor_position #open_position { position: absolute; top: -1px; right: -66px; display: inline-block; }
+.editor_container .editor_position.open #open_position { display: none; }

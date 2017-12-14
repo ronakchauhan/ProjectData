@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="blog_default"/>
+    <update handle="blog_post_list"/>
+    <body>
+		<referenceBlock name="favourite.blog" remove="true"/>
+		<referenceBlock name="sidebar.additional" remove="true"/>
+		<referenceContainer name="sidebar.main">
+            <block class="Ktpl\Blog\Block\Tag\TagsList" name="blog.leftnav" before="-" template="navigation/left.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Ktpl\Blog\Block\Post\FavouritePost" name="favourite.blog"  before="-" template="favourite/blog_posts.phtml"/>
+
+            <block class="Ktpl\Blog\Block\Category\Info" name="blog.posts.info" template="Ktpl_Blog::category/info.phtml" before="blog.posts.list" />
+            <block class="Ktpl\Blog\Block\Category\View" name="blog.posts.list" template="post/list.phtml" />
+        </referenceContainer>
+    </body>
+</page>

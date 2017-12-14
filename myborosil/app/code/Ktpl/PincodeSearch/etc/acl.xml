@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Ktpl_Common::common_nav">
+                    <resource id="Ktpl_PincodeSearch::pincode_search" title="Pincode Search" sortOrder="30">
+                        <resource id="Ktpl_PincodeSearch::manage_pincodes" title="Manage Pincodes" sortOrder="10" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

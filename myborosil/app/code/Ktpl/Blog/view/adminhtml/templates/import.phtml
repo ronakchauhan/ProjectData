@@ -1,0 +1,64 @@
+<?php
+/**
+ * Blog available for import template
+ *
+ * @var $block \Magento\Backend\Block\Template
+ */
+?>
+
+<table class="available-imports">
+    <tr>
+        <td class="item">
+            <table>
+                <tr>
+                    <td>
+                        <div class="itm-hld" onclick="window.location='<?php echo $block->getUrl('blog/import/wordpress') ?>'">
+                            <img class="img" src="<?php echo $this->getViewFileUrl('Ktpl_Blog::images/wordpress.png') ?>" />
+                            <br/>
+                            <span class="lable">Import from WordPress<br/><br/></span>
+                        </div>
+                    </td>
+                <tr>
+            </table>
+        </td>
+        <td class="item">
+            <table>
+                <tr>
+                    <td>
+                        <div class="itm-hld" onclick="goToAwImport();">
+                            <img class="img" src="<?php echo $this->getViewFileUrl('Ktpl_Blog::images/aw_blog.png') ?>" />
+                            <br/>
+                            <span class="lable">Import from aheadWorks<br/> blog extension</span>
+                            <form id="start_aw_import" action="<?php echo $block->getUrl('blog/import/run') ?>" method="post">
+                                <input type="hidden" name="type" value="aw" />
+                                <?php echo $block->getLayout()->getBlock('formkey')->toHtml() ?>
+                            </form>
+                        </div>
+                    </td>
+                <tr>
+            </table>
+        </td>
+        <td class="item">
+            <table>
+                <tr>
+                    <td>
+                        <div class="itm-hld" onclick="window.open('http://ktpl.com/contact/')">
+                            <h2 class="img more">Need More?<br/><br/>Other CMS or Extension</h2>
+                            <span class="lable">Contact Ktpl Team<br/><br/></span>
+                        </div>
+                    </td>
+                <tr>
+            </table>
+        </td>
+        <td class="item"></td>
+        <td class="item"></td>
+    </tr>
+</table>
+<script type="text/javascript">
+    function goToAwImport()
+    {
+        if (confirm('Are you sure you want to start import from aheadWorks blog? Attention! Do not run this import again.')) {
+            document.getElementById('start_aw_import').submit();
+        }
+    }
+</script>

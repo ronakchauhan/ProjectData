@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Ktpl\Blog\Api\PostManagementInterface" type="Ktpl\Blog\Model\PostManagement" />
+    <preference for="Ktpl\Blog\Api\CategoryManagementInterface" type="Ktpl\Blog\Model\CategoryManagement" />
+    <preference for="Magento\Sitemap\Model\Sitemap" type="Ktpl\Blog\Model\Sitemap" />
+    <virtualType name="Ktpl\Blog\ImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">ktpl_blog/tmp</argument>
+            <argument name="basePath" xsi:type="string">ktpl_blog</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Ktpl\Blog\Controller\Adminhtml\Post\Upload\FeaturedImg">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Ktpl\Blog\ImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Ktpl\Blog\Controller\Adminhtml\Post\Upload\OgImg">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Ktpl\Blog\ImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Ktpl\Blog\Controller\Adminhtml\Post\Upload\Gallery">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Ktpl\Blog\ImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Plumrocket\Amp\Helper\Data">
+        <plugin name="plumrocket_amp_helper_data_ktpl_blog"
+                type="Ktpl\Blog\Plugin\Plumrocket\Amp\HelperDataPlugin" sortOrder="10"/>
+    </type>
+
+    <type name="Plumrocket\Amp\Model\System\Config\Source\Page">
+        <plugin name="plumrocket_amp_source_page_ktpl_blog"
+                type="Ktpl\Blog\Plugin\Plumrocket\Amp\SourcePagePlugin" sortOrder="10"/>
+    </type>
+
+    <type name="Ktpl\Blog\Helper\Layout">
+        <arguments>
+            <argument name="templateProcessor" xsi:type="object">Magento\Widget\Model\Template\Filter</argument>
+        </arguments>
+    </type>
+
+    <!-- Ui Data provider for Tag Grid -->
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Ktpl\Blog\Api\Data\TagInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">ktpl_blog_tag</item>
+                    <item name="identifierField" xsi:type="string">tag_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="TemplateGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>   
+    <virtualType name="TemplateGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Ktpl\Blog\Model\ResourceModel\Tag\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">TemplateGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Ktpl\Blog\Model\ResourceModel\Tag\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">ktpl_blog_tag</argument>
+            <argument name="resourceModel" xsi:type="string">Ktpl\Blog\Model\ResourceModel\Tag</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blog_tag_listing_data_source" xsi:type="string">Ktpl\Blog\Model\ResourceModel\Tag\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--  End  -->
+
+    <!-- Ui Data provider for Tag Type Grid -->
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Ktpl\Blog\Api\Data\TagTypeInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">ktpl_blog_tag_type</item>
+                    <item name="identifierField" xsi:type="string">tag_type_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="TemplateGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>   
+    <virtualType name="TemplateGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Ktpl\Blog\Model\ResourceModel\Tag\Type\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">TemplateGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Ktpl\Blog\Model\ResourceModel\Tag\Type\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">ktpl_blog_tag_type</argument>
+            <argument name="resourceModel" xsi:type="string">Ktpl\Blog\Model\ResourceModel\Tag\Type</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blog_tag_type_listing_data_source" xsi:type="string">Ktpl\Blog\Model\ResourceModel\Tag\Type\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--  End  -->
+</config>

@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Ktpl\PincodeZone\Block\Adminhtml\Zone\AssignPincodes $block */
+
+/** @var \Ktpl\PincodeZone\Block\Adminhtml\Zone\Tab\Pincode $blockGrid */
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?php  echo $block->getGridHtml(); ?>
+<input type="hidden" name="pincode_zones" id="in_pincode_zones" data-form-part="pincodezone_zone_form" value="" />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Ktpl_PincodeZone/zone/assign-pincodes": {
+                "selectedPincodes": <?php /* @escapeNotVerified */ echo $block->getPincodesJson(); ?>,
+                "gridJsObjectName": <?php /* @escapeNotVerified */ echo '"' . $gridJsObjectName . '"' ?: '{}'; ?>
+            }
+        }
+    }
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>

@@ -1,0 +1,100 @@
+<div class="dinner-product-options">
+	<div class="dinner-product-swatch-options"></div>
+	<div class="product-dinner-description" data-role="set-description-box">
+		<div class="product-dinner-description-options">		
+		</div>
+	</div>
+	<div class="add-to-cart-form-detail">		
+	</div>
+</div>
+<script>
+    require([
+    	'jquery'
+	], function($) {
+        $(function(){
+            setTimeout(function()
+            {
+	        	$(document).on("click", ".dinner-product-swatch-options .swatch-attribute .swatch-option", function(event){
+	        		
+	        		$(".dinner-product-swatch-options .swatch-attribute .swatch-option").removeClass('selected');
+	        		$(this).addClass('selected');
+	        		var optionId = $(this).attr("option-id");
+	        		$("#product_addtocart_form .swatch-attribute .swatch-attribute-options div[option-id="+ optionId+"]").trigger('click');
+
+	        		var selectTriggerElement = $('.catalog-product-view .add-to-cart-form-detail .product-swatch-list .swatch-select-trigger');
+
+                    selectTriggerElement.html($(this).text());
+	        	})
+	        	
+	        	$("#product_addtocart_form .swatch-attribute .swatch-attribute-options .swatch-option").first().trigger('click');
+
+	        	$(".product-options-bottom .dinner-product-info-add-to-cart").clone().appendTo('.add-to-cart-form-detail');
+
+	        	if($("#product_addtocart_form .product-options-wrapper").length > 0)
+	            {
+	        		$("#product_addtocart_form .product-options-wrapper").clone().appendTo('.dinner-product-options .dinner-product-swatch-options');
+
+	        		$("#product_addtocart_form .product-options-wrapper").clone().appendTo('.dinner-product-info-add-to-cart .product-swatch-list');
+
+	        		var attributeOptionsWrapper = $('.catalog-product-view .add-to-cart-form-detail .product-swatch-list .swatch-attribute-options');
+
+	        		var selectClassWrapper = $('<div></div>')
+                        .addClass('swatch-select-wrapper')
+                        .append(
+                            $('<div></div>')
+                                .addClass('swatch-select-trigger')
+                                .click(function() {
+                                    attributeOptionsWrapper.toggle();
+                                })
+                        ).insertBefore(attributeOptionsWrapper);
+
+                    attributeOptionsWrapper.appendTo(
+                        $('.catalog-product-view .add-to-cart-form-detail .product-swatch-list .swatch-select-wrapper')
+                    ).hide();
+
+                    attributeOptionsWrapper.find('.swatch-option').click(function() {
+                        var selectTriggerElement = $('.catalog-product-view .add-to-cart-form-detail .product-swatch-list')
+                            .find('.swatch-select-trigger');
+
+                            selectTriggerElement.html($(this).text());
+                            var optionId = $(this).attr("option-id");
+	        				$("#product_addtocart_form .swatch-attribute .swatch-attribute-options div[option-id="+ optionId+"]").trigger('click');
+
+	        				$(".dinner-product-swatch-options .swatch-attribute .swatch-attribute-options .swatch-option").removeClass('selected');
+
+	        				$(".dinner-product-swatch-options .swatch-attribute .swatch-attribute-options div[option-id="+ optionId+"]").addClass('selected');
+                        attributeOptionsWrapper.hide();
+                    });
+	        	}
+	        	
+	        	$(".dinner-product-swatch-options .swatch-attribute .swatch-option").first().addClass('selected');
+	        	
+	        	$(".product-detail-dinner .product-social-links").clone().appendTo('.add-to-cart-form-detail .box-tocart .actions-group').insertBefore('.actions');
+
+            }, 2000);
+            
+        });
+
+        $(document).ready(function($) {
+        	$(document).on("click", ".add-to-cart-form-detail .actions > .tocart", function() {
+
+        		$("#product_addtocart_form .actions > .tocart").trigger('click');
+			});
+
+			$(document).on("click", ".add-to-cart-form-detail .qty-wrapper > .qty-trigger", function() {
+				$(this).next().toggle();
+			});
+			
+			$(document).on("click",".add-to-cart-form-detail .qty-wrapper > .qty-options > .options", function() {
+				
+				$("#product_addtocart_form .qty-wrapper > .qty-options > .options").parent().parent().next().val($(this).attr('data-value'));	
+				$("#product_addtocart_form .qty-wrapper > .qty-options > .options").parent().hide();
+				$("#product_addtocart_form .qty-wrapper > .qty-options > .options").parent().prev().html($(this).html());
+
+				$(this).parent().parent().next().val($(this).attr('data-value'));	
+				$(this).parent().hide();
+				$(this).parent().prev().html($(this).html());
+			});
+        });
+    });
+</script>

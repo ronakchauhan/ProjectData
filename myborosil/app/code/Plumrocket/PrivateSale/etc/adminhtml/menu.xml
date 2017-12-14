@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Plumrocket_PrivateSale::privatesale" title="Private Sales &amp; Flash Sales" module="Plumrocket_PrivateSale" parent="Plumrocket_Base::elements" sortOrder="9599884" resource="Plumrocket_PrivateSale::privatesale" action="privatesale/privatesale/"/>
+
+        <add id="Plumrocket_PrivateSale::splashpage" title="Splash Page" module="Plumrocket_PrivateSale" parent="Plumrocket_PrivateSale::privatesale" sortOrder="5" action="prprivatesale/splashpage/" resource="Plumrocket_PrivateSale::privatesale"/>
+
+        <add id="Plumrocket_PrivateSale::emailtemplate" title="Newsletter Templates" module="Plumrocket_PrivateSale" parent="Plumrocket_PrivateSale::privatesale" sortOrder="10" action="prprivatesale/emailtemplate/" resource="Plumrocket_PrivateSale::privatesale"/>
+
+        <add id="Plumrocket_PrivateSale::privatesale_configuration" title="Configuration" module="Plumrocket_PrivateSale" parent="Plumrocket_PrivateSale::privatesale" sortOrder="20" action="adminhtml/system_config/edit/section/prprivatesale" resource="Plumrocket_PrivateSale::config_privatesale"/>
+    </menu>
+</config>

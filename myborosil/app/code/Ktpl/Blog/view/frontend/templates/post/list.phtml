@@ -1,0 +1,53 @@
+<?php
+/**
+ * Blog post list template
+ *
+ * @var $block \Ktpl\Blog\Block\Post\PostList
+ */
+?>
+<?php
+$_postCollection = $block->getPostCollection();
+
+?>
+<?php
+$_layoutHelper = $this->helper('Ktpl\Blog\Helper\Layout');
+?>
+<?php $listingBlockItems = $_layoutHelper->getListingBlockItems(); 
+?>
+
+<?php if (!$_postCollection->count()): ?>
+    <div class="message info empty"><div><?php echo __('We can\'t find posts matching the selection.') ?></div></div>
+<?php else: ?>
+    <?php echo $block->getAdditionalHtml() ?>
+    <div class="post-list-wrapper">
+        <?php $iterator = 1; ?>
+        <ol class="post-list">
+            <?php foreach ($_postCollection as $_post): ?>
+                <?php while(array_key_exists($iterator, $listingBlockItems)): ?>
+                    <li class="post-holder-block custom-section">
+                    <?php echo $_layoutHelper->filterOutputHtml($listingBlockItems[$iterator], $block->getLayout()); ?>
+                    </li>
+                    <?php $iterator++; ?>
+                <?php endwhile; ?>
+
+                <?php echo $block->getPostHtml($_post) ?>
+                <?php $iterator++; ?>
+            <?php endforeach; ?>
+            <?php if(key($listingBlockItems) >= $iterator):?>
+                <li class="post-holder-block custom-section">
+                <?php echo $_layoutHelper->filterOutputHtml($listingBlockItems[key($listingBlockItems)], $block->getLayout()); ?>
+                </li>
+            <?php endif;?>
+            <li class="hidden">
+                <script type="text/javascript">
+                    if (window.addthis) {
+                        addthis.toolbox('.addthis_toolbox');
+                    }
+                </script>
+            </li>
+        </ol>
+    </div>
+
+    <?php echo $block->getToolbarHtml() ?>
+    <?php echo $this->getChildHtml('addthisJs'); ?>
+<?php endif; ?>

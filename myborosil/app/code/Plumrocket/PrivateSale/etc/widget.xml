@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+
+ -->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="privatesales_coming_soon" class="Plumrocket\PrivateSale\Block\Homepage\Comingsoon">
+        <label translate="true">Flash Sales "Upcoming" Events</label>
+        <description translate="true">Flash Sales "Upcoming" Events</description>
+        <parameters>
+            <parameter name="coming_soon_days" xsi:type="text" visible="true">
+                <label translate="true">Events Become Active in (Days)</label>
+            </parameter>
+            <parameter name="block_title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="Plumrocket_PrivateSale::homepage/event/coming_soon.phtml" selected="true">
+                        <label translate="true">Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="block_title" xsi:type="text" visible="false" />
+        </parameters>
+    </widget>
+    <widget id="privatesales_ending_soon" class="Plumrocket\PrivateSale\Block\Homepage\Endingsoon">
+        <label translate="true">Flash Sales "Ending Soon" Events</label>
+        <description translate="true">Flash Sales "Ending Soon" Events</description>
+        <parameters>
+            <parameter name="ending_soon_days" xsi:type="text" visible="true">
+                <label translate="true">Ending Soon (Days)</label>
+            </parameter>
+            <parameter name="block_title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="Plumrocket_PrivateSale::homepage/event/default.phtml" selected="true">
+                        <label translate="true">Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="block_title" xsi:type="text" visible="false" />
+        </parameters>
+    </widget>
+    <widget id="privatesales_active" class="Plumrocket\PrivateSale\Block\Homepage\Group">
+        <label translate="true">Flash Sales "Active" Events</label>
+        <description translate="true">Flash Sales "Active" Events</description>
+        <parameters>
+            <parameter name="exclude_ending_soon" xsi:type="select" visible="true">
+                <label translate="true">Exclude Ending Soon Events</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="ending_soon_days" xsi:type="text" visible="true">
+                <label translate="true">Ending Soon (Days)</label>
+                <depends>
+                    <parameter name="exclude_ending_soon" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="Plumrocket_PrivateSale::homepage/event/group.phtml" selected="true">
+                        <label translate="true">Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="block_title" xsi:type="text" visible="false" />
+        </parameters>
+    </widget>
+</widgets>

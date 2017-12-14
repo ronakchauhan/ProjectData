@@ -1,0 +1,21 @@
+{
+    "name": "ktpl/module-customerlogin",
+    "description": "Customer login section beside topmenu",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ktpl\\Customerlogin\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

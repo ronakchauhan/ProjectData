@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_BannerSlider::banners" title="Banner Slider" translate="title" module="Ktpl_BannerSlider" sortOrder="55" parent="Ktpl_Common::common_nav" resource="Ktpl_BannerSlider::banners"/>
+
+        <add id="Ktpl_BannerSlider::manage_banners" title="Manage Banners" module="Ktpl_BannerSlider" resource="Ktpl_BannerSlider::manage_banners" parent="Ktpl_BannerSlider::banners" action="banners/index/index"/>
+        <add id="Ktpl_BannerSlider::manage_config" title="Configurations" module="Ktpl_BannerSlider" resource="Ktpl_BannerSlider::manage_config" parent="Ktpl_BannerSlider::banners" action="adminhtml/system_config/edit/section/banners"/>
+    </menu>
+</config>

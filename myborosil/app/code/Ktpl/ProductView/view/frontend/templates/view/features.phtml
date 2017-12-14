@@ -1,0 +1,8 @@
+<div class="product-shiping">
+	<h3>
+		<?php echo __("Features");?>
+	</h3>
+	<div class="product-features-data">
+		<?php /* @escapeNotVerified */ echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShipping(), 'shipping') ?>
+	</div>
+</div>

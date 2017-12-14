@@ -1,0 +1,114 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())},">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod,afterRender: afterRenderInit, visible: isRadioButtonVisible()"/>
+        <label class="label" data-bind="attr: {'for': getCode()}">
+            <span data-bind="text: getTitle()"></span>
+        </label>
+    </div>
+
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="custompaymenttag">
+        <iframe width="0"
+                height="0"
+                data-bind="src: getSource(), attr: {id: getCode() + '-transparent-iframe', 'data-container': getCode() + '-transparent-iframe'}"
+                allowtransparency="true"
+                frameborder="0"
+                name="iframeTransparent"
+                class="payment-method-iframe">
+        </iframe>
+        <form class="form" id="co-transparent-form" action="#" method="post" data-bind="mageInit: {
+            'transparent':{
+                'context': context(),
+                'controller': getControllerName(),
+                'gateway': getCode(),
+                'orderSaveUrl':getPlaceOrderUrl(),
+                'cgiUrl': getCgiUrl(),
+                'dateDelim': getDateDelim(),
+                'cardFieldsMap': getCardFieldsMap(),
+                'nativeAction': getSaveOrderUrl()
+            }, 'validation':[]}">
+
+            <!-- ko template: 'Magento_Payment/payment/cc-form' --><!-- /ko -->
+
+            <!-- ko if: (isVaultEnabled())-->
+            <div class="field-tooltip-content">
+                <input type="checkbox"
+                       name="vault[is_enabled]"
+                       class="checkbox-inline"
+                       data-bind="attr: {'id': getCode() + '_enable_vault'}, checked: vaultEnabler.isActivePaymentTokenEnabler"/>
+                <label class="label" data-bind="attr: {'for': getCode() + '_enable_vault'}">
+                    <span><!-- ko i18n: 'Save credit card information for future use.'--><!-- /ko --></span>
+                </label>
+            </div>
+            <!-- /ko -->
+        </form>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button data-role="review-save"
+                        type="submit"
+                        data-bind="
+                        attr: {title: $t('Submit')},
+                        enable: (getCode() == isChecked()),
+                        click: placeOrder,
+                        css: {disabled: !isPlaceOrderActionAllowed()}
+                        "
+                        class="action primary checkout"
+                        disabled>
+                    <span data-bind="i18n: 'Submit'"></span>
+                </button>
+            </div>
+        </div>
+        </div> <!-- .custompaymenttag  -->
+        <div class="selectedpayment-info">
+
+        </div>
+        <div class="showpaymentform" style="display:none" data-bind="click: showform"><span data-bind="text: 'New Payment Form'"></span></div>
+    </div>
+    <!-- ko if: (getSavedCard())-->
+    <div class="savedpayment">
+        <div data-bind="foreach: getSavedCard()">
+			<div class="savedpayment-item">
+				<h2 class="usethis-payment" data-bind="click: $parent.getSavedCardClickAction"><span data-bind="i18n:'Use This Payment Method', attr: {'id': cc_exp_year,'class': id}"></span></h2>
+				<div class="item-content">
+					<strong data-bind="i18n: 'Payment Type:'"></strong>
+					<span data-bind="text: $parent.getCardType()[cc_type]"></span><br>
+					<strong data-bind="i18n: 'Authorized Name'"></strong>
+					<span data-bind="i18n: 'Card Name'"></span>
+					<br>
+					<strong data-bind="i18n: 'Credit Card #'"></strong>
+					<span data-bind="text: 'xxxx-xxxx-xxxx-'+cc_last_4"></span>
+					<br>
+					<strong data-bind="i18n: 'Exp. Date'"></strong>
+					<span data-bind="text: cc_exp_month +'/'+ cc_exp_year"></span>
+				</div>
+				<a class="payment-method-delete" data-bind="click: $parent.deletescardAddress">
+					<span>Delete</span>
+				</a>
+			</div>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <prprivatesale>
+            <general>
+                <serial></serial>
+            </general>
+            <splashpage>
+                <data><![CDATA[{
+                    "enabled_page":"0",
+                    "become_text": "As part of your membership, you will receive email notifications about private sales. You may unsubscribe at any time.",
+                    "enabled_registration":"1",
+                    "enabled_launching_soon":"0",
+                    "launching_text":"Launching Soon Registration Confirmation Text",
+                    "meta_title":"",
+                    "meta_keywords":"",
+                    "meta_description":""
+                }]]></data>
+            </splashpage>
+            <settings>
+                <before_start_action>2</before_start_action>
+                <end_action>2</end_action>
+            </settings>
+        </prprivatesale>
+    </default>
+</config>

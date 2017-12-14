@@ -1,0 +1,65 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php $item = $this->getItem(); ?>
+
+<?php if ($item): ?>
+	<?php
+		$lockedItem = $this->isEventLocked($item);
+		$class = 'pps-col-4';
+	?>
+	<figure class="pps-item <?php echo $class; ?> " id="event-<?php echo $item->getId(); ?>">
+		<?php if (!$this->getComingSoon()) { ?>
+		<a href="<?php echo $item->getUrl($item); ?>" <?php echo $lockedItem ? 'class="show_popup_login"  data-form="login"' : ''; ?>>
+		<?php } ?>
+
+			<?php $image = $block->getEventImage($item); ?>
+			<?php if ($lockedItem) { ?>
+				<span class="pps-img-wrap-lock">
+					<img src="<?php echo $image ?>" />
+					<span class="pps-img-locktext"><?php echo __('Become a member to shop this event') ?></span>
+				</span>
+			<?php } else { ?>
+				<img src="<?php echo $image ?>" />
+			<?php } ?>
+
+			<figcaption>
+				<div class="pps-item-title"><?php echo $item->getName(); ?></div>
+				<?php if ($this->showCountdown($item)): ?>
+					<div class="pps-item-time privatesale-countdown-timer" data-item="<?php echo $item->getId(); ?>" style="display: none;" >
+						<?php if ($this->getComingSoon()): ?>
+							<?php echo __('Opens in'); ?>
+						<?php else: ?>
+							<?php echo __('Sale ends in:'); ?>
+						<?php endif; ?>
+						<span class="timer"></span>
+					</div>
+				<?php endif; ?>
+			</figcaption>
+		<?php if (!$this->getComingSoon()) { ?>
+		</a>
+		<?php } ?>
+
+		<script type="text/javascript">
+			require(['jquery', 'privatesaleEvent'], function($){
+				var time = "<?php echo ($this->getComingSoon()) ? strtotime($item->getPrivatesaleDateStart()) : strtotime($item->getPrivatesaleDateEnd()); ?>";
+				$.plumrocket.privatesaleEvent.prototype.addItem("<?php echo $item->getId(); ?>", time);
+		    });
+		</script>
+	</figure>
+<?php endif;

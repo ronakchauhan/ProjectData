@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+        <block class="Ktpl\PincodeZone\Block\Adminhtml\Zone\Tab\Pincode" name="zone.edit.tab.pincodes"/>
+        <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="pincodes_grid_serializer">
+            <arguments>
+                <argument name="grid_block" xsi:type="string">zone.edit.tab.pincodes</argument>
+                <argument name="callback" xsi:type="string">getSelectedPincodes</argument>
+                <argument name="input_element_name" xsi:type="string">pincodes</argument>
+                <argument name="reload_param_name" xsi:type="string">pincode_zones</argument>
+            </arguments>
+        </block>
+    </container>
+</layout>

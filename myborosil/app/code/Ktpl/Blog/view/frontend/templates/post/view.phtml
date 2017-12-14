@@ -1,0 +1,163 @@
+<?php
+/**
+ * Blog post view template
+ *
+ * @var $block \Ktpl\Blog\Block\Post\View
+ */
+?>
+<?php
+    $_post = $this->getPost();
+    $_postUrl = $_post->getPostUrl();
+    $_postName = $block->escapeHtml($_post->getTitle(), null, true);
+?>
+<div class="post-view">
+    <div class="post-holder post-holder-<?php echo $_post->getId() ?>"> 
+        <?php if($_post->getViewLayout() == 1):?>
+            <div class="post-content layout1">
+                <div class="post-description clearfix">
+                    <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                    <div class="post-ftimg-hld">
+                        <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                    </div>
+                    <?php } ?>
+                    <div class="post-text-hld">
+                        <h2 class="post-title">                     
+                            <?php echo $_postName; ?>                   
+                        </h2>
+                        <?php if($_post->getShortDesc()):?>
+                            <div class="short-description">
+                                <?php echo __($block->getShortDesc());?>
+                            </div>
+                        <?php endif;?>
+                        <div class="description">
+                            <?php echo $block->getContent() ?>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="extra-description">
+                    <?php if($_post->getLeftDesc()):?>
+                        <div class="left-description">
+                            <?php echo __($block->getLeftDesc());?>
+                        </div>
+                    <?php endif;?>
+                    <?php if($_post->getRightDesc()):?>
+                        <div class="right-description">
+                            <?php echo __($block->getRightDesc());?>
+                        </div>
+                    <?php endif;?>
+                </div>
+            </div>
+        <?php elseif($_post->getViewLayout() == 2):?>
+            <div class="post-content layout2">
+                <div class="post-description clearfix">
+                    <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                    <div class="post-ftimg-hld">
+                        <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                    </div>
+                    <?php } ?>
+                    <div class="post-text-hld">
+                        <?php if($_post->getShortDescTitle()):?>
+                            <h2 class="short-description-title">
+                                <?php echo __($_post->getShortDescTitle());?>
+                            </h2>
+                        <?php endif;?>
+                        <h2 class="post-title">                     
+                            <?php echo $_postName; ?>                   
+                        </h2>
+                        <div class="description">
+                            <?php echo $block->getContent() ?>
+                        </div>                        
+                        <div class="clear"></div>
+                    </div>
+                </div>
+				<?php if($_post->getShortDesc()):?>
+					<div class="short-description">
+						<?php echo __($block->getShortDesc());?>
+					</div>
+				<?php endif;?>
+                <div class="extra-description">
+                    <?php if($_post->getLeftDesc()):?>
+                        <div class="left-description">
+                            <?php echo __($block->getLeftDesc());?>
+                        </div>
+                    <?php endif;?>
+                    <?php if($_post->getRightDesc()):?>
+                        <div class="right-description">
+                            <?php echo __($block->getRightDesc());?>
+                        </div>
+                    <?php endif;?>
+                </div>
+            </div>
+        <?php elseif($_post->getViewLayout() == 3):?>
+        <div class="post-content layout3">
+            <div class="post-description clearfix">
+                <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                <div class="post-ftimg-hld">
+                    <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                </div>
+                <?php } ?>
+                <div class="post-text-hld">
+                    <h2 class="post-title">                     
+                        <?php echo $_postName; ?>                   
+                    </h2>
+                    <?php if($_post->getArticleLink()):?>
+                        <div class="article-link">
+                            <span><?php /* @escapeNotVerified */ echo __('Article from ') ?></span><a target="_blank" href="<?php echo __($_post->getArticleLink());?>"><?php echo __($_post->getArticleLink());?></a>
+                        </div>
+                    <?php endif;?>
+                    <div class="description">
+                        <?php echo $block->getContent() ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="extra-description">
+                <?php if($_post->getVerticleDescOne()):?>
+                    <div class="verticle-one-description">
+                        <?php echo __($block->getVerticleDescOne());?>
+                    </div>
+                <?php endif;?>
+                <?php if($_post->getVerticleDescTwo()):?>
+                    <div class="verticle-two-description">
+                        <?php echo __($block->getVerticleDescTwo());?>
+                    </div>
+                <?php endif;?>
+                <?php if($_post->getVerticleDescThree()):?>
+                    <div class="verticle-three-description">
+                        <?php echo __($block->getVerticleDescThree());?>
+                    </div>
+                <?php endif;?>
+
+                <?php if($_post->getShortDesc()):?>
+                    <div class="short-description">
+                        <?php echo __($block->getShortDesc());?>
+                    </div>
+                <?php endif;?>
+            </div>
+        </div>
+        <?php else:?>
+            <div class="post-content">
+                <div class="post-description clearfix">
+                    <?php if ($featuredImage = $_post->getFeaturedImage()) { ?>
+                    <div class="post-ftimg-hld">
+                        <img src="<?php echo $featuredImage ?>" alt="<?php echo $_postName ?>" />
+                    </div>
+                    <?php } ?>
+                    <div class="post-text-hld">
+    					<h2 class="post-title">						
+    						<?php echo $_postName; ?>						
+    					</h2>
+    					<div class="description">
+    						<?php echo $block->getContent() ?>
+    					</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        <?php endif;?>
+        <div class="post-bottom">
+            <?php echo $this->getChildHtml('blog.post.bottom') ?>
+        </div>
+    </div>
+</div>

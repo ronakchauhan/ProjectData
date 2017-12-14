@@ -1,0 +1,18 @@
+<script>
+    require(["jquery"], function ($) {
+        $(document).ready(function() {
+            var parentBody = window.parent.document.body;
+            $('.mfp-preloader', parentBody).css('display', 'none');
+
+            setTimeout(function(){
+                var documentHeight = $('.page-wrapper .columns').height() + 40 + 'px';
+                $('.mfp-iframe-holder .mfp-content', parentBody).animate({
+                    'height': documentHeight
+                }, 800);
+            }, 2000);
+
+            $('.reviews-actions a').attr('target', '_parent');
+            $('.product-social-links a').attr('target', '_parent');
+        });
+    });
+</script>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="product.attributes" remove="true"/>
+		<referenceBlock name="reviews.tab" remove="true"/>
+
+        <referenceBlock name="product.attributes" remove="true"/> 
+        <referenceBlock name="ktpl_catalog_product_tab_care" remove="true"/>
+        <referenceBlock name="ktpl_catalog_product_tab_features" remove="true"/>     
+        <referenceBlock name="ktpl_catalog_product_tab_returns" remove="true"/>
+		
+		<move element="product.info.description" destination="product.info.price" after="product.info.check.availibility"  />
+        <move element="product.info" destination="content" after="-"  />
+        <move element="product.info.stock.sku" destination="product.info.main" before="page.main.title"  />
+        
+        <referenceContainer name="product.info.price">
+            <block class="Magento\Catalog\Block\Product\View" name="product.volume" template="Ktpl_ProductView::view/product/volume.phtml" after="product.price.final" />
+
+            <container name="product.info.tax.warranty" label="Product info tax warranty container" htmlTag="div" htmlClass="product-info-tax-warranty" after="product.volume">
+                <block class="Magento\Catalog\Block\Product\View" name="product.info.tax" template="Ktpl_ProductView::view/tax.phtml" after="-" />
+
+                <block class="Magento\Catalog\Block\Product\View" name="product.info.warranty" template="Ktpl_ProductView::view/warranty.phtml" after="product.info.tax" />
+            </container>
+            <container name="product.info.check.availibility" label="Product info availibility container" htmlTag="div" htmlClass="product-info-check-availibility" after="product.info.tax.warranty">
+            </container>
+        </referenceContainer>
+        
+		<!-- Grouped Product Tempate Change -->
+		<referenceBlock name="product.info.grouped">
+			<action method="setTemplate">
+                <argument name="template" xsi:type="string">Ktpl_ProductView::layout_3/catalog/product/view/type/grouped.phtml</argument>
+            </action>
+    	</referenceBlock>
+    	<!-- Grouped Product Tempate End-->
+
+    	<referenceBlock name="product.info.addtocart">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ktpl_ProductView::layout_3/catalog/product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
+        
+        <referenceBlock name="product.info.addtocart.additional">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ktpl_ProductView::layout_3/catalog/product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
+
+    	<referenceBlock name="product.info.overview">
+            <arguments>
+                <argument name="at_call" xsi:type="string">getDescription</argument>
+                <argument name="at_code" xsi:type="string">description</argument>
+                <argument name="css_class" xsi:type="string">overview</argument>
+                <argument name="at_label" translate="true" xsi:type="string">none</argument>
+                <argument name="title" translate="true" xsi:type="string">Overview</argument>
+                <argument name="add_attribute" xsi:type="string">itemprop="description"</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="product.info.overview">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ktpl_ProductView::layout_3/catalog/product/view/type/attribute.phtml</argument>
+            </action>
+        </referenceBlock>
+		<referenceContainer name="page.bottom">
+            <block class="Ktpl\Blog\Block\Catalog\Product\RelatedPosts" name="related.blog"  before="-" template="Ktpl_Blog::related/blog_posts.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

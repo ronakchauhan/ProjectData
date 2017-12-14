@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_load_before">
+        <observer name="privatesale_add_preview_top_panel" instance="Plumrocket\PrivateSale\Observer\Preview\AddPreviewPanel" />
+        <observer name="privatesale_homepage" instance="Plumrocket\PrivateSale\Observer\EventCheck" />
+    </event>
+
+    <event name="controller_action_predispatch">
+        <observer name="privatesale_preview_check" instance="Plumrocket\PrivateSale\Observer\Preview\CheckPreview" />
+        <observer name="privatesale_splashpage_check" instance="Plumrocket\PrivateSale\Observer\SplashPageCheck" />
+    </event>
+
+    <event name="catalog_category_load_after">
+        <observer name="privatesale_catalog_category_load_after" instance="Plumrocket\PrivateSale\Observer\Event\CategoryLoadAfter" />
+    </event>
+
+    <event name="catalog_product_load_after">
+        <observer name="privatesale_catalog_product_load_after" instance="Plumrocket\PrivateSale\Observer\Event\ProductLoadAfter" />
+    </event>
+
+    <event name="catalog_category_collection_load_before">
+        <observer name="privatesale_catalog_category_collection_load_before" instance="Plumrocket\PrivateSale\Observer\Event\CategoryCollectionLoadBefore" />
+    </event>
+
+    <event name="catalog_category_collection_load_after">
+        <observer name="privatesale_catalog_category_collection_load_after" instance="Plumrocket\PrivateSale\Observer\Event\CategoryCollectionLoadAfter" />
+    </event>
+
+    <event name="eav_collection_abstract_load_before">
+        <observer name="privatesale_catalog_product_collection_load_before" instance="Plumrocket\PrivateSale\Observer\Event\ProductCollectionLoadBefore" />
+    </event>
+
+    <event name="catalog_product_collection_load_after">
+        <observer name="privatesale_catalog_product_collection_load_after" instance="Plumrocket\PrivateSale\Observer\Event\ProductCollectionLoadAfter" />
+    </event>
+
+    <event name="sales_quote_item_qty_set_after">
+        <observer name="privatesale_sales_quote_item_qty_set_after" instance="Plumrocket\PrivateSale\Observer\Event\QuoteItemQtySetAfter" />
+        <observer name="privatesale_sales_quote_item_qty_set_after_check" instance="Plumrocket\PrivateSale\Observer\PrivateEvent\CheckCartItem" />
+    </event>
+
+    <event name="catalog_category_flat_loadnodes_before">
+        <observer name="privatesale_catalog_category_flat_loadnodes_before" instance="Plumrocket\PrivateSale\Observer\Event\CategoryFlatLoadnodesBefore" />
+    </event>
+
+    <event name="controller_action_postdispatch_catalog_category_view">
+        <observer name="privatesale_controller_action_postdispatch_catalog_category_view" instance="Plumrocket\PrivateSale\Observer\PrivateEvent\CheckCategory" />
+    </event>
+
+    <event name="controller_action_postdispatch_catalog_product_view">
+        <observer name="privatesale_controller_action_postdispatch_catalog_product_view" instance="Plumrocket\PrivateSale\Observer\PrivateEvent\CheckProduct" />
+    </event>
+
+    <event name="controller_action_predispatch_catalog_product_compare_add">
+        <observer name="privatesale_controller_action_predispatch_catalog_product_compare_add" instance="Plumrocket\PrivateSale\Observer\PrivateEvent\CheckCompareProduct" />
+    </event>
+
+</config>

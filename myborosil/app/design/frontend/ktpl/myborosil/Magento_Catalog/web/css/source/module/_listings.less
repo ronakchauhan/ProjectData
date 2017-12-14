@@ -1,0 +1,1752 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________				
+
+@product-name-link__color: #3c3c3c;
+@product-name-link__color__active: @text__color;
+@product-name-link__color__hover: @text__color;
+@product-name-link__color__visited: @text__color;
+
+@product-name-link__text-decoration: none;
+@product-name-link__text-decoration__active: @link__hover__text-decoration;
+@product-name-link__text-decoration__hover: @link__hover__text-decoration;
+@product-name-link__text-decoration__visited: @link__hover__text-decoration;
+
+@product-item__hover__background-color: @color-white;
+@product-item__hover__box-shadow: 3px 3px 4px 0 rgba(0, 0, 0, .3);
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    //  Product Lists
+    body.modal-open { overflow: hidden; overflow-x: hidden !important; }
+    .products {
+        margin: 0;
+    }
+	.section-video-trigger{
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+	}
+	.mobile-product-item-popup { display: none;}
+	.page-products{
+		.page-main{
+			max-width: 100%;
+			padding: 0;
+		}
+		.page-title-wrapper{
+			display: none;
+		}
+		.columns {
+			margin: 20px auto 0;
+			max-width: 100%;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		.toolbar{
+			display: none; 
+		}
+		
+		&.page-layout-2columns-left{
+			.column.main{width: 83.3333%; padding-right: 15px; padding-left: 15px; margin-top: 25px; padding-bottom: 0;}
+			.sidebar{
+			float: left;
+			order: 1;
+			padding: 0 15px;
+			width: 16.6667%;
+            .filter-navigation { padding: 40px 10px 10px;}
+		}
+        .sidebar-additional {
+            clear: left;
+            float: left;
+            padding-left: 0;
+            padding-right: @layout-column__additional-sidebar-offset;
+        }
+		}
+
+		.product-item { margin: 0; float: left;padding: 15px 30px;width: 33.33%; box-sizing:border-box;
+					.product-item-details { display: block; min-height: 44px; position: relative; 
+							.product-item-volume-box { display:block;}
+
+					}
+				   &.custom-section{width: 66.6667%;cursor: pointer; 
+					.section-wrapper { position: relative;}
+					.close-iframe{height: 50px;	width: 50px; right: 0; top:0px;	}
+					
+	  			   .element-text{ position: absolute; right: 5%!important; top:30%!important; z-index: 1; left: inherit!important; padding-right: 30px;
+	  			   		p { line-height: 1.42857; margin: 1.42857; .lib-font-size(17);}
+						b{.lib-font-size(20);font-weight: 600;font-family: 'SourceSans-SemiBold';}
+					}
+					.section.adbanner-right {
+						padding-bottom: 8.5%;	
+					}
+					.section {
+						&.with-white-text {
+							p { color: #fff!important}
+						}
+					}
+					.section.adbanner-left {
+						padding-bottom: 5% ;	
+						&.text-algin-left {
+							.element-text{ left:10%!important; right: inherit!important}
+						}
+					}
+					
+					
+				}
+            }
+		.product-item{
+			.tocart {				
+				border-radius: 0;    
+				font-size: 0;
+				height: 25px;
+				width: 25px;
+				padding: 0;
+				bottom: -1px;
+				position: absolute;
+				right: 7px;
+				background: transparent;
+				&:before{
+					content: "\f07a";								
+					font-family: FontAwesome;	
+					color: #063565;
+					font-size: 20px;
+					height: 25px;
+					width: 25px;
+				}				
+			}
+			&-actions{
+				.actions-primary{
+					bottom: 15px;
+					position: absolute;
+					right: 3px;
+					z-index: 9;
+				}
+			} 
+			
+			&-info{
+				position: relative;
+			}
+		} 
+		.attribute-group{ margin: 0; width: 100%; padding:25px 30px 33px; float: left; clear: both; box-sizing:border-box; text-align: center;
+			.attribute-head{ position: relative;
+				&:before{
+					content: " ";
+					position: absolute;
+					left: 0;
+					top: 16px;
+					width: 100%;
+					height: 1px;
+					background:rgba(176, 177, 177, 0.87);
+					z-index: -1;
+				}
+			}
+			span{
+				background: @color-white;
+				color: #000;
+				.lib-font-size(25);
+				font-weight: 400;
+				padding: 0 10px; line-height: 29px;
+				text-transform: uppercase;
+				z-index: 0;
+			}
+		}
+		&.category-drinkware-bottles,
+		&.category-dinnerware{
+			.columns{
+				margin: 40px auto 0;
+				max-width: 1600px;
+				padding: 0;
+			}
+			.column.main{
+				padding: 0 !important;
+			}			
+		}
+		
+		
+		
+		&.catalogsearch-result-index{
+			.product-item{
+				.tocart{
+					bottom: 35%;
+				}
+			}
+		}
+		
+		&.kitchen-appliances {
+			&.page-layout-2columns-left {
+				.column.main { margin-top:0; }
+			}
+			.products  {margin: 0 8px;
+				.product-item {
+					.product-item-description { margin: 0; min-height: 102px;
+						ul { margin-top: 10px; padding: 0.1em 0 0 1.2em; list-style: outside none disc;
+							li {
+								font-family: 'SourceSans-Light';   font-size: 14px;    letter-spacing: initial;
+							    line-height: 20px; list-style-type: disc; margin: 0;  padding: 0.1em 0;    text-transform: initial;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	.category-view{
+		overflow: hidden;
+		position: relative;
+		.category-banner-arrow{
+			font-size: 0;
+			height: 20px;
+			width: 32px;
+			opacity: 0.4;
+			bottom: 30px;
+			display: none;
+			left: 50%;
+			margin-left: -5px;
+			position: absolute;
+			cursor: pointer;
+			z-index: 1;
+			background: transparent url('@{baseDir}images/down-arrow.svg')no-repeat center center;
+			background-size: 32px;
+			transition: all 0.2s ease-in-out 0s;
+			-webkit-transition: all 0.2s ease-in-out 0s;
+			&:hover{
+				opacity: 1;
+			}
+		}
+
+		.section-container{
+			height: 75vh; background-position: 100% 65%!important;
+			overflow: hidden;
+		}
+		
+		.element-text{	margin-left:8.33333%; left: 5%!important; top:30%!important; position: absolute; padding-left: 15px; 
+						padding-right: 15px; width: 50%; 
+						p {margin:  0 0 0px 0;line-height: 1.42857; font-weight: 300; font-family: 'SourceSans-Light'; font-size: 30px;	
+							&:first-child {  line-height:30px;}
+					    }
+						b{.lib-font-size(28);font-weight: normal; font-family: 'SourceSans-Regular'; line-height: 1.42857; }
+		}
+		
+		.section-main-image{
+			max-width: 100%;
+			width: 100% !important;
+			display: block;
+		}
+		
+		.category-description{
+			left: 10%;
+			position: absolute;
+			top: 40%;
+			max-width: 33%;
+			p{
+				.lib-font-size(31);
+				font-weight: 300;font-family: 'SourceSans-Light';
+				strong{
+					color: #424243;
+					.lib-font-size(36);
+					font-weight: 400;
+				}
+			}
+		}
+	}
+	
+	
+
+    .product {
+        &-items {
+            &:extend(.abs-reset-list all);
+        }
+		
+		&.name{
+			a{
+				.lib-font-size(14);
+				color: @color-black;
+				font-weight: 600;font-family: 'SourceSans-SemiBold';
+				&:hover{
+					color: @color-theme-blue;
+					text-decoration: none;
+				}
+			}
+		}
+
+		&-image-photo{
+			transition: all 0.5s ease;
+			-webkit-transition: all 0.5s ease;
+		}
+        
+        &-item {vertical-align: top;
+            .products-grid & {}
+            &:extend(.abs-add-box-sizing all);
+            &-name {
+                .lib-font-size(15);
+				color: @color-black;				
+                -moz-hyphens: auto;
+                -ms-hyphens: auto;
+                -webkit-hyphens: auto;
+                display: inline-block;
+                hyphens: auto;
+                margin: 7px 0 0px;				
+                word-wrap: break-word; line-height: 14px;							
+            }
+
+            &-info {
+                max-width: 100%;
+                width: 100%;
+				overflow: hidden;
+                .page-products & {
+                    width: 100%;
+                }
+				
+				.image-container{
+					position: relative;					
+				}
+				
+				.product-labels{
+					.label{
+						background: @color-theme-blue;
+						box-sizing: border-box;
+						color: @color-white;
+						.lib-font-size(13);
+						height: 48px;
+						left: -28px;
+						padding-top: 30px;
+						position: absolute;
+						text-align: center;
+						text-transform: uppercase;
+						top: -18px; font-weight: 600;font-family: 'SourceSans-SemiBold';
+						transform: rotate(-45deg);
+						-webkit-transform: rotate(-45deg);
+						width: 64px;
+						z-index: 9;
+						&.sale{
+							background: #ff2600;
+						}
+					}					
+				}
+            }
+
+            &-actions {
+                .actions-secondary {
+					right: 12px;
+					top: 10px;
+					position: absolute;
+					z-index: 9;
+                    > .action {
+                        &:extend(.abs-actions-addto all);
+                        &:before {
+                            margin: 0;
+                        }
+						
+						&.towishlist{
+							margin-top: 6px;
+							&:before{
+								content: "\f08a";								
+								font-family: FontAwesome;	
+								color: #063565;
+								font-size: 20px;
+								height: 25px;
+								width: 25px;
+								padding-top: 2px;
+							}
+						}
+						
+						&.tocompare{
+							display: none;
+						}
+                        
+                        span {
+                            &:extend(.abs-visually-hidden all);
+                        }
+                    }
+                }
+            }
+            
+            &-description {
+                margin: @indent__m 0;
+            }
+            
+            .product-reviews-summary {
+                .rating-summary {
+                    margin: 0 4px 0 0;
+                }
+                
+                .reviews-actions {
+                    font-size: @font-size__s;
+                    margin-top: 5px;
+                    text-transform: lowercase;
+                }
+            }
+			
+			.volume-measurement{
+				color: #333;
+				float: left;
+				.lib-font-size(14);
+				font-weight: 400;
+				margin: 1px 0 0;
+				width: 100%;
+				span{
+					margin-left: 3px;
+				}
+			}
+			.swatch-attribute.color {display: none;}
+            .price-box {
+				 position: absolute; right: 0; top: 0;
+				margin: 5px 0 0px;
+                
+                .price {
+                    color: #3c3c3c;
+					.lib-font-size(14);
+					font-weight: 400;
+					white-space: nowrap;
+                }
+                
+                .price-label {
+                    .lib-css(color, @text__color__muted);
+                    font-size: @font-size__s;
+					display: none;
+                }
+            }
+			
+			.special-price{
+				.price {
+                    font-weight: normal;
+					color: #fb0007;
+                }
+			}
+
+            .old-price {
+                float: left;
+				margin: 0 4px 0 0;
+                
+                .price {
+                    font-weight: 400;
+					text-decoration: line-through;
+                }
+            }
+
+            .minimal-price {
+                .price-container {
+                    display: block;
+                }
+            }
+
+            .minimal-price-link {
+                margin-top: @indent__xs;
+            }
+
+            .price-from,
+            .price-to {
+                margin: 0;
+            }
+
+            .tocompare {
+                .lib-icon-font-symbol(
+                @icon-compare-full
+                );
+            }          
+        }
+    }
+
+    .column.main {
+        .product {
+            &-items {
+               
+            }
+            
+            &-item {
+                
+            }
+        }
+    }
+
+    .price-container {
+        .price {
+            .lib-font-size(14);
+        }
+
+        .price-including-tax + .price-excluding-tax,
+        .weee {
+            margin-top: @indent__xs;
+        }
+
+        .price-including-tax + .price-excluding-tax,
+        .weee,
+        .price-including-tax + .price-excluding-tax .price,
+        .weee .price,
+        .weee + .price-excluding-tax:before,
+        .weee + .price-excluding-tax .price {
+            .lib-font-size(11);
+        }
+
+        .weee {
+            &:before {
+                content: '(' attr(data-label) ': ';
+            }
+            
+            &:after {
+                content: ')';
+            }
+            
+            + .price-excluding-tax {
+                &:before {
+                    content: attr(data-label) ': ';
+                }
+            }
+        }
+    }
+
+    .products-list {
+        .product {
+            &-item {
+                display: table;
+                width: 100%;
+
+                &-info {
+                    display: table-row;
+                }
+
+                &-photo {
+                    display: table-cell;
+                    padding: 0 @indent__l @indent__l 0;
+                    vertical-align: top;
+                    width: 1%;
+                }
+
+                &-details {
+                    display: table-cell;
+                    vertical-align: top;
+                }
+            }
+        }
+
+        .product-image-wrapper {
+            &:extend(.abs-reset-image-wrapper all);
+        }
+    }
+	.category-drinkware-bottles,
+	.category-dinnerware{
+		.products-list{
+			.product-item{
+				overflow: hidden;
+				padding: 0;
+				margin-bottom: 40px;
+				&-photo{
+					float: left;
+					padding: 0;
+					width: 66.6667%; line-height: 0;
+				}
+				&-details{display:block; clear: both; margin: 0px 0 0px 0; min-height: 20px;
+					.check-range-text { display: none;}
+				}
+
+				&.custom-section { margin-bottom: 60px; width: 100%; 
+					.section { 
+						&.beauty-strength-video { height:75vh; position: relative;background-position:center center;
+							.element-text {
+								.vid-banner-subtext{ line-height: 1.42857;
+										a { font-size: 24px; font-weight: 600; font-family: 'SourceSans-SemiBold'; vertical-align: top; line-height: 1.42857; color: #fff; text-decoration: underline;
+											&:hover { text-decoration:underline; color: #004778; }
+										}
+								}
+							}
+							
+							.iframe-video-container { 
+								.fr-close-icon { width: 26px; height: 26px; background: red; position: fixed; z-index: 9999; right: 10px; 
+									             top:10px; background: rgba(255, 255, 255, 0.15);
+												color: #fff; font-family: arial; font-size: 18px; text-align: center;
+												&:hover {background: rgba(255, 255, 255, 0.3);}
+												 }
+								iframe { width: 100%; height: 100%; position: fixed; z-index: 9991; padding: 6% 20%; box-sizing:border-box; background: rgba(0, 0, 0, 0.9); display: none;}
+							}
+							
+						 }
+					}
+					.element-text { left: 5%!important; top:30%!important; right: inherit!important;
+							p { font-size: 45px; font-weight: 300;font-family: 'SourceSans-Light';}
+					}
+				}
+			}
+			
+		} 
+		
+		.product-item{
+			.price-box { width: 100%;margin-bottom: 20px; margin-top: 0px; position: relative;
+				.price-label{
+					display: none;
+				}
+				 .price {font-size: 15px; font-weight: 600;font-family: 'SourceSans-SemiBold';}
+			}
+			.price-from, 
+			.price-to{
+				display: inline-block;
+				margin: 0 4px;
+				position: relative; font-size: 15px; font-weight: 400;
+				.old-price { display: none;}
+			}
+			.price-from { display: none;}
+			
+		}
+		.product-item-info .product-labels .label{
+			.lib-font-size(23);
+			height: 60px;
+			left: -41px;
+			padding-top: 25px;
+			top: -10px;
+			width: 120px;
+		}
+		
+		.product-item-name{
+			margin: 19px 0 0 0;
+		}
+		.product.name{
+			a {	color: #333; .lib-font-size(15); 	}
+		}
+		.product-image-container{
+			width: 100% !important; 
+		}
+
+		.dinner-configurable-options{ 
+			width: 33.3333%;padding-left:15px; padding-right: 15px; box-sizing:border-box;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			top: 15%;
+			align-items: center;
+			p { text-align: center;}
+			.option-title-box { display: block; clear: both; text-align: center;}
+			.option-title{padding:0; cursor: pointer; display: inline-block; margin: 0 0 10px 0;
+				&:hover{
+					font-weight: 600; text-decoration: underline; font-family: 'SourceSans-SemiBold';
+				}
+			}
+			
+			.swatch-attribute-options {text-align: center; display: block;
+				.swatch-option{
+					&.text{  float: none; clear: both; font-size: 14px; color: #333; line-height: 1.42857143;
+							 margin: 0 0 10px 0; padding: 0; display: inline-block; min-width: 60%; max-width: 60%;    
+						&:before {  display:none;}
+						
+					}
+				}
+			}
+		}
+		
+		.configuration-container{
+			width: 33.3333%;padding-left:15px; padding-right: 15px; box-sizing:border-box;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			top: 35%;
+			h4{
+				.lib-font-size(20);
+				font-weight: 600;
+				margin: 0;	font-family: 'SourceSans-SemiBold';
+				display: inline-block;
+			}
+			.option-label{
+				display: inline-block;
+				.lib-font-size(20);
+				font-weight: 300; font-family: 'SourceSans-Light';
+				label{
+					margin: 0 8px;
+				}
+			}
+			.option-title{
+				padding: 16px 0;
+				cursor: pointer;
+				&:hover{
+					color: @color-theme-blue;
+				}
+			}
+			
+			.swatch-box{
+				position: relative;
+				padding-bottom: 96px; clear: both;
+			}
+			
+			.swatch-attribute{
+				&.color{
+					bottom: 25px;
+					position: absolute;
+					width: 100%;
+				}
+			}
+			.swatch-attribute-options { display: inline-block;}
+			.swatch-option{
+				&.text { font-size: 14px; font-weight: 400; color:#333; font-family: 'SourceSans-Regular'; padding: 0; margin: 0 0 10px 0; line-height: 1.42857;
+						&:hover {font-size: 14px; text-decoration: underline; font-family: 'SourceSans-SemiBold';font-weight: 600;}
+			}
+				&.color{
+					border: medium none;
+					width: 20px;
+					height: 20px;	
+					display: inline-block;
+					float: none; outline: 0;
+					margin: 0 5px;
+					min-width: 20px; border-radius: 100px; cursor: default;
+					&:hover:not(.disabled), &.selected{
+						border: none;
+						outline: 0;margin: 0 5px;
+						
+					}				
+				}
+			}
+		}
+		
+		.action.explore{
+			color: #2f2e2d;
+			.lib-font-size(20);
+			font-weight: 600;
+			margin-top: 40px;font-family: 'SourceSans-SemiBold';
+			&:hover{
+				color: @color-theme-blue;
+				text-decoration: none;
+			}
+		}
+		
+		.product-item-actions{
+			display: none;						
+		}
+		
+		.product-item-description{
+			color: #333;
+			.lib-font-size(15);
+			margin: 0 0 0;
+			padding: 1px 0 0 0;
+			p {margin-bottom:0;}
+			.action.more{
+				display: none;
+			}
+		}
+		
+		.product-item-info{
+			.image-container{
+				float: left;
+				width: 100%;
+				background: #f2f2f2;
+			}
+		} 
+		.product-image-photo{
+			display: block;
+			margin-left: 0px;
+			width: 100%;
+		}
+	}
+	
+	// starter kit list css start
+
+	.page-products.category-starter-kits{
+		.page-title-wrapper{
+			display: none;
+		}
+		.column.main{
+			padding: 0 !important;
+		}
+		.columns {
+			margin: 40px auto 0;
+			max-width: 1600px;
+			padding-left: 0; padding-right: 0;			
+		}
+		.block.filter{
+			display: none;
+		}
+		.product-starter{ margin-bottom: 55px; padding: 0;
+			.element-text{
+				b{display: block;.lib-font-size(30);font-weight: 500;line-height: 1;margin-bottom: -25px;}
+			}	
+		} 
+		
+		
+		
+		.product-item-kit{display: block; padding: 0; margin: 0 0 56px 0; width: 100%; float: left;
+			&.custom-section { position: relative; margin: 0 0 40px 0;
+				.section-container {height: 50vh; background-position: center center; background-repeat: no-repeat;
+					.text-content { position: absolute; left: 5%; top:30%;
+							p { font-size: 24px; font-family: 'SourceSans-Light'; line-height: 1.42857; margin: 0;
+								b {font-family: 'SourceSans-SemiBold'; font-weight: 600;}
+						}
+					}
+				}
+			}
+			.product-item-info{ display: block;
+				.product-labels .label{
+					.lib-font-size(13);
+					height: 44px;
+					left: -35px;
+					padding-top: 25px;
+					top: -14px;
+					width: 81px;
+				}
+				.product-item-container{background: #f2f2f2; float: left; width: 100%;	
+					a {  
+						img { float: left;}
+					}
+				.big-image{width: 33.3333%; float: left;}
+				.small-image{ width: 16.6667%; float: left;}
+				.grouped-product-options-info{width: 33.3333%;float: left;text-align: center; padding: 0 15px; box-sizing:border-box; 
+											  top:35%; right: 0; position: absolute;
+							.grouped-product-options-inner { padding: 0 20px;
+								.product-item-name { margin: 0;
+									a { font-size: 15px; line-height: 1.42857;}
+								}
+								.grouped-product-pieces{.lib-font-size(15);	font-weight: 600; font-family: 'SourceSans-SemiBold'; line-height: 1.42857; margin: 0 0 20px 0;}
+								.product-item-description{ margin: 0 0 10px 0;
+									p { margin: 0;}
+								}
+								.info-product-item-link{ display: block; margin: 0 0 10px 0;
+										a {.lib-font-size(14);color: #333; text-decoration: none;
+											&:hover{cursor:pointer;font-family: 'SourceSans-SemiBold';text-decoration: underline;}
+										}
+								}
+							}
+					
+							
+									
+					}
+			    }
+			}
+
+
+			.price-box {
+				width: 100%;
+				.price-label{
+					display: none;
+				}
+			}
+			.price-from, .price-to{
+				display: inline-block;
+				margin: 0 15px 0 0;
+				position: relative;
+			}
+			.price-from{
+				&:after{
+					content: "-";
+					.lib-font-size(26);
+					position: absolute;
+					right: -13px;
+					top: -5px;
+				}
+			}
+		}
+	}
+	
+	// starter kit list css extend
+
+
+	.category-storage {
+		.category-view {
+			.element-text { top:15%!important; }
+		}
+	}
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .products-list .product {
+        &-item {
+            table-layout: fixed;
+
+            &-photo {
+                padding: 0 @indent__s @indent__s 0;
+                width: 30%;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .product-item-info {
+        .products-grid & {
+            &:hover,
+            &.active {
+			
+            }
+        }
+    }   
+
+    .product-item-actions {
+        display: block;
+
+        .products-grid & {
+            margin: -@indent__s 0 @indent__s;
+        }
+
+        .actions-primary + .actions-secondary {   
+            
+            > .action {
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .actions-primary {
+            display: table-cell;
+        }
+    }
+
+    .page-products {
+        .products-grid {
+            .product-item-inner {
+                &:before {
+                    .lib-css(background, @product-item__hover__background-color);
+                    content: '';
+                    height: 3px;
+                    left: 0;
+                    position: absolute;
+                    top: -2px;
+                    width: 100%;
+                    z-index: 1;
+                }
+            }
+        }
+
+        .product-item-actions {
+            position: static;
+            z-index: 1;
+        }
+    }
+
+    .products-grid {
+        .product-item-info {
+            &:not(:hover) {
+                &:not(.active) {
+                    .product-item-inner {
+                       
+                    }
+                }
+            }
+        }
+    }
+
+   
+
+     .category-drinkware-bottles {
+    	.product-item{
+    		.swatch-attribute.color {display: block;}
+    	}
+    }
+}
+
+
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-products.page-layout-3columns {
+        .products-grid {
+            .product-item {
+                width: 100%/2;
+            }
+        }
+    }
+}
+
+
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-layout-3columns {
+        .products-grid {
+            .product-item {
+                width: 100%/4;
+            }
+        }
+    }
+
+    .page-products {
+      
+		&.page-layout-2columns-left{
+			.product-image-container{
+				width: 100% !important;				
+			}
+			.product-image-photo{
+				height: 100%;
+				width: 100%;
+			}
+		}
+		
+		&.catalogsearch-result-index{
+			.product-image-container{
+				width: 100% !important;				
+			}
+			.product-image-photo{
+				height: 100%;
+				width: 100%;
+			}
+		}
+    }
+
+    .page-products {
+        &.page-layout-1column {
+            .products-grid {
+                .product-item {
+                    /*margin-left: 0;
+                    width: 100%/5;*/
+                }
+            }
+        }
+
+        &.page-layout-3columns {
+            .products-grid {
+                .product-item {
+                    margin-left: 1%;
+                    width: 32.667%;
+
+                    &:nth-child(3n) {
+                        margin-left: 1%;
+                    }
+
+                    &:nth-child(3n + 1) {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+@media all and (max-width: 1699px){
+	
+	.page-products{
+		&.category-starter-kits,
+		&.category-dinnerware{
+			.columns{ width: 95%;margin-top:40px;}
+		}
+	}
+}
+@media all and (max-width: 1480px){
+	.product-item {
+		.volume-measurement { font-size: 13px;}
+	}
+	.swatch-option {
+		&.text { font-size: 13px; line-height: 14px;
+				&:before { top:2px;}
+		}
+	}
+}
+
+@media all and (max-width: 1399px){
+	.page-products{
+		&.category-starter-kits,
+		&.category-dinnerware{
+			.columns{ width: 90%;}
+		}
+		&.category-starter-kits {
+			.product-item-kit {
+				.product-item-info {
+					.product-item-container {
+						.grouped-product-options-info {top:30%;
+							.grouped-product-options-inner {
+								.product-item-description { margin-bottom: 8px;
+									p {margin: 0;}
+								}
+							}
+							
+						}
+					}
+
+				}
+			}
+		}
+	}
+	.category-dinnerware {
+		.dinner-configurable-options {
+			.option-title { margin: 0 0 8px 0;}
+		}
+		.products-list {
+			.product-item{
+				&.custom-section {
+					.element-text {top:28% !important;}
+				}
+			}
+		}
+	}
+	.category-storage {
+		&.page-products {
+			.product-item {
+				.product-item-details {
+					.product-item-volume-box { 
+						.product-item-name {  overflow: hidden; margin: 6px 0 0px; line-height: 17px; height: 17px;
+							 width:calc(~'(100% - 88px)');
+                   			 width:-moz-calc(~'(100% - 88px)');
+                   			 width:-webkit-calc(~'(100% - 88px)');
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media all and (max-width: 1366px){
+	.category-view {
+		.element-text {
+			p, 
+			b { font-size: 24px;}
+		}
+	}
+	.category-drinkware-bottles {
+		.configuration-container {top:25%;
+			.swatch-option{
+				&.text {margin: 0 0 8px;}
+			}
+			.swatch-box { padding-bottom: 80px;}
+		}
+	}
+	
+	.page-products{
+		&.category-starter-kits {
+			.product-item-kit{
+				&.custom-section { 
+					.section-container {
+						.text-content {
+							p { font-size: 20px;}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+
+
+@media all and (max-width: 1199px){
+	.page-products {
+		.columns { margin: 0;}
+		.products-grid {
+			.product-item { padding: 15px 10px; width: 50%;
+				&.custom-section{ width: 100%;
+					.section.adbanner-right {padding-bottom: 5%;}
+				}
+				
+
+			}
+		}
+
+		&.page-layout-2columns-left{
+			.column.main{width: 75%;margin-top:0;}
+			.sidebar{ width: 25%;
+				.filter-navigation { padding: 20px 10px 10px;}
+			}
+		}
+		.attribute-group { padding: 25px 10px 33px;}
+		&.kitchen-appliances {
+			.product-item {
+				&.custom-section { display: none;}
+				.price-box { position: relative; left: 0; margin: 0; right: inherit;}
+			}
+		}
+	}
+	
+	.category-dinnerware{
+		.products-list{
+			.product-item{
+				&-photo{width: 75%;}
+				&.custom-section {
+					.element-text {top:25% !important;}
+				}
+			}
+		}
+		.dinner-configurable-options{ width: 25%;}
+	}
+	.category-drinkware-bottles {
+		.configuration-container { width: 25%;}
+	}
+
+	
+
+}
+@media all and (max-width: 1024px){
+	.category-view {
+		.section-container {background-position: 0% 65%!important;}
+	}
+	.category-dinnerware{
+		.dinner-configurable-options{ top:6%;}
+		.products-list {
+			.product-item{
+				&.custom-section {
+					.element-text {top:18% !important;
+						p {font-size: 40px;}
+					}
+				}
+			}
+		}
+	}
+	.page-products {
+		&.kitchen-appliances {
+			.sidebar {
+				.filter-navigation { padding: 40px 10px 10px;}
+			}
+		}
+		&.category-starter-kits {
+			.product-item-kit {
+				.product-item-info {
+					.product-item-container {
+						.grouped-product-options-info {top:25%;}
+						}
+				}
+			}
+		}
+	}
+
+	
+
+}
+
+@media all and (max-width: 991px){
+	.product {
+ 		&-item {
+			&-actions {
+                .actions-secondary { right: 3px; top:1px;
+		            > .action {
+                      	&.towishlist{ 
+                      		&:before { font-size:16px; }
+                      	}
+                    }
+                }
+            }
+        }
+    }
+    .page-products {
+    	.product-item {
+    		.tocart{ right:4px; height: 18px; width: 16px;
+    			&:before { font-size:16px; }
+    		}
+    		
+    	}
+    	.products-grid {
+    		.products {margin: 0 5px;}
+			.product-item { padding: 15px 5px; width: 50%;}
+		}
+    }
+
+
+	.category-view {
+		.element-text { width: 100%; margin-left: 0; }
+	}
+	.page-products {
+		.columns {padding-left:0;padding-right:0;}
+		&.page-layout-2columns-left {
+			.column.main { width: 100%; padding-left: 0;padding-right: 0;}
+		}
+		.product-item {
+			.product-item-details {
+				.product-item-volume-box { width: 100%;}
+			}
+			.price-box { position: relative; left: 0; float: left; margin: 0;  }
+		}
+		&.kitchen-appliances {
+			.products  {margin: 0 10px;
+				.product-item {
+					.product-item-description { 
+						ul { padding: 0.6em 0 0 1.2em; list-style: outside none disc; clear: both; }
+					}
+				}
+			}
+		}
+		
+		&.category-starter-kits {
+			.product-item-kit { margin: 0 0 40px;
+				&.custom-section {margin: 0 0 60px;
+					.section-container {
+						.text-content { top:15%;
+							p { font-size: 18px;}
+						}
+					}
+				}
+				.product-item-info {
+					.product-item-container {
+						.big-image { width: 66.6667%;}
+						.small-image{ width: 33.3333%;
+							&.last { display:none;}
+						}
+						.grouped-product-options-info { width: 100%; position: relative; background: #fff; padding: 0; text-align: left;
+							.grouped-product-options-inner { padding: 10px 0 0 0;
+								.product-item-name { display: inline-block;
+									a { font-size: 14px;}
+								}
+								.grouped-product-pieces {  float: right; margin: 0; font-size: 14px;}
+								.product-item-description { margin: 0; display: block;}
+								.info-product-item-link { display: none;}
+							}
+							
+						 }
+					}
+				}
+			}
+		}
+		&.category-drinkware {
+			.product-item{
+				.product-item-details {min-height: 68px;}
+				.old-price,
+				.special-price {
+					.price { font-size: 18px; }
+				}
+			}
+		}
+	}
+	
+	.category-storage {
+		&.page-products {
+			.product-item {
+				.product-item-details {
+					.product-item-volume-box { 
+						.product-item-name {  overflow: inherit; margin: 7px 0 4px; line-height: 16px; height: auto;width:100%;}
+					}
+					.swatch-attribute-options { margin-bottom: 2px;}
+				}
+			}
+		}
+	}
+
+
+	
+}
+
+@media all and (min-width: 1280px) and (max-width: 1619px){
+	.category-dinnerware{
+		.action.explore{
+			.lib-font-size(16);
+			margin-top: 10px;
+		}
+	}
+	.page-products {
+		.product-item{
+			&.custom-section {
+				.section.adbanner-right { padding-bottom: 10%;}
+			}
+		}
+	}
+}
+
+
+@media all and (max-width: 899px){
+	.category-dinnerware{
+		.products-list{
+			.product-item{
+				&-photo{width: 100%;}
+				&.custom-section { margin-bottom: 60px; width: 100%; 
+					.section { 
+						&.beauty-strength-video { height: 50vh;
+							.element-text {
+								p { font-size: 30px;}
+								.vid-banner-subtext{ line-height: 1.42857;
+										a { font-size: 18px;}
+									}
+							}
+							.iframe-video-container {
+								iframe { padding: 8%;}
+							}
+						}
+					}
+				}
+			}
+			.product-item-details{
+				.check-range-text { display:block; float: right; margin-top: 10px; 
+						a{text-decoration: underline; font-size: 14px; color: #000; cursor: pointer;
+							&:hover { text-decoration:underline;}
+						}
+						
+				}
+			}
+		}
+		.dinner-configurable-options{ display: none;}
+		.product-item-description { display: none;}
+		
+		.product.name {
+			a { font-size: 14px; font-weight: 400;}
+		}
+	}
+	.category-drinkware-bottles{
+		.mobile-popup-product-description {padding:12px;background: #e9e9e9; text-align: center;border-bottom: 1px solid #bababa;
+			.product-item-description { display: block; color: #696969; font-size: 16px;}
+		}	
+		.mobile-popup-product-color {padding:12px;background: #e9e9e9; text-align: center; border-bottom: 1px solid #bababa;
+				.color-pick { display: inline-block; font-size: 16px; color: #004778; margin-right: 20px; vertical-align: top; }
+				.colors-options { display: inline-block;
+						.swatch-option { width: 20px; height: 20px; border-radius: 100px; display: inline-block; margin: 2px 5px 0; 
+										float: none; outline: 0; min-width: 20px; border: 0; cursor: default;
+										&:hover {outline: 0; min-width: 20px; border: 0; margin: 2px 5px 0;width: 20px; height: 20px;}
+									}
+				}
+		}
+	}
+	.mobile-product-item-popup {
+		    background: rgba(0, 0, 0, 0.5);
+            bottom: 0;          
+            left: 0;
+            overflow: scroll;
+            padding: 0 10px;
+            position: fixed;
+            right: 0;
+            top: -100%;
+            height: 0; opacity:0;
+            z-index: 9999;
+            overflow-x: hidden;
+            overflow-y: auto;
+            opacity: 0; display: block;
+            transition: opacity 0.15s linear 0s;
+            -webkit-transition: opacity 0.15s linear 0s;
+            
+            &.show{
+                height: 100%;
+                opacity: 1;
+                top: 0; padding: 0 11px;
+                .mobile-popup-inner{
+                    transform: translate(0px, 0px);
+                    -webkit-transform: translate(0px, 0px);   
+                    margin:20px 0; padding: 0;  -webkit-box-shadow:0 3px 9px rgba(0,0,0,.5); box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);    
+                    .mobile-popup-product-image { padding: 40px 3% 0;
+
+                    }
+                    .mobile-popup-product-name {padding: 2px 3% 8px; font-size: 14px;
+                    	.product-item-name{ margin: 6px 0;
+                    		a { font-size: 14px; font-weight: 400;}
+                    		}
+                    }    
+                    .mobile-popup-product-options{
+                    	table {background: #e9e9e9;
+                    		thead {background: #f1f2f6;
+                    				tr {
+                    					th {border-bottom: 2px solid #ddd; line-height: 1.42857;font-size: 16px; color: #004778;  
+                    						padding: 12px; text-align: center; width: 25%; font-weight: 600;font-family: 'SourceSans-SemiBold';
+                    						 &:nth-child(2) {width: 45%;}
+                    					     &:nth-child(3) {width: 40%;}
+                    						
+                    					}
+                    				}
+                    			  }
+                    		tbody{
+                    			tr {
+                    				td { color: #696969; line-height: 1.42857; padding: 12px; border-top: 1px solid #bababa;font-size: 16px;
+                    					 text-align: center;width: 25%;
+                    					 &:nth-child(2) {width: 45%;}
+                    					 &:nth-child(3) {width: 40%;}
+                    					 .price-box {
+                    					 	.price-from,
+                    					 	.price-to { display: inline-block; margin: 0 2px;
+                    					 		.price-label {display: none;}
+                    					 	}
+                    					 }
+                    				 }
+                    				
+                    			}
+                    		}
+                    	}
+                    }      
+                }
+            }
+            .mobile-popup-inner{   background: #fff;
+                padding: 20px 10px 10px;
+                 transform: translate(0px, -25%);
+                -webkit-transform: translate(0px, -25%);
+                transition: transform 0.2s ease-out 0s;
+                -webkit-transition: transform 0.2s ease-out 0s;
+                .close-popup{
+                    background: transparent;
+                    color: #6d6b6c;
+                    font-family: verdana;
+                    font-weight: bold;
+                    height: 30px;
+                    line-height: 30px;
+                    position: absolute;
+                    right: 5px;
+                    text-align: center;
+                    top: 5px;
+                    width: 30px;
+                    z-index: 9;
+                    
+                }
+            }
+           
+	}
+	.category-drinkware-bottles{
+		.mobile-product-item-popup{
+			&.show{
+				.mobile-popup-inner{
+					.mobile-popup-product-options{
+						table {background: #e9e9e9;
+			        		thead {background: #e9e9e9;
+			        				tr {
+			        					th { width: 50%; color: #004778; font-size: 16px; text-align: center; border-bottom: 1px solid #bababa;
+			        						 &:nth-child(2) {width: 50%;}
+			        					  }
+			        				}
+			        			  }
+			        		tbody{
+			        			tr {
+			        				td { width: 50%;
+			        					 &:nth-child(2) {width: 50%;}
+			        				 }
+			        			}
+			        		}
+			        	}
+					}
+				}
+			}
+        	
+   		 }   
+   	}   
+
+	 
+}
+
+
+@media all and (max-width: 768px){
+	
+	.category-view {
+		.section-container {height: 80vh; background-position: 75% 45%!important;}
+		.element-text { top:15%!important;
+			p {
+				&:first-child { line-height:1.42857;}
+			}
+			p, 
+			b { font-size: 18px;}
+		}
+	}
+	.category-dinnerware{
+		.category-view {
+			.section-container { background-position: 35% 45%!important;}
+			.element-text {top:15% !important; }
+		}
+		.product-item-name {margin-top: 10px;}
+	}
+	.category-drinkware-bottles {
+		.product-item-name {margin-top: 8px;}
+		.products-list {
+			.product-item-details {
+				.check-range-text { margin-top: 6px; }
+			}
+		}
+	}
+	.category-drinkware{
+			.category-view {
+					.element-text {top:30% !important;}
+			}
+	}
+	.category-drinkware-bottles {
+		.category-view {
+			.section-container { background-position:60% 45% !important;  height: 75vh;}
+			.element-text { top:15%!important;}
+		}
+	}
+	
+	.page-products {
+		&.page-layout-2columns-left{
+			.sidebar {width: 100%;}
+		}
+		.product-item{
+			&.custom-section{
+				.element-text {
+					p,
+					b { font-size: 16px;}
+				}
+			}
+			.volume-measurement { font-size: 13px; margin-top: 1px;}
+		}
+
+		&.category-dinnerware {
+			.columns { margin-top: 20px;}
+		}
+		&.category-starter-kits {
+			.columns { margin-top: 20px; padding-top: 0;}
+		}
+		&.category-storage{
+			.category-view {
+				.section-container { height: 75vh; background-position: 88% 65% !important;}
+				.element-text { top:15%!important;}
+			}
+		}
+		&.category-starter-kit {
+			.category-view {
+				.section-container { height: 75vh; background-position: 75% 65% !important;}
+				.element-text { top:15%!important;}
+			}
+		}
+		&.kitchen-appliances {
+			.category-view {
+				.section-container { height: 75vh; background-position: 75% 65% !important;}
+				.element-text { top:10%!important;}
+				
+			}
+			.products {
+				.product-item {
+					.product-item-description { min-height: 122px;}
+				}
+			}
+		}
+		.attribute-group { padding-right: 5px; padding-left: 5px; 
+			span { font-size: 24px;}
+		}
+	}
+	
+	
+}
+@media all and (max-width: 767px){	
+	
+		.category-view {
+				.element-text {top:10% !important;width:90%; padding-right: 0; }
+		}
+		.category-drinkware{
+			.category-view {
+					.element-text {top:10% !important;}
+			}
+		}
+	   .page-products{
+		.columns { padding-top: 10px; padding-left:5px;padding-right:5px;}
+		.products-grid {
+			.product-item { padding: 0 5px 20px;
+				.close-iframe{height: 40px;	width: 40px;}
+				&.custom-section {width: 100%;margin: 0 0 25px;padding: 0 5px 0px;
+					.element-text { padding-right:0; }
+					.section-wrapper { overflow: hidden; height: 300px;}
+					img{width: 116% !important;	max-width:116%;	margin-left: -8%; margin-top: -4%;	}	
+					.section.adbanner-right,
+					.section.adbanner-left  {padding-bottom: 0;}
+		 		}
+			}
+		}
+		
+		.block-title.filter-title{
+			display: none;
+		}
+		.product-item{
+			.price-box{width: 100%;margin: 0;
+			}
+			&-name{
+				margin: 8px 0 0;
+			}
+			
+			
+		} 
+		.attribute-group { padding: 25px 5px 33px;}
+	} 
+	.category-dinnerware {
+		.products-list {
+			.product-item {margin-bottom:20px;}
+			.product-item-details {
+			.check-range-text { margin-top: 5px;}
+			}
+		}
+	}
+}
+
+
+
+@media all and (max-width: 640px){
+.page-products {
+	.products-grid {
+	 .product-item{
+		 &.custom-section {
+				img{width: 130% !important;	max-width:130%;	margin-left: -15%; }		
+		 }
+		}
+	  }		
+	}
+
+}
+
+@media all and (max-width: 540px){
+.page-products {
+	.products-grid {
+	 .product-item{
+		 &.custom-section {
+				img{width: 166% !important;	max-width:166%;	margin-left: -33%;}		
+		 }
+		 .product-item-details { min-height: 70px;}
+		}
+	  }		
+	  &.kitchen-appliances {
+			.products {
+				.product-item {
+					.product-item-description { min-height: 164px; max-height: 164px;
+						ul { padding: 10px 0 0 1.2em;}
+					}
+				}
+			}
+		}
+
+	}
+	.category-dinnerware{
+		.products-list{
+			.product-item{
+				&.custom-section {
+					.section { 
+						&.beauty-strength-video { height: 60vh;
+							.element-text {
+								p { font-size: 24px;}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+@media all and (max-width: 470px){
+	.page-products .products-grid .product-item.custom-section{
+		img{width: 190% !important;	max-width:190%;	margin-left: -45%;}		
+	}
+}
+
+@media all and (max-width: 417px){
+
+	.page-products .products-grid .product-item.custom-section{
+		img{width: 220% !important;	max-width:220%;	margin-left: -60%; margin-top: -10%;}	
+	}
+}
+
+@media all and (max-width: 400px){
+
+	.page-products .products-grid .product-item.custom-section{
+		img{ margin-top: -6%;}	
+	}
+
+	.category-storage {
+		&.page-products {
+			.product-item {
+				.product-item-details {
+					.swatch-attribute-options { margin-bottom: 0px;}
+				}
+			}
+		}
+	}
+	.swatch-option.text{
+        &:last-child { margin-right:0; padding-right: 0;}
+    }
+	
+}
+
+@media all and (max-width: 366px){
+
+	.page-products .products-grid .product-item.custom-section{
+		img{ margin-top: -4%;}	
+	}
+}
+
+@media all and (max-width: 359px){
+	.page-products .products-grid .product-item.custom-section{
+		.element-text { padding-right:0; left: 5% !important;}
+		img{width: 244% !important;	max-width:244%;	margin-left: -72%;}	
+	}
+}

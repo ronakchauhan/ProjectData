@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_PincodeZone::pincode_zone" title="Pincode Zone" translate="title" module="Ktpl_PincodeZone" sortOrder="80" parent="Ktpl_Common::common_nav" resource="Ktpl_PincodeZone::pincode_zone"/>
+
+        <add id="Ktpl_PincodeZone::manage_zones" title="Manage Zones" module="Ktpl_PincodeZone" resource="Ktpl_PincodeZone::manage_zones" parent="Ktpl_PincodeZone::pincode_zone" action="pincodezone/zone"/>
+    </menu>
+</config>

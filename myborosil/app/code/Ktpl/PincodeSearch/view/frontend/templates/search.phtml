@@ -1,0 +1,20 @@
+<div class="check-product-availability">
+    <h3><?php echo __("Enter your pincode to check availability.");?></h3>
+    <div class="cellStyle">
+        <div class="inputField">
+            <input id="pincode_number" class="pincode-search" name="pincode_number" placeholder="<?php echo __('eg.400025'); ?>" type="number">
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="cellStyle">
+        <div class="checkTxt"></div>
+    </div>
+</div>
+<script>
+    require([
+        'jquery',
+        'Ktpl_PincodeSearch/js/pincode'
+    ], function($, pincode) {
+        pincode.pincodeData('<?php echo $block->getSubmitUrl() ?>');
+    }); 
+</script>

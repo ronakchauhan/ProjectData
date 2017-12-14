@@ -1,0 +1,51 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php 
+	$login = $block->getCustomerLoggedIn();
+	$_logInUrl = 'customer/account/login';
+	$buttonTitle = "Login";
+	$_isLoggedIn = "no";
+	if($login) {
+		$_isLoggedIn = "yes";
+		$buttonTitle = "Logout";
+		$_logInUrl = 'customer/account/logout';
+	}
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"delay":0, "responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+    	<?php /* @escapeNotVerified */ echo $block->getChildHtml('catalog.topnav.left'); ?>
+        <?php /* @escapeNotVerified */ echo $_menu; ?>
+        <?php /* @escapeNotVerified */ echo $block->getChildHtml('catalog.topnav.right'); ?>
+    </ul>
+	<div class="menu-account" style="display: none;">
+		<ul>
+			<li class="menu-account-icon">
+				<a href="<?php echo $block->getUrl($_logInUrl);?>" id="minilogin-login" class="minilogin-login button btn <?php echo $buttonTitle;?>">
+					<i aria-hidden="true" class="fa fa-user-o"></i>				
+				</a>  				
+			</li>
+			<li class="menu-wishlist-icon">
+				<a href="<?php echo $this->getUrl('wishlist') ?>" class="wishlist-icon">
+					<i aria-hidden="true" class="fa fa-heart-o"></i>		
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>

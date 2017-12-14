@@ -1,0 +1,240 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@checkout-payment-option-title__border: @checkout-payment-method-title__border;
+@checkout-payment-option-title__color: @link__color;
+@checkout-payment-option-title__padding: @checkout-payment-method-title__padding;
+@checkout-payment-option-title-mobile__padding: @checkout-payment-method-title-mobile__padding;
+
+@checkout-payment-option-title-icon__font-size: 32px;
+@checkout-payment-option-title-icon__line-height: 16px;
+@checkout-payment-option-title-icon__margin: 0;
+@checkout-payment-option-title-icon__color: @minicart-icons-color;
+@checkout-payment-option-title-icon__hover__color: @primary__color;
+
+@checkout-payment-option-content__padding__xl: @checkout-payment-method-content__padding__xl;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .checkout-payment-method {
+		background: #fcfcfc;
+		border: 1px solid #eeeeee;
+		padding: 35px 65px 0;       
+		
+		.step-title{
+			background: transparent;
+			border: medium none;
+			color: @color-theme-gray;
+			.lib-font-size(18);
+			font-weight: 600;	font-family: 'SourceSans-SemiBold';
+			margin-top: 37px;
+			margin-bottom: 10px;
+			padding: 0 !important;
+			text-transform: uppercase;
+		}
+
+        .payment-option-title {
+            padding: 0 0 10px;			
+			color: @color-theme-gray;
+			.lib-font-size(18);
+			font-weight: 600;font-family: 'SourceSans-SemiBold';
+			padding: 0;
+			letter-spacing: 0.5px;
+			margin-bottom: 8px;
+			text-transform: uppercase;
+        }
+
+        .payment-option-content {
+            .actions-toolbar{
+				display: inline-block;
+				vertical-align: top;
+				> .primary{
+					.action{
+						background: #b0b0b0;
+						height: 40px;
+						min-width: 120px;
+						.lib-font-size(18);
+						font-weight: 600;font-family: 'SourceSans-SemiBold';
+						transition: all 0.2s ease-in-out 0s;
+						-webkit-transition: all 0.2s ease-in-out 0s;
+						&:hover{
+							background: @color-theme-blue;
+						}
+					}
+				}
+			}
+			input[type="text"]{
+				border-color: #cacaca;
+				color: @color-theme-gray;
+				.lib-font-size(15);
+				font-weight: 600;font-family: 'SourceSans-SemiBold';
+				text-transform: uppercase;
+			}
+        }
+
+        .payment-option-inner {
+            display: inline-block;
+			margin: 0 -3px 0 0;
+			min-width: 285px;
+        }
+		
+		
+
+        .credit-card-types {
+            padding: 0;
+            .item {
+                display: inline-block;
+                list-style: none;
+                margin: 0 @indent__xs 0 0;
+                vertical-align: top;
+
+                &._active {
+                    font-weight: @font-weight__bold;
+
+                    img {
+                        -webkit-filter: grayscale(0%);
+                    }
+                }
+
+                &._inactive {
+                    opacity: .4;
+                }
+
+                span {
+                    display: inline-block;
+                    padding-top: 6px;
+                    vertical-align: top;
+                }
+            }
+
+            img {
+                -webkit-filter: grayscale(100%); // For Webkit browsers
+                -webkit-transition: all .6s ease; // Fade to color for Chrome and Safari
+            }
+        }
+
+        .ccard {
+            .legend {
+                &:extend(.abs-visually-hidden all);
+            }
+
+            .fields {
+                > .year {
+                    padding-left: @indent__xs;
+                }
+
+                .select {
+                    padding-left: @indent__xs;
+                    padding-right: @indent__xs;
+                }
+            }
+
+            .month {
+                .select {
+                    width: 140px;
+                }
+            }
+
+            .year {
+                .select {
+                    width: 80px;
+                }
+            }
+
+            .number {
+                .input-text {
+                    width: 225px;
+                }
+            }
+
+            > .field.cvv {
+                > .control {
+                    display: inline-block;
+                    padding-right: @indent__base;
+                }
+            }
+
+            .cvv {
+                .label {
+                    display: block;
+                }
+
+                .input-text {
+                    width: 55px;
+                }
+            }
+
+            &.fieldset {
+                > .field {
+                    .fields.group.group-2 {
+                        .field {
+                            width: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+	
+	.payment-option{
+		&.credit{
+			margin: 40px 0;	
+			.messages{
+				margin: 0 0 10px;
+			}
+			.payment-option-content{
+				display: block !important;
+			}
+			.payment-option-inner{
+				color: #474747;
+				.lib-font-size(17);
+				padding-top: 7px;
+			}
+		}
+	}
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-payment-method {
+        .payment-option {
+            .lib-css(margin, 0 -(@checkout-payment-option-title-mobile__padding));
+
+            .payment-option-title {
+                .lib-css(padding, @checkout-payment-option-title-mobile__padding)
+            }
+
+            .payment-option-content {
+                .lib-css(padding, 0 @checkout-payment-option-title-mobile__padding @indent__base);
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-payment-method {
+		.payment-option-content {
+            .payment-option-inner {
+                + .actions-toolbar {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}

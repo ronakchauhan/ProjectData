@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="blog_account"/>
+    <body>
+		<referenceBlock name="sidebar.additional" remove="true"/>
+		<referenceContainer name="sidebar.main">
+            <block class="Ktpl\Blog\Block\Sidebar\Categories" name="blog.sidebar.wishlist.category" template="sidebar/wishlist/categories.phtml" before="-">
+                <action method="setCacheLifetime">
+                    <argument name="time" xsi:type="string">86400</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Ktpl\Blog\Block\Post\Wishlist" name="wishlist.blog"  before="-" template="post/wishlist/list.phtml">
+            	<block class="Ktpl\Blog\Block\Post\PostList\Item" name="blog.posts.list.item" template="post/list/item.phtml">
+	                <block class="Ktpl\Blog\Block\Post\Info" name="blog.post.info" template="post/info.phtml" />
+	                <action method="setPostInfoBlockName">
+	                    <argument name="name" xsi:type="string">blog.post.info</argument>
+	                </action>
+	            </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

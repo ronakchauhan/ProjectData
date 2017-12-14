@@ -1,0 +1,29 @@
+/**
+ * 	Mixins Override
+ */
+
+.checkbox-uncheck{  
+	border: 1px solid #cacaca;	
+	background: transparent;
+	box-sizing: border-box;
+	bottom: 1px;
+	content: " ";	 
+	height: 21px;
+	left: 0;
+	top:0;
+	margin-right: 10px;
+	position: absolute;
+	width: 21px;
+	cursor: pointer;
+	z-index: 9;
+}
+.checkbox-checked{
+	border: none;	
+	background: transparent url('../images/check.svg') no-repeat center center;
+    background-size: 10px 8px;
+	border: 1px solid #cacaca;
+	.lib-font-size(15);
+    left: 0;
+    top: 0;
+	color: @color-black;	
+}

@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!--
+
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+
+ -->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="buttons" xsi:type="array">
+            <item name="preview" xsi:type="string">Plumrocket\PrivateSale\Block\Adminhtml\Category\Edit\PreviewButton</item>
+        </item>
+    </argument>
+
+    <fieldset name="content">
+    </fieldset>
+
+    <fieldset name="flashsale_event">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Flash Sale Event</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">50</item>
+            </item>
+        </argument>
+        <field name="privatesale_date_start">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="dataType" xsi:type="string">datetime</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="backend" xsi:type="object">Magento\Eav\Model\Entity\Attribute\Backend\Datetime</item>
+                    <item name="label" xsi:type="string" translate="true">Start Date</item>
+                </item>
+            </argument>
+        </field>
+        <field name="privatesale_date_end">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataType" xsi:type="string">datetime</item>
+                    <item name="options" xsi:type="array">
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="backend" xsi:type="object">Magento\Eav\Model\Entity\Attribute\Backend\Datetime</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">End Date</item>
+                </item>
+            </argument>
+        </field>
+        <field name="privatesale_email_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="label" xsi:type="string" translate="true">Email Image</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
+                    <item name="required" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="prprivatesale/category_image/emailImage"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="privatesale_event_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="label" xsi:type="string" translate="true">Event Image</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
+                    <item name="required" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">35</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="prprivatesale/category_image/eventImage"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="privatesale_before_event_start">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Plumrocket\PrivateSale\Model\Attribute\Source\Category\Beforeeventstart</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Display Products Before Event Starts</item>
+                </item>
+            </argument>
+        </field>
+        <field name="privatesale_event_end">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Plumrocket\PrivateSale\Model\Attribute\Source\Category\Eventend</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">When Event Ends</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+
+    <fieldset name="privatesale_event">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Private Sale Event</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">55</item>
+            </item>
+        </argument>
+
+        <field name="privatesale_private_event">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Plumrocket\PrivateSale\Model\Attribute\Source\Category\PrivateEvent</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Private Event</item>
+                    <item name="notice" xsi:type="string" translate="true">If enabled, this category will become a private sale event and will be accessible only for selected Customer Groups. Please note that if you have "Splash Page" enabled, all categories and products will automatically become private events.</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="privatesale_restrict_cgroup">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Plumrocket\PrivateSale\Model\Attribute\Source\Customergroups</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">65</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="label" xsi:type="string" translate="true">Accessible for Customer Groups</item>
+                    <item name="notice" xsi:type="string" translate="true">Please select Customer Group(s) that will have access to this private event.</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="privatesale_event_landing">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Plumrocket\PrivateSale\Model\Attribute\Source\EventLanding</item>
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">70</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Private Event Landing Page</item>
+                    <item name="notice" xsi:type="string" translate="true">Display this Landing Page to Customer Groups you did not select above. Customers without access to this private event will be redirected here.</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

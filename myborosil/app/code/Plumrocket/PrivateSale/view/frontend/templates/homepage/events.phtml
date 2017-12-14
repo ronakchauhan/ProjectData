@@ -1,0 +1,42 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php $_category = $this->getCategory(); ?>
+
+<?php if ($_category): ?>
+	<div class="page-title category-title">
+	    <h1><?php echo $this->helper('catalog/output')->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+	</div>
+
+	<?php if($_description=$_category->getDescription()): ?>
+	    <div class="category-description std">
+	        <?php echo $this->helper('catalog/output')->categoryAttribute($_category, $_description, 'description') ?>
+	    </div>
+	<?php endif; ?>
+<?php endif; ?>
+
+<div class="shops-holder endingsoon">
+
+	<?php echo $this->getChildHtml('homepage.default'); ?>
+	<?php echo $this->getChildHtml('homepage.group'); ?>
+	<?php echo $this->getChildHtml('homepage.ending.soon'); ?>
+	<?php echo $this->getChildHtml('homepage.coming.soon'); ?>
+
+<?php if (!$this->getEventsCount()): ?>
+	<p class="note-msg"><?php echo __('There are no events.') ?></p>
+<?php endif; ?>

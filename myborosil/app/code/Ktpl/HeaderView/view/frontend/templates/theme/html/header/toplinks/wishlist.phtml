@@ -1,0 +1,24 @@
+<div class="header-wishlist" data-bind="scope: 'wishlist'">
+	<a href="<?php echo $this->getUrl('wishlist') ?>" data-bind="css: { 'wishlist-counter': wishlist().counter } ">
+		<i class="fa fa-heart-o" aria-hidden="true"></i>
+		<?php echo $block->escapeHtml($block->getLabel()) ?>
+        <!-- ko if: wishlist().counter -->
+        <span data-bind="text: wishlist().counter" class="counter qty"></span>
+        <!-- /ko -->
+	</a>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "wishlist": {
+                        "component": "Magento_Wishlist/js/view/wishlist"
+                    }
+                }
+            }
+        }
+    }
+
+</script>

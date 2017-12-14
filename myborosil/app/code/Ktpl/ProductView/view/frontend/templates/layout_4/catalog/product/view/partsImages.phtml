@@ -1,0 +1,19 @@
+<?php
+$galleryImages = $block->getGalleryImages();
+$_product = $block->getProduct();
+?>
+<div class="product-promo-block">
+	<!-- <div class="block-title title">
+        <strong><?php // echo $block->escapeHtml($_product->getName()) ?></strong>
+    </div> -->
+	
+		<ul>
+	<?php foreach ($galleryImages as $key => $image):?>
+		<?php if($image->getPartsimage()):?>
+			<li>
+				<img src="<?php echo $image->getMediumImageUrl();?>" alt="product-img" class="product-image-parts-img">
+			</li>
+		<?php endif;?>
+	<?php endforeach;?>
+</ul>
+	</div>

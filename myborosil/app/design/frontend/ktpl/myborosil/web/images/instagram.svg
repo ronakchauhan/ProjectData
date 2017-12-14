@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="396px" height="396px" viewBox="98.14 223.445 396 396" enable-background="new 98.14 223.445 396 396"
+	 xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="295.615" y1="634.1094" x2="295.615" y2="200.9855">
+	<stop  offset="0.0969" style="stop-color:#FFD879"/>
+	<stop  offset="0.1539" style="stop-color:#FCCB76"/>
+	<stop  offset="0.2583" style="stop-color:#F5AA6C"/>
+	<stop  offset="0.3976" style="stop-color:#E9755E"/>
+	<stop  offset="0.449" style="stop-color:#E45F58"/>
+	<stop  offset="0.6786" style="stop-color:#D22A9C"/>
+	<stop  offset="1" style="stop-color:#6968DF"/>
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M484.324,595.588c0,8.081-6.24,14.632-13.937,14.632H120.841c-7.697,0-13.936-6.551-13.936-14.632
+	V246.855c0-8.081,6.239-14.632,13.936-14.632h349.547c7.696,0,13.937,6.551,13.937,14.632V595.588z"/>
+<g>
+	<path fill="#FFFFFF" d="M364.587,573.034H230.691c-46.954,0-85.146-38.193-85.146-85.136V354c0-46.961,38.191-85.154,85.146-85.154
+		h133.896c46.954,0,85.146,38.192,85.146,85.154v133.898C449.733,534.841,411.541,573.034,364.587,573.034z M230.691,289.783
+		c-35.402,0-64.21,28.806-64.21,64.217v133.898c0,35.393,28.808,64.2,64.21,64.2h133.896c35.4,0,64.208-28.808,64.208-64.2V354
+		c0-35.411-28.808-64.217-64.208-64.217H230.691z"/>
+</g>
+<g>
+	<path fill="#FFFFFF" d="M297.637,498.734c-42.894,0-77.783-34.9-77.783-77.794c0-42.895,34.89-77.774,77.783-77.774
+		c42.897,0,77.795,34.879,77.795,77.774C375.433,463.834,340.534,498.734,297.637,498.734z M297.637,364.102
+		c-31.342,0-56.847,25.494-56.847,56.838c0,31.343,25.505,56.857,56.847,56.857c31.355,0,56.86-25.515,56.86-56.857
+		C354.497,389.597,328.992,364.102,297.637,364.102z"/>
+</g>
+<circle fill="#FFFFFF" cx="381.21" cy="338.096" r="17.342"/>
+</svg>

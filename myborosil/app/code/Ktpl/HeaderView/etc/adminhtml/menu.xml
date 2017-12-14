@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_HeaderView::config_header_cms" title="Header" translate="title" module="Ktpl_HeaderView" sortOrder="60" parent="Magento_Backend::content_elements" action="adminhtml/system_config/edit/section/header" resource="Ktpl_HeaderView::config_header_cms"/>
+    </menu>
+</config>

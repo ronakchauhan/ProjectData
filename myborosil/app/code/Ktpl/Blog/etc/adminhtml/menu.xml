@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ktpl_Blog::elements" title="Blog" module="Ktpl_Blog" parent="Ktpl_Common::common_nav" sortOrder="10"  resource="Ktpl_Blog::elements"/>
+
+        <add id="Ktpl_Blog::post" title="Posts" module="Ktpl_Blog" parent="Ktpl_Blog::elements" sortOrder="10" action="blog/post" resource="Ktpl_Blog::post"/>
+
+        <add id="Ktpl_Blog::category" title="Categories" module="Ktpl_Blog" parent="Ktpl_Blog::elements" sortOrder="20" action="blog/category" resource="Ktpl_Blog::category"/>
+
+        <add id="Ktpl_Blog::import" title="Import" module="Ktpl_Blog" parent="Ktpl_Blog::elements" sortOrder="30" action="blog/import" resource="Ktpl_Blog::import"/>
+
+        <add id="Ktpl_Blog::config_blog" title="Configuration" module="Ktpl_Blog" parent="Ktpl_Blog::elements" sortOrder="40" action="adminhtml/system_config/edit/section/mfblog" resource="Ktpl_Blog::config_blog"/>
+
+        <add id="Ktpl_Blog::elements_tags" title="Blog Tags" module="Ktpl_Blog" parent="Ktpl_Common::common_nav" sortOrder="10"  resource="Ktpl_Blog::elements_tags"/>
+
+        <add id="Ktpl_Blog::tags" title="Tags" module="Ktpl_Blog" parent="Ktpl_Blog::elements_tags" sortOrder="10" action="blog/tag" resource="Ktpl_Blog::tag"/>
+
+        <add id="Ktpl_Blog::tag_type" title="Tags Categories" module="Ktpl_Blog" parent="Ktpl_Blog::elements_tags" sortOrder="20" action="blog/tag_type" resource="Ktpl_Blog::tag_type"/>
+    </menu>
+</config>

@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<small class="copyright">
+    <!--<span><?php /* @escapeNotVerified */ //echo $block->getCopyright() ?></span>-->
+	<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_copyright')->toHtml();?>
+</small>
+
+<div class="goToTop">
+    <i aria-hidden="true" class="fa fa-arrow-circle-up"></i>
+</div>
+
+<script>
+require(['jquery', 'OwlCarousel'], function($){
+	$(function() {
+	   $(window).scroll(function() { 
+			if($(this).scrollTop() > 500) { 
+				$('.goToTop').addClass("showGototop");    
+			}else{
+				$('.goToTop').removeClass("showGototop");
+			}
+		});
+	   if($(".register-product").length > 0)
+        {
+            $("body").addClass("register-block-added");
+        }
+	});
+	 $(".goToTop").click(function () {
+		   $("body,html").animate({scrollTop: 0}, 800)
+	 });
+  });
+</script>

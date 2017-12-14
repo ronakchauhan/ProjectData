@@ -1,0 +1,1302 @@
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+
+html {
+   -ms-overflow-style: scrollbar;
+}
+
+#bg {
+	width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    vertical-align: top;
+    position: fixed;
+    overflow: hidden;
+    outline: none;
+    z-index: -1;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+}
+
+
+#prpop-addedoverlay {
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 2010;
+	background-color: black;
+	filter: alpha(opacity=60);
+	opacity: 0.6;
+	display: none;
+}
+
+/*=== therms of holder ===*/
+.prpop-temrs-holder {
+	background-color: white;
+	color: black;
+	height: 100%;
+	padding: 0 15px;
+}
+
+.prpop-temrs-holder a {
+	color: #39C;
+	text-decoration: underline;
+}
+
+.prpop-temrs-holder #popup_logo {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.prpop-temrs-holder #popup_logo img {
+	display: inline;
+}
+
+.prpop-pop-up-form {
+	display:none; 
+	left: 0px;
+	top: 0px; 
+	position:fixed; 
+	width: 100%; 
+	z-index: 2020; 
+	height:100%; 
+	color:#666666; 
+	text-align:left;
+	overflow-y: auto;
+}
+
+
+#prpop-pop-up-bg {
+	max-width: 1600px;
+	font-size: 12px;
+	padding: 10% 5% 5% 5%;
+	margin: 0 auto;
+	color: #444;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#prpop-pop-up-bg:before,
+#prpop-pop-up-bg:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#prpop-pop-up-bg * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#prpop-pop-up-bg .prpop-splash-container {
+	padding-bottom: 18px;
+}
+
+#prpop-pop-up-bg ul.prpop-form-list {
+	padding-left: 0px;
+	list-style: none;
+}
+		
+
+/*=== main styles ===*/
+#prpop-pop-up-bg a {
+	color: #3399cc;
+	text-decoration: underline;
+}
+
+#prpop-pop-up-bg a:hover {
+	text-decoration: none;
+}
+
+#prpop-pop-up-bg input[type="checkbox"] {
+	vertical-align: middle !important;
+    margin: 0;
+    float: none;
+}
+
+#prpop-pop-up-bg label {
+	font-size: 12px;
+	line-height: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	vertical-align: middle !important;
+	display: inline-block;
+}
+
+#prpop-pop-up-bg .ml2p {
+	margin-left: 2%;
+}
+
+#prpop-pop-up-bg .mr2p { margin-right: 2%; }
+#prpop-pop-up-bg .mr3p { margin-right: 3%; }
+#prpop-pop-up-bg .mr4p { margin-right: 4%; }
+
+#prpop-pop-up-bg .one-div { width: 50%!important; margin: 0 auto; }
+
+#prpop-pop-up-bg .prpop-cf { 
+	display: block; 
+}
+
+#prpop-pop-up-bg .simple-form-logo-text {
+	display: none;
+}
+
+#prpop-pop-up-bg .prpop-cf:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+#prpop-pop-up-bg .prpop-mobile {
+	display: none;
+}
+
+#prpop-pop-up-bg .prpop-desktop {
+	display: block;
+}
+
+#prpop-pop-up-bg .prpop-required {
+	position: relative;
+}
+
+#prpop-pop-up-bg .prpop-required em {
+	position: absolute;
+	right: -7px;
+	color: red;
+}
+
+#prpop-pop-up-bg label.required:after {
+	font-family: inherit;
+}
+
+#prpop-pop-up-bg .fleft {
+	float: left;
+}
+
+#prpop-pop-up-bg .fright {
+	float: right;
+}
+
+#prpop-pop-up-bg .f-width {
+	width: 100%!important;
+}
+
+#prpop-pop-up-bg.wide-width {
+	max-width: 700px;
+}
+
+#prpop-pop-up-bg.limited-width {
+	max-width: 350px;
+} 
+
+#prpop-pop-up-bg .form-top-logo {
+	display: none;
+}
+
+#prpop-pop-up-bg .prpop-col2-set {
+	width: 50%;
+	padding: 0px;
+	margin: 21px 0;
+}
+
+	#prpop-pop-up-bg .prpop-account-login {
+		background-color: white;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set.right-block {
+		border-left: 1px solid #DDD;
+	}
+
+	#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-col2-set.right-block {
+		width: 100%!important;
+		border: 0px;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-formholder {
+		min-height: 270px;
+		padding: 0 21px 18px 21px;
+		position: relative;
+	}
+
+		#prpop-pop-up-bg .prpop-formholder .prpop-close-btn {
+			position: absolute;
+			right: 9px;
+			left: auto;
+			margin-right: 10px;
+			top: -9px;
+			text-decoration: none;
+			color: #727272;
+			font-size: 16px;
+		}
+		
+		#prpop-pop-up-bg .prpop-formholder .prpop-close-btn:hover {
+			color: #b6aba5;
+		}
+		
+		#prpop-pop-up-bg .prpop-col2-set .prpop-formholder p.prpop-required {
+			margin-top: 10px;
+			color: red;
+			float: left;
+			font-size: 11px;
+		}
+
+		#prpop-pop-up-bg .prpop-col2-set .prpop-formholder p.prpop-forgot-password {
+			margin-top: 10px;
+			text-align: right;
+			font-size: 11px;
+		}
+
+		#prpop-pop-up-bg .prpop-col2-set .prpop-formholder ul.prpop-form-list {
+			margin-top: 20px;
+		}
+
+		#prpop-pop-up-bg .prpop-col2-set .prpop-formholder ul.prpop-form-list li {
+			margin-top: 10px;
+		}
+
+ 		#prpop-pop-up-bg h2,
+		#prpop-pop-up-bg.simple-form-logo .legend {
+			padding: 0px 0px 15px 23px;
+			color: #3399cc;
+			font-weight: 400;
+			font-size: 15px;
+			text-transform: uppercase;
+			border-bottom: 1px solid #DDD;
+			background-image: url(../../../images/plumrocket/popuplogin/i_page2.gif);
+			background-repeat: no-repeat;
+		}
+		
+		#prpop-pop-up-bg .prpop-account-forgot #forgot-form .input-text,
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .input-text,
+		#prpop-pop-up-bg .prpop-col2-set .prpop-formholder .input-text,
+		#prpop-pop-up-bg div.field .input-text {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			border: 1px solid silver;
+			background: #FFFFFF;
+			font-size: 13px;
+			width: 100%;
+			padding: 0 5px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			border-radius: 0px;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			-webkit-appearance: none;
+			height: 30px;
+			line-height: 30px;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb select {
+			background: #fff;
+		}
+
+		#prpop-pop-up-bg .prpop-account-forgot #forgot-form select,
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb select,
+		#prpop-pop-up-bg .prpop-col2-set .prpop-formholder select {
+			height: 30px;
+			line-height: 30px;
+			width: 100%;
+			border: 1px solid silver;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .input-text.validation-failed {
+			border-color: red;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .input-text.validation-failed:focus {
+			outline-color: #ff7f7f;
+			-moz-outline-color: #ff7f7f;
+			-webkit-outline-color: #ff7f7f;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .dob-day,
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .dob-month {
+			width: 23%;
+			margin-right: 2%;
+			float: left;
+
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .dob-year {
+			width: 50%;
+			float: left;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb input[type="number"] {padding-right: 0;} 
+
+	#prpop-pop-up-bg .prpop-buttons-set {
+	    padding: 0;
+	    position: relative;
+	    margin: 15px auto 0;
+	    width: 80%;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set-bottom {
+		padding: 0px 21px 12px 21px;
+		margin-top: 0;
+	}
+
+		#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set-bottom a {
+			text-decoration: none;
+		}
+
+	.prpop-ajax-loader-wrapper {
+		width: 120px;
+		position: absolute;
+		right: 21px;
+		top: -15px;
+		text-align: right;
+		display: none;
+		height: 25px;
+	}
+
+	#prpop-pop-up-bg .prpop-account-create .prpop-buttons-set .prpop-ajax-loader,
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-buttons-set .prpop-ajax-loader,
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .prpop-ajax-loader {
+		margin: 5px 5px 0 0;
+		width: 100%;
+	}
+
+	#prpop-pop-up-bg .prpop-button,
+	#prpop-pop-up-bg .actions-toolbar button {
+		min-width: 120px;
+		background-color: #3399cc;
+		display: inline-block;
+		padding: 7px 15px;
+		height: 35px;
+		border: 0;
+		color: #FFFFFF;
+		font-size: 12px;
+		font-weight: 400;
+		font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+		line-height: 21px;
+		text-align: center;
+		text-transform: uppercase;
+		vertical-align: middle;
+		white-space: nowrap;
+		margin-top: 12px;
+		line-height: -moz-block-height;
+		border-radius: 0px;
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .prpop-button {
+		float: right;
+	}
+
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-buttons-set .prpop-button:hover,
+	#prpop-pop-up-bg .prpop-account-create .prpop-buttons-set .prpop-button:hover,
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .prpop-button:hover {
+		cursor: pointer;
+		background-color: #2e8ab8;
+	}
+
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-buttons-set .prpop-button:focus,
+	#prpop-pop-up-bg .prpop-account-create .prpop-buttons-set .prpop-button:focus,
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .prpop-button:focus {
+		border: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+		outline: none;
+	} 
+
+
+/*=== account create ===*/
+#prpop-pop-up-bg .prpop-account-create {
+	background-color: white;
+	padding: 21px 0;
+}
+
+	#prpop-pop-up-bg .prpop-account-create .prpop-ajax-loader-wrapper {
+		width: 100%;
+	    margin: 0;
+	    top: 0;
+    	left: 0;
+    	height: 0;
+	    position: relative;
+	    display: none;
+	}
+		#prpop-pop-up-bg .prpop-account-create .prpop-ajax-loader-wrapper img {
+			left: 50%;
+		    margin-left: -55px;
+		    position: absolute;
+		}
+
+	#prpop-pop-up-bg .prpop-account-create .registration-description p {
+		margin: 0;
+	}
+
+	#prpop-pop-up-bg .prpop-account-create .prpop-formholder {
+		min-height: 270px;
+		padding: 0px 21px;
+		position: relative;
+	}
+
+		#prpop-pop-up-bg .prpop-reg-success .prpop-formholder h2,
+		#prpop-pop-up-bg .prpop-account-create .prpop-formholder h2 {
+			margin-bottom: 20px;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form p {
+			margin-top: 10px;
+		}
+
+		#prpop-pop-up-bg .prpop-account-forgot #forgot-form .prpop-columb,
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb {
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-rowline {
+			margin-top: 5px;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb ul.prpop-form-list {
+			margin: 0 -1%;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb ul.prpop-form-list li {
+			width: 50%;
+			float: left;
+			position: relative;
+			padding: 0 1%;
+			margin-bottom: 10px;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb ul.prpop-form-list li.row-special {
+			width: 100%;
+			margin-bottom: 0;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .prpop-gerden-field {
+			margin-top: 22px;
+			height: 25px;
+		}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .prpop-gerden-field label {
+			margin-right: 15px;
+		}
+
+		#prpop-pop-up-bg .prpop-account-forgot .prpop-buttons-set .prpop-back-hld,
+		#prpop-pop-up-bg .prpop-account-create .prpop-buttons-set .prpop-back-hld {
+			float: left;
+			margin-top: 20px;
+		}
+
+#prpop-pop-up-bg .prpop-reg-success {
+	background-color: white;
+	padding: 21px 0;
+}
+
+		#prpop-pop-up-bg .prpop-reg-success .prpop-formholder p {
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+
+/*=== account forgot ===*/
+#prpop-pop-up-bg .prpop-forgot-success,
+#prpop-pop-up-bg .prpop-account-forgot {
+	background-color: white;
+	padding: 21px 0;
+}
+
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-formholder,
+	#prpop-pop-up-bg .prpop-forgot-success .prpop-formholder {
+		position: relative;
+	}
+
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-formholder h2,
+	#prpop-pop-up-bg .prpop-forgot-success .prpop-formholder h2 {
+		margin-bottom: 20px;
+	}
+
+	#prpop-pop-up-bg .prpop-account-forgot #forgot-form p {
+		margin-bottom: 10px;
+	}
+
+
+/*=== terms of services ===*/
+#prpop-overlay-box {
+	background: white;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	min-height: 100%;
+	z-index: 100;
+	display: none;
+	z-index: 2100;
+}
+
+#prpop-pop-up-bg #prpop-for_messages_popup {
+	background-color: #F99 !important;
+	margin-bottom: 15px;
+	padding: 5px;
+	color: #A21313;
+}
+
+	#prpop-pop-up-bg #prpop-for_messages_popup .error-msg {
+		background-color: inherit !important; 
+		background-image: none !important;
+		padding: 0 !important;
+		border: none !important;
+		font-style: normal !important;
+		color: white  !important;
+		font-size: 12px !important;
+	}
+
+	#prpop-pop-up-bg #prpop-for_messages_popup .messages li {
+		margin: 0 !important;
+		display: inline-block;
+	}
+	#prpop-pop-up-bg #prpop-for_messages_popup .messages li.close {
+		float: right;
+	}
+
+	#prpop-pop-up-bg #prpop-for_messages_popup .messages {
+		margin: 0;
+	    background: inherit !important;
+	    color: #fff;
+	    padding: 0;
+	}
+	
+	#prpop-pop-up-bg #prpop-for_messages_popup .messages ul {
+		text-align: center;
+		background: inherit !important;
+	}
+	
+	#prpop-pop-up-bg #prpop-for_messages_popup .messages li li {
+		background: inherit !important;
+		padding: 5px 0 0 0;
+		display: inline-block;
+		margin-right: 20px;
+	}
+	
+	#prpop-pop-up-bg #prpop-for_messages_popup .messages li li:before,
+	#prpop-pop-up-bg #prpop-for_messages_popup .messages li li:after,
+	#prpop-pop-up-bg #prpop-for_messages_popup .messages .error-msg li {
+		border: none !important;
+		border-left: none !important;
+		background: none !important;
+	}
+
+/*=== facebook login ===*/
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .spacer {
+	text-align: center;
+	margin: 15px auto 7px auto;
+	z-index: 1;
+	width: 60%;
+}
+
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .spacer .border {
+	float: left;
+	border-top: 1px solid #DDD;
+	width: 45%;
+}
+
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .spacer .text_or {
+	z-index: 2;
+	background: inherit;
+	margin: -8px auto 0 auto;
+	width: 10%;
+	color: #b2b2b2;
+	float: left;
+}
+
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .facebook_login_button {
+	float: left;
+	margin-top: 12px;
+}
+
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .fb_button_ps {
+	display: block;
+	height: 35px;
+	font-size: 12px;
+	font-weight: 400;
+	font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+	color: white;
+	float: left;
+}
+
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .fb_button_ps:hover .facebook_logo {
+	background-color: #213355;
+}
+
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .fb_button_ps:hover .facebook_text {
+	background-color: #4F69A1;
+}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .facebook_logo {
+		text-decoration: none;
+		width: 35px;
+		display: block;
+		float: left;
+		height: 35px;
+		padding: 4px;
+		padding-left: 5px;
+		background-color: #304a7d;
+		text-align: center;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .fb_button_ps img {
+		display: inline;
+		height: 27px;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .facebook_text {
+		height: 35px;
+		padding: 9px 4px 4px 4px;
+		display: block;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		float: left;
+		min-width: 65px;
+		text-transform: uppercase;
+		text-align: center;
+		background-color: #5d7bbb;
+	} 
+
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .pslogin-spacer,
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .pslogin-buttons {
+	width: 100%;
+}
+
+#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set table td {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/*=== simple-logo ===*/
+#prpop-pop-up-bg.simple-form-logo a {
+	color: #205B79;
+}
+
+#prpop-pop-up-bg.simple-form-logo .simple-form-logo-text {
+	display: block;
+}
+
+#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder {
+	min-height: 210px;
+	padding: 0;
+}
+
+#prpop-pop-up-bg.simple-form-logo p {
+	width: 80%;
+	margin: 0 auto 10px auto;
+}
+
+.prpop-ajax-loader-wrapper {
+	right: auto;
+	left: 50%;
+	top: -19px;
+	margin-left: -60px;
+}
+
+#prpop-pop-up-bg.simple-form-logo .prpop-account-login,
+#prpop-pop-up-bg.simple-form-logo .prpop-forgot-success, 
+#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot,
+#prpop-pop-up-bg.simple-form-logo .prpop-account-create,
+#prpop-pop-up-bg.simple-form-logo .prpop-reg-success {
+	width: 35%;
+    margin: 0;
+    float: right;
+}
+
+#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-account-login,
+#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-forgot-success, 
+#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-account-forgot,
+#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-account-create,
+#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-reg-success {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#prpop-pop-up-bg.simple-form-logo #prpop-for_messages_popup {
+    min-width: 290px;
+    max-width: 340px;
+    width: 100%;
+	margin: 0 auto 15px auto;
+	float: right;
+	display: none
+}
+
+#prpop-pop-up-bg.simple-form-logo label {
+	display: none;
+}
+#prpop-pop-up-bg.simple-form-logo label[for="remb"],
+#prpop-pop-up-bg.simple-form-logo label[for="is_subscribed"],
+#prpop-pop-up-bg.simple-form-logo label[for="agree"] {
+	display: inline-block;
+	padding: 0 0 0 3px;
+    background: none;
+    min-width: 0;
+}
+
+#prpop-pop-up-bg.simple-form-logo .prpop-gerden-field label,
+#prpop-pop-up-bg.simple-form-logo .prpop-rowline label {
+	display: inline-block;
+}
+
+#prpop-pop-up-bg.simple-form-logo .prpop-account-create .form-create-account {
+    min-width: 0;
+    width: 100%;
+    margin: 0 auto 10px auto;
+}
+#prpop-pop-up-bg.simple-form-logo .form-create-account .actions-toolbar {
+	float: right;
+	margin-top: 10px
+}
+#prpop-pop-up-bg.simple-form-logo .form-create-account .prpop-back-hld {
+    margin-top: 30px;
+}
+
+
+#prpop-pop-up-bg.simple-form-logo .prpop-account-create #register-form .prpop-columb ul.prpop-form-list li {
+	width: 100%;
+	padding: 0;
+}
+
+
+#prpop-pop-up-bg.simple-form-logo .prpop-account-login,
+#prpop-pop-up-bg.simple-form-logo .prpop-account-create,
+#prpop-pop-up-bg.simple-form-logo .prpop-forgot-success, 
+#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot,
+#prpop-pop-up-bg.simple-form-logo .prpop-reg-success {
+	-webkit-box-shadow: 1px 1px 5px 0px #323232;
+	-moz-box-shadow: 1px 1px 5px 0px #323232;
+	box-shadow: 1px 1px 5px 0px #323232;
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ffffff),color-stop(1, #cdcccc));
+	background-image: -o-linear-gradient(bottom, #ffffff 0%, #cdcccc 100%);
+	background-image: -moz-linear-gradient(bottom, #ffffff 0%, #cdcccc 100%);
+	background-image: -webkit-linear-gradient(bottom, #ffffff 0%, #cdcccc 100%);
+	background-image: -ms-linear-gradient(bottom, #ffffff 0%, #cdcccc 100%);
+	background-image: linear-gradient(to bottom, #ffffff 0%, #cdcccc 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cdcccc',GradientType=0 );
+	min-width: 290px;
+	max-width: 340px;
+	padding: 21px;
+}
+
+	#prpop-pop-up-bg.simple-form-logo .prpop-button,
+	#prpop-pop-up-bg.simple-form-logo .action {
+		background-color: #254C5F;
+		display: inline-block;
+		border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-box-shadow: 0px 1px 1px 0px rgba(31, 31, 31, 0.47),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+		-moz-box-shadow: 0px 1px 1px 0px rgba(31, 31, 31, 0.47),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+		box-shadow: 0px 1px 1px 0px rgba(31, 31, 31, 0.47),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+		border: 1px solid #254C5F;
+		height: 37px;
+		line-height: 18px;
+		width: 100%;
+	}
+
+	#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .fb_button_ps {
+		-webkit-box-shadow: 0px 1px 1px 0px rgba(31, 31, 31, 0.47);
+		-moz-box-shadow: 0px 1px 1px 0px rgba(31, 31, 31, 0.47);
+		box-shadow: 0px 1px 1px 0px rgba(31, 31, 31, 0.47);
+		height: 37px;
+		border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		display: block;
+		width: 60%;
+		margin: 0 auto;
+		float: none;
+		border: 1px solid #304a7d;
+	}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .fb_button_ps .facebook_logo {
+			box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+			-moz-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+			-webkit-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+			border-radius: 3px 0 0 3px;
+			-webkit-border-radius: 3px 0 0 3px;
+			-moz-border-radius: 3px 0 0 3px;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .facebook_text {
+			box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+			-moz-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+			-webkit-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.33);
+			border-radius: 0 3px 3px 0;
+			-webkit-border-radius: 0 3px 3px 0;
+			-moz-border-radius: 0 3px 3px 0;
+		}
+
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot .prpop-buttons-set .prpop-button:hover,
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-create .prpop-buttons-set .prpop-button:hover,
+	#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .prpop-button:hover {
+		background-color: #205B79;
+	}
+
+
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot #forgot-form .prpop-columb, 
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-create #register-form .prpop-columb {
+		width: 100%;
+		float: none;
+	}
+
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-create #register-form .prpop-columb .prpop-gerden-field {
+		margin-top: 0;
+	}
+
+	/**/
+	#prpop-pop-up-bg.simple-form-logo label {
+		color: #565656;
+		font-weight: 400;
+	}
+
+	#prpop-pop-up-bg.simple-form-logo .form-top-logo {
+		border-bottom: 1px solid #c9c9c9;
+		padding-bottom: 10px;
+		margin: 0 auto 20px auto;
+		width: 80%;
+		display: block;
+		text-align: center;
+	}
+
+		#prpop-pop-up-bg.simple-form-logo  .prpop-col2-set .prpop-formholder p.prpop-required {
+			display: none;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .form-top-logo img {
+			width: auto;
+			max-width: 100%;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-col2-set.left-block {
+			display: none;
+		}
+	
+		#prpop-pop-up-bg.simple-form-logo .prpop-col2-set.right-block {
+			border: none;
+			width: 100%;
+			margin: 0;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-formholder h2, 
+		#prpop-pop-up-bg.simple-form-logo .legend {
+			background: none;
+			padding: 0;
+			border: none;
+			text-align: center;
+			color: #565656;
+			margin: 0 auto 20px auto;
+			width: 80%;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-account-create .fieldset {
+			margin: 10px 0 0 0;
+		    letter-spacing: normal;
+		}
+		#prpop-pop-up-bg.simple-form-logo .legend {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		#prpop-pop-up-bg.simple-form-logo .legend span {
+			font-size: inherit;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-reg-success .prpop-formholder p {
+			width: 80%;
+			margin: 5px auto;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .actions-toolbar .secondary {
+			display: none;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-buttons-set-bottom {
+			display: block;
+		    margin: 15px auto 0 auto;
+		    padding-bottom: 0;
+		    text-align: center;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set-bottom .prpop-button {
+			background: none;
+			color: #205B79;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+			border: none;
+			height: auto;
+			width: auto;
+			text-transform: none;
+			padding: 0;
+			margin: 0;
+			min-width: initial!important;
+			font-size: 14px;			
+			font-family: Arial, Helvetica, sans-serif;
+			text-decoration: none;
+		}
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set-bottom .prpop-button:hover {
+			background: none;
+			text-decoration: underline;
+		} 
+
+		#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .spacer {
+			display: block;
+			width: 80%;
+		}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .spacer .border {
+				border-top: 1px solid #B3B3B3;
+				width: 43%;
+			}
+			
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .spacer .text_or {
+				color: #B3B3B3;
+				width: 14%;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder ul.prpop-form-list {
+				margin: 0 auto 10px auto;
+				width: 80%;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder p.prpop-forgot-password {
+				width: 80%;
+				margin: 10px auto 0 auto;
+			}
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder p.prpop-forgot-password:before,
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder p.prpop-forgot-password:after {
+				content: "";
+				display: block;
+				clear: both;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot #forgot-form .prpop-columb {
+				width: 80%;
+				margin: 0 auto;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot .prpop-buttons-set .prpop-back-hld {
+				float: none;
+				text-align: center;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .input-text,
+			#prpop-pop-up-bg.simple-form-logo ._has-datepicker,
+			#prpop-pop-up-bg.simple-form-logo div.field .input-text {
+				border-color: #b3b1b1;
+				box-shadow: 0px 1px 0px #fff, inset 0 2px 1px 0 #ececec;
+				-webkit-box-shadow: 0px 1px 0px #fff, inset 0 2px 1px 0 #ececec;;
+				-moz-box-shadow: 0px 1px 0px #fff, inset 0 2px 1px 0 #ececec;;
+				border-radius: 5px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				font-size: 13px;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo div.field {
+				width: 100%;
+				margin: 0 0 10px;
+				position: relative;
+			}
+			#prpop-pop-up-bg.simple-form-logo div.field button {
+			    position: absolute;
+			    right: 0;
+			    top: 4px;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot select, 
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-create select, 
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder select {
+				height: 30px;
+				line-height: 30px;
+				width: 100%;
+				border: 1px solid #b3b1b1;
+				padding: 0 5px;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+			    font-size: 13px;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot #forgot-form .input-text::-webkit-input-placeholder{color:#aaaaaa;}
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot #forgot-form .input-text::-moz-placeholder{color:#aaaaaa;}
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot #forgot-form .input-text:-ms-input-placeholder {color:#aaaaaa;}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-create #register-form .prpop-columb .input-text::-webkit-input-placeholder {color:#aaaaaa;}
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-create #register-form .prpop-columb .input-text::-moz-placeholder {color:#aaaaaa;}
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-create #register-form .prpop-columb .input-text:-ms-input-placeholder {color:#aaaaaa;}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder .input-text::-webkit-input-placeholder {color:#aaaaaa;}
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder .input-text::-moz-placeholder {color:#aaaaaa;}
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder .input-text:-ms-input-placeholder {color:#aaaaaa;}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot #forgot-form .input-text:focus, 
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-create #register-form .prpop-columb .input-text:focus, 
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder .input-text:focus {
+				appearance: none;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				-webkit-box-shadow: inset 0px 0px 5px 0px #2e8ab8;
+				-moz-box-shadow: inset 0px 0px 5px 0px #2e8ab8;
+				box-shadow: inset 0px 0px 5px 0px #2e8ab8;
+				outline: none;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .input-text.validation-failed:focus {
+				appearance: none;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				-webkit-box-shadow: inset 0px 0px 5px 0px red!important;
+				-moz-box-shadow: inset 0px 0px 5px 0px red!important;
+				box-shadow: inset 0px 0px 5px 0px red!important;
+				outline: none;
+			}
+
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot .prpop-buttons-set .prpop-button, 
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .prpop-button {
+				min-width: 80%;
+				float: none;
+			}
+			
+			#prpop-pop-up-bg.simple-form-logo .prpop-account-create .prpop-buttons-set .prpop-button {
+				float: right;
+			}
+	
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .fb_button_ps {
+				width: 80%;
+			}
+	
+			#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .facebook_login_button {
+				margin-top: 0px;
+				margin-bottom: 0px;
+				width: 100%;
+				float: none;
+			}
+
+				#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .facebook_logo {
+					width: 25%;
+				}
+
+				#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .facebook_text {
+					width: 75%;
+				}
+
+@media screen and (max-width: 640px) {
+
+	.prpop-pop-up-form {
+		/*position: absolute;*/
+	}
+
+	#prpop-pop-up-bg.glamour-grey,
+	#prpop-pop-up-bg {
+		padding: 10% 10% 0 10%;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set {
+		width: 100%;
+	}
+
+	#prpop-pop-up-bg .one-div { width: 100%!important; }
+
+	#prpop-pop-up-bg .prpop-col2-set.right-block,
+	#prpop-pop-up-bg.glamour-grey .prpop-col2-set.right-block {
+		border: none;
+	}
+
+	#prpop-pop-up-bg .prpop-mobile {
+		display: block;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-formholder {
+		min-height: 220px;
+	}
+
+	#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb ul.prpop-form-list li {
+		width: 100%;
+		padding: 0;
+	}
+
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-buttons-set .prpop-button, 
+	#prpop-pop-up-bg .prpop-account-create .prpop-buttons-set .prpop-button, 
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .prpop-button {
+		min-width: 60%;
+		float: none;
+	}
+
+	#prpop-pop-up-bg .prpop-buttons-set .prpop-show_registration {
+		margin-top: 25px;
+	}
+
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb .prpop-gerden-field {
+			margin-top: 15px;
+		}
+
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-buttons-set .prpop-ajax-loader-wrapper,
+	#prpop-pop-up-bg .prpop-account-create .prpop-buttons-set .prpop-ajax-loader-wrapper,
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .prpop-ajax-loader-wrapper {
+		right: auto;
+		left: 50%;
+		margin-left: -60px;
+	}
+
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-buttons-set .prpop-backtologin,
+	#prpop-pop-up-bg .prpop-account-create .prpop-buttons-set .prpop-backtologin {
+		margin-top: 10px;
+		padding-bottom: 10px;
+	}
+
+		#prpop-pop-up-bg .prpop-account-forgot #forgot-form .prpop-columb,
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb {
+			width: 100%;
+		}
+		#prpop-pop-up-bg.simple-form-logo .form-top-logo {
+			padding: 0px 21px 10px 21px;
+		}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .facebook_login_button {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		width: 100%;
+		float: none;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .fb_button_ps {
+		display: block;
+		width: 60%;
+		margin: 0 auto;
+		float: none;
+		height: 50px;
+	}
+
+		#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .facebook_logo {
+			width: 25%;
+		}
+
+		#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .facebook_text {
+			width: 75%;
+		}
+
+	#prpop-pop-up-bg.glamour-grey .prpop-account-forgot .prpop-buttons-set,
+	#prpop-pop-up-bg.glamour-grey .prpop-account-create .prpop-buttons-set,
+	#prpop-pop-up-bg.glamour-grey .prpop-col2-set .prpop-buttons-set {
+		height: auto;
+	}
+
+	/*=== simple-form-logo ===*/
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-login, 
+	#prpop-pop-up-bg.simple-form-logo .prpop-forgot-success, 
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot,
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-create,
+	#prpop-pop-up-bg.simple-form-logo .prpop-reg-success {
+		width: 100%;
+		min-width: 0;
+		float: none;
+	    margin: auto;
+	}
+
+	#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-account-login,
+	#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-forgot-success, 
+	#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-account-forgot,
+	#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-account-create,
+	#prpop-pop-up-bg .prpop-splash-container.no-register .prpop-reg-success {
+		width: 100%;
+	}
+
+	#prpop-pop-up-bg.simple-form-logo #prpop-for_messages_popup {
+		float: none;
+	}
+
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-create .prpop-buttons-set .prpop-button {
+		float: none;
+	}
+	
+	#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .fb_button_ps {
+		width: 80%;
+	}
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+	#prpop-pop-up-bg.glamour-grey,
+	#prpop-pop-up-bg {
+		padding: 5%;
+	}
+
+	#prpop-pop-up-bg .prpop-account-forgot .prpop-buttons-set .prpop-button,
+	#prpop-pop-up-bg .prpop-account-create .prpop-buttons-set .prpop-button,
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .prpop-button {
+		width: 100%;
+	}
+
+		#prpop-pop-up-bg .prpop-account-forgot #forgot-form .prpop-columb,
+		#prpop-pop-up-bg .prpop-account-create #register-form .prpop-columb {
+			width: 100%;
+		}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .fb_button_ps {
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	#prpop-pop-up-bg .prpop-col2-set .prpop-buttons-set .spacer {
+		width: 100%;
+	}
+
+	/*=== simple-form-logo ===*/
+	#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder ul.prpop-form-list,
+	#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-formholder p.prpop-forgot-password,
+	#prpop-pop-up-bg.simple-form-logo .form-top-logo,
+	#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .spacer,
+	#prpop-pop-up-bg.simple-form-logo .prpop-account-forgot #forgot-form .prpop-columb,
+	#prpop-pop-up-bg.simple-form-logo p,
+	#prpop-pop-up-bg.simple-form-logo h2, 
+	#prpop-pop-up-bg.simple-form-logo .legend,
+	#prpop-pop-up-bg.simple-form-logo .prpop-forgot-success .prpop-formholder div,
+	#prpop-pop-up-bg.simple-form-logo .prpop-col2-set .prpop-buttons-set .fb_button_ps,
+	#prpop-pop-up-bg .prpop-buttons-set {
+		width: 100%;
+	}
+
+	#prpop-pop-up-bg.simple-form-logo .prpop-forgot-success .prpop-formholder div.form-top-logo {
+		margin-bottom: 20px;
+	}
+
+}
+
+

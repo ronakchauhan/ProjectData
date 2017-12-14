@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Ktpl\Testimonial\Api\Data\TestimonialSearchResultsInterface"
+            type="Magento\Framework\Api\SearchResults" />
+    
+    <preference for="Ktpl\Testimonial\Api\Data\TestimonialInterface" type="Ktpl\Testimonial\Model\Testimonial" />
+    
+    <preference for="Ktpl\Testimonial\Api\TestimonialRepositoryInterface" type="Ktpl\Testimonial\Model\TestimonialRepository" />
+    
+    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="Ktpl\Testimonial\Api\Data\TestimonialInterface" xsi:type="string">Ktpl\Testimonial\Api\TestimonialRepositoryInterface</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Ui Data provider for Grid -->
+	<type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Ktpl\Testimonial\Api\Data\TestimonialInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">ktpl_testimonials</item>
+                    <item name="identifierField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="TemplateGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>   
+    <virtualType name="TemplateGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Ktpl\Testimonial\Model\ResourceModel\testimonial\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">TemplateGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Ktpl\Testimonial\Model\ResourceModel\Testimonial\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">ktpl_testimonials</argument>
+            <argument name="resourceModel" xsi:type="string">Ktpl\Testimonial\Model\ResourceModel\Testimonial</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="testimonial_index_listing_data_source" xsi:type="string">Ktpl\Testimonial\Model\ResourceModel\Testimonial\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--  End  -->
+</config>

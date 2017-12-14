@@ -1,0 +1,143 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+	$refererUrl = base64_decode($block->getRequest()->getParam('referer'));
+	$baseUrl = $block->getBaseUrl();
+
+	if ((strpos($refererUrl, $baseUrl) !== false) && (strpos($refererUrl, 'logout') === false)) {
+		$baseUrlForRedirect = $refererUrl;
+	} else {
+		$baseUrlForRedirect = $baseUrl;
+	}
+?>
+
+<script type="text/x-magento-init">
+    {
+        "#prpop-pop-up-bg": {
+        	"privatesaleSplashPage": {
+	            "baseUrlForRedirect": "<?php echo $baseUrlForRedirect; ?>",
+	            "registerUrl": "<?php echo $this->getUrl('prprivatesale/splashpage/createpost'); ?>",
+	            "canRedirect": "<?php echo !$block->isEnabledLaunchingSoon(); ?>",
+	            "images": <?php echo $block->getImagesJson(); ?>,
+	            "mediaUrl": "<?php echo $block->getSplashPageMediaUrl(); ?>"
+			}
+        }
+    }
+</script>
+
+<div id="prpop-pop-up-bg" class="prpop-cf simple-form-logo">
+	<div id="prpop-for_messages_popup" class="prpop-popup_messages">
+		<ul class="messages">
+			<li class="error-msg">
+				<span></span>
+			</li>
+			<li class="close">
+				<a href="javascript:void(0);"><?php echo __('Close'); ?></a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="prpop-cf"></div>
+
+	<div id="prop-wrap_login" data-container="login" class="prpop-account-login prpop-cf block-container"  <?php if ($block->isEnabledLaunchingSoon()): ?> style="display: none;" <?php endif; ?>  >
+		<form action="<?php echo $block->getPostActionUrl() ?>" method="post" id="login-form">
+			<div class="prpop-col2-set fright right-block">
+				<div class="prpop-registered-users prpop-formholder">
+					<?php echo $block->getBlockHtml('formkey')?>
+
+						<div class="form-top-logo">
+					        <img src="<?php echo $block->getLogoSrc(); ?>" alt="<?php echo $block->getLogoAlt() ?>" class="large" />
+						</div>
+
+						<?php if ($block->isUserLogin()) { ?>
+							<h2><?php echo __('Registered Customers') ?></h2>
+							<ul class="prpop-form-list">
+								<li>
+									<label for="email" class="required"><?php echo __('Email Address') ?></label>
+									<div class="input-box">
+										<input type="text" name="username" data-validate="{required:true}" placeholder="<?php echo __('Email Address') ?>" value="<?php echo $block->getUsername() ?>" id="email" class="input-text required-entry validate-email splash-inputs" title="<?php echo __('Email Address') ?>" />
+									</div>
+								</li>
+								<li>
+									<label for="pass" class="required"><?php echo __('Password') ?></label>
+									<div class="input-box">
+										<input type="password" data-validate="{required:true}" aria-required="true" name="password" placeholder="<?php echo __('Password') ?>" class="input-text splash-inputs required-entry validate-password" id="pass" title="<?php echo __('Password') ?>" />
+									</div>
+								</li>
+							</ul>
+
+							<p class="prpop-forgot-password">
+								<a data-role="change-form" data-show="forgot"  href="javascript:void(0);" class="f-left forgotpass show_forgot"><?php echo __('Forgot Your Password?') ?></a>
+							</p>
+
+							<div class="prpop-buttons-set prpop-buttons-set-top prpop-cf">
+								<div class="prpop-ajax-loader-wrapper">
+									<img class="prpop-ajax-loader" src="<?php echo $block->getViewFileUrl('Plumrocket_PrivateSale::images/loader.gif');?>" alt="loader">
+								</div>
+								<button type="submit" class="button prpop-button" title="<?php echo __('Login') ?>" name="send" id="send2"><span class="holder"><span><?php echo __('Login') ?></span></span></button>
+
+								<div class="pslogin-spacer pslogin-clearfix" data-bind="if: window.psloginButtons">
+			                        <table>
+			                            <tr>
+			                                <td><div class="pslogin-border"></div></td>
+			                                <td class="pslogin-bordertext w25" data-bind="i18n: 'OR'"></td>
+			                                <td><div class="pslogin-border"></div></td>
+			                            </tr>
+			                        </table>
+			                    </div>
+			                    <div data-bind="html: window.psloginButtons"></div>
+							</div>
+
+							<div class="prpop-buttons-set prpop-buttons-set-bottom prpop-mobile prpop-cf">
+								<?php if ($block->isUserRegistration()) { ?>
+									<div class="simple-form-logo-text"><?php echo __('Not a member?'); ?></div>
+									<button type="button" title="<?php echo __('Create an Account') ?>" data-role="change-form" data-show="register" class="button show_registration prpop-button prpop-btn-new-member prpop-show_registration"><span class="holder"><span><?php echo __('Create an Account') ?></span></span></button>
+								<?php } else { ?>
+									&nbsp;
+								<?php } ?>
+							</div>
+						<?php } ?>
+				</div>
+			</div>
+		</form>
+
+	</div>
+
+	<?php echo $block->getChildHtml('splashpage.form.register'); ?>
+	<?php echo $block->getChildHtml('splashpage.form.forgotpassword'); ?>
+</div>
+
+
+<ul style="display:none;">
+	<li id="pop-up-button" style="display: none;">
+		<a title="pop-up-button" href="#" class="hide-message"><?php echo __('Close');?></a>
+	</li>
+</ul>
+
+<?php $img = $block->getRandomImage();
+
+$img_style = '';
+if ($img) {
+	$img_style = 'style="background-image: url('. $block->getPubMediaUrl() . 'splashpage' . $img.');"';
+} elseif ($this->splashPage->showDefaultImage()) {
+	$img_style = 'style="background-image: url('. $block->getViewFileUrl('Plumrocket_PrivateSale::images/default_splashpage.jpg') . ');"';
+}
+
+?>
+<div id="bg" <?php echo $img_style; ?>></div>

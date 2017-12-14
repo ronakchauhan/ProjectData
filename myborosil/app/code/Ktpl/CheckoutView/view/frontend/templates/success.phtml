@@ -1,0 +1,93 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+$orderData = $block->getOrderData($block->getOrderId());
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<div class="checkout-success">
+	<div class="checkout-container">
+		<div class="order-content">
+			<div class="order-success-header">
+				<div class="order-number">					
+					<div class="order-date"><?php echo __('Order Placed On: <span>%1</span>', date('l, j F Y', strtotime($orderData->getCreatedAt()))); ?></div>
+					<div class="order-increment-number"><?php echo __('Order Number: <span class="order-no">%1</span>', sprintf('<a href="%s" class="order-number"><span>%s</span></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></div>
+				</div>
+			</div>
+			<div class="order-success-content">
+				<?php $customeName = ($orderData->getCustomerFirstname()) ? $orderData->getCustomerFirstname() : $block->getGuestCustomerName($orderData); ?>
+				<h3><?php echo __("Hey %1, thank you for shopping with us!", $customeName); ?></h3> 
+				<p class="msg">
+					<span><?php echo __("Your order number is on the top left corner of this receipt.")?></span>
+					<br>
+					<span><?php echo __("We'll keep you posted about your order through e-mails. We'd love to have you over again!")?></span>
+				</p>
+				<div class="shipping-address">
+					<h5><?php echo __("Shipped To:")?></h5>
+					<p>
+						<?php  
+						$shipping = $block->getShippingAddress($orderData);
+						echo $shipping;
+						?>
+					</p>
+				</div>
+				
+			</div>
+		</div>
+		<div class="order-items">
+			<div class="right-block">
+				<?php $_items = $orderData->getItemsCollection(); ?>
+				<?php $_count = $_items->count(); ?>
+				<div class="items-wrapper owl-carousel">
+				<?php foreach ($_items as $_item): ?>
+					<?php if ($_item->getParentItem()): ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<div class="item">
+						<div class="image">
+							<?php echo $block->getImage($_item->getProduct(), 'cart_page_product_thumbnail')->toHtml(); ?>
+						</div>
+						<div class="name"><?php echo $block->escapeHtml($_item->getName()) ?></div>
+										<?php $attributes = ['volume']; ?>
+						<div class="attributes">
+						<?php foreach($attributes as $attribute): ?>
+							<?php $attributeText = $_item->getProduct()->getAttributeText($attribute);?>
+								<?php if(isset($attributeText) && $attributeText != ""): ?>
+									<span><?php echo $attributeText; ?></span>
+								<?php elseif($attributeText = $_item->getProduct()->getData($attribute)): ?>
+									<span><?php echo $attributeText; ?></span>
+								<?php endif; ?>    
+						<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+    </div>
+    
+    <?php echo $block->getAdditionalInfoHtml() ?>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action primary continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span></a>
+        </div>
+    </div>
+</div>
+<script>
+        require(['jquery', 'OwlCarousel'], function($){
+            $(function(){
+                    $('.order-items .items-wrapper').owlCarousel({
+                        "autoplay": false,
+                        "items": 1,
+                        "nav": true,
+                        "dots": false,
+                        "loop": false,                    
+                    })
+            })
+        });
+    </script>

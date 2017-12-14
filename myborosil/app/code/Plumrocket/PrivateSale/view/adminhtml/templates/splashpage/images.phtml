@@ -1,0 +1,148 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket Private Sales and Flash Sales v4.x.x
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+
+$images = $this->getImages();
+$path = $this->getBaseUrl();
+?>
+
+<div class="entry-edit">
+
+	<div id="splash_images_fieldset" class="fieldset fieldset-wide">
+		<div id="<?php echo $this->getHtmlId() ?>" >
+			<div class="grid">
+			<table cellspacing="0" class="data-grid data border" id="<?php echo $this->getHtmlId() ?>_grid" width="100%">
+				<col width="300"/>
+				<col width="40%"/>
+				<col width="70" />
+				<col />
+				<col />
+				<col width="70" />
+				<col width="70" />
+				<thead>
+					<tr class="headings">
+						<th class="data-grid-th"><?php echo __('Image') ?></th>
+						<th width="150" class="data-grid-th"><?php echo __('Name') ?></th>
+						<th class="data-grid-th"><?php echo __('Sort Order') ?></th>
+						<th width="150" class="data-grid-th"><?php echo __('Active From') ?></th>
+						<th width="150" class="data-grid-th"><?php echo __('Active To') ?></th>
+						<th class="data-grid-th"><?php echo __('Exclude') ?></th>
+						<th class="data-grid-th last"><?php echo __('Remove') ?></th>
+					</tr>
+				</thead>
+				<tbody id="<?php echo $this->getHtmlId() ?>_list">
+
+					<?php if (!count($images)): ?>
+						<tr id="<?php echo $this->getHtmlId() ?>-image-0">
+								<td class="cell-image"><?php echo __('No image') ?></td>
+								<td class="cell-name"><input type="hidden" />&nbsp;</td>
+								<td class="cell-position"><input type="hidden" />&nbsp;</td>
+								<td class="cell-active-from"><input type="hidden" />&nbsp;</td>
+								<td class="cell-active-to"><input type="hidden" />&nbsp;</td>
+								<td class="cell-exclude"><input type="hidden" />&nbsp;</td>
+								<td class="cell-remove last"><input type="hidden" />&nbsp;</td>
+						</tr>
+					<?php endif; ?>
+
+					<?php foreach ($images as $image) { ?>
+					<tr id="<?php echo $this->getHtmlId() ?>_template" class="template">
+							<td class="cell-image">
+								<img src="<?php echo $block->getMediaUrl() . 'splashpage/' . $image->getName(); ?>" width="280" alt="" />
+							</td>
+							<td class="cell-name">
+								<?php echo $image->getName(); ?>
+							</td>
+							<td class="cell-position">
+								<input type="text" class="input-text validate-number" name="images[<?php echo $image->getId(); ?>][sort_order]" value="<?php echo $image->getSortOrder(); ?>"/>
+							</td>
+							<td class="cell-active-from">
+								<?php
+
+								if ($image->getActiveFrom() != '0000-00-00 00:00:00') {
+									$time = strtotime($image->getActiveFrom());
+									$date = ($time)? strftime('%m/%d/%Y', $time): '';
+								} else {
+									$date = '';
+								}
+								?>
+								<input type="text" class="input-date input-text" name="images[<?php echo $image->getId(); ?>][active_from]" id="active_from_<?php echo $image->getId(); ?>" style="width:110px;" value="<?php echo $date; ?>"/>
+								<button type="button" class="ui-datepicker-trigger v-middle"><span>Select Date</span></button>
+							</td>
+							<td class="cell-active-to">
+								<?php
+
+								if ($image->getActiveTo() != '0000-00-00 00:00:00') {
+									$time = strtotime($image->getActiveTo());
+									$date = ($time)? strftime('%m/%d/%Y', $time): '';
+								} else {
+									$date = '';
+								}
+								?>
+								<input type="text" class="input-date input-text" name="images[<?php echo $image->getId(); ?>][active_to]" id="active_to_<?php echo $image->getId(); ?>"  style="width:110px;" value="<?php echo $date; ?>"/>
+								<button type="button" class="ui-datepicker-trigger v-middle"><span>Select Date</span></button>
+							</td>
+							<td class="cell-disable a-center">
+								<input type="checkbox" name="images[<?php echo $image->getId(); ?>][exclude]" <?php if ($image->getExclude()) { ?>checked="checked"<?php } ?> />
+							</td>
+							<td class="cell-remove a-center last">
+								<input type="checkbox" name="images[<?php echo $image->getId(); ?>][remove]" />
+							</td>
+					</tr>
+					<?php } ?>
+				</tbody>
+
+				<tfoot>
+					<tr>
+						<td colspan="100" class="last" style="padding:8px">
+							<div id="inputs_list"></div>
+							<button id="add_file" class="scalable add" type="button">
+								<span><?php echo __('Browse File'); ?></span>
+							</button>
+							<div id="files_list" class="uploader"></div>
+
+							<div style="display: none;">
+								<div id="list_item_disabled" class="file-row">
+									<span class="file-info"></span>
+									<span class="delete-button">
+										<button class="scalable delete" style="" type="button">
+											<span>Remove</span>
+										</button>
+									</span>
+									<span class="progress-text"></span>
+									<div class="clear"></div>
+								</div>
+								<input type="file" class="files" id="file_disabled" style="display: none;" />
+								<input type="hidden" id="isNewFiles" name="is_new_files" value="0">
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+
+			</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type='text/javascript'>
+	require(['jquery', 'mage/mage', 'domReady!'], function($){
+	    $('#splash_images_fieldset').mage('splashpage');
+	});
+</script>

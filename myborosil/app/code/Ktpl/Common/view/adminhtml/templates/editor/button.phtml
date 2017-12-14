@@ -1,0 +1,30 @@
+<div class="admin__fieldset-wrapper-content _hide">
+	<form id="button-form" class="form" method="post" autocomplete="off">
+	    <fieldset class="admin__fieldset">
+			<div class="admin__field _required">
+				<label class="admin__field-label" for="button_title">
+	    			<span><?php echo __('Title') ?></span>
+				</label>
+				<div class="admin__field-control">
+					<input class="admin__control-text" type="text" name="button_title" id="button_title" data-validate="{required:true}"  />
+				</div>
+			</div>
+			<div class="admin__field _required">
+				<label class="admin__field-label" for="button_url">
+	    			<span><?php echo __('URL') ?></span>
+				</label>
+				<div class="admin__field-control">
+					<input class="admin__control-text" type="text" name="button_url" id="button_url" data-validate="{required:true, 'validate-url':true}" />
+				</div>
+			</div>
+			<div class="admin__field">
+				<label class="admin__field-label" for="button_css">
+	    			<span><?php echo __('Custom CSS') ?></span>
+				</label>
+				<div class="admin__field-control">
+					<input class="admin__control-text" type="text" name="button_css" id="button_css" />
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>

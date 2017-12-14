@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Ktpl_Blog::css/blog-m.css" />
+        <css src="Ktpl_Blog::css/blog-custom.css" />
+    	<script src="//assets.pinterest.com/js/pinit.js" src_type="url" />
+    </head>
+    <body>
+        <referenceBlock name="footer_links">
+            <block class="Ktpl\Blog\Block\Link" name="footer_blog_link" />
+        </referenceBlock>
+    </body>
+</page>

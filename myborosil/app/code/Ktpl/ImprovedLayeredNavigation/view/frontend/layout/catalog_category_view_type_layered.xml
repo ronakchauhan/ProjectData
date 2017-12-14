@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Amasty_Shopby::css/amshopby.css"/>
+        <css src="Amasty_Shopby::css/chosen/chosen.css"/>
+    </head>
+    <body>
+		<move element="catalog.leftnav" destination="filter.navigation" before="-"/>
+        <referenceContainer name="sidebar.main">
+			<referenceBlock name="catalog.leftnav">
+        		<action method="setTemplate">
+                    <argument name="template" xsi:type="string">Ktpl_ImprovedLayeredNavigation::layer/view.phtml</argument>
+                </action>
+        	</referenceBlock>
+			<container name="filter.navigation" label="filter navigation" htmlTag="div" htmlClass="filter-navigation" after="-">        	
+				<block class="Ktpl\ImprovedLayeredNavigation\Block\Navigation\FilterCollapsing\Category" name="catalog.navigation.collapsing.categories" after="catalog.leftnav.custom" template="Ktpl_ImprovedLayeredNavigation::layer/filter_categories.phtml"/>
+			</container>
+        </referenceContainer>
+    </body>
+</page>

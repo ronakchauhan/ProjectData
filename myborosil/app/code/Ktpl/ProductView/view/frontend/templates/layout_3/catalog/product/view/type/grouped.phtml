@@ -1,0 +1,194 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Grouped product data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\BaseImage
+ * @var $block \Magento\GroupedProduct\Block\Product\View\Type\Grouped
+ */
+?>
+<?php $block->setPreconfiguredValue(); ?>
+<?php $_product = $block->getProduct(); ?>
+<?php $_associatedProducts = $block->getAssociatedProducts(); ?>
+<?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
+<?php $productHelper = $this->helper('Ktpl\ProductView\Helper\Data'); ?>
+
+<div class="goruped-wrapper grouped">
+    <div class="grouped-products-wrapper">
+		<div class="goruped-items-title">
+			<h3><?php /* @escapeNotVerified */ echo __('Products in this Starter Kit') ?></h3>
+		</div>
+		<div class="table data grouped" id="super-product-table">        
+
+        <?php if ($_hasAssociatedProducts): ?>
+            <ul class="grouped-items-title-wrapper">
+        	<?php foreach ($_associatedProducts as $_item): ?>
+                <li data-th="<?php echo $block->escapeHtml(__('Product Name')); ?>" class="grouped-associated-product grouped-product-<?php echo $_item->getId() ?>">
+                    <?php $product = $productHelper->getProduct($_item->getId()); ?> 
+
+                	<div class="product-item-info" data-container="product-grid">
+								<?php $productImage = $productHelper->getImage($product, 'related_products_list'); ?>
+								<?php echo $productImage->toHtml(); ?>
+								<div class="product details product-item-details">
+									<strong class="product name product-item-name">										
+										<?php /* @escapeNotVerified */ echo __($product->getName()); ?>										
+									</strong>
+									<div class="grouped-short-description">                           
+										<?php /* @escapeNotVerified */ echo __($product->getShortDescription()) ?>
+									</div>
+								</div>								
+							</div>
+                    		<div class="associated-product-price">
+								<?php echo $block->getProductPriceHtml(
+									$_item,
+									\Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE
+								) ?>
+							</div>
+
+                     <?php if ($_item->isSaleable()) : ?>
+							<div class="control qty-action">
+								<a class="minus" data-item="<?php echo $_item->getId() ?>"><?php echo __("--");?></a>
+                                <div class="minus-quantity-into minus-<?php /* @escapeNotVerified */ echo $_item->getId() ?>">
+                                    <?php echo __("Are you sure you want to remove me? I'm great to store as well as serve all your party food!")?>
+                                </div>
+								<input type="number"
+                                       name="super_group[<?php /* @escapeNotVerified */ echo $_item->getId() ?>]" 
+									   data-selector="super_group[<?php /* @escapeNotVerified */ echo $_item->getId() ?>]"
+									   maxlength="12"
+									   value="<?php /* @escapeNotVerified */ echo 1 ?>"
+									   title="<?php /* @escapeNotVerified */ echo __('Qty') ?>"
+									   class="input-text qty"
+                                       readonly="readonly"
+									   data-validate="{'validate-grouped-qty':'#super-product-table'}"
+									   data-errors-message-box="#validation-message-box"
+                                       style="display:none"/>
+                                <span class="qty-show"><?php echo __("1")?></span>
+								<span class="qty-set"><?php echo __("piece")?></span>
+								<a class="plus" data-item="<?php echo $_item->getId() ?>"><?php echo __("+");?></a>
+							</div>
+						<?php else: ?>
+							<div class="stock unavailable" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+								<span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span>
+							</div>
+						<?php endif; ?>
+                </li>
+        	<?php endforeach; ?>
+        </ul>
+        <?php else: ?>
+        <div>
+            <p>
+                <span class="unavailable"
+                    colspan="<?php if ($_product->isSaleable()): ?>4<?php else : ?>3<?php endif; ?>">
+                    <?php /* @escapeNotVerified */ echo __('No options of this product are available.') ?>
+                </span>
+            </p>
+        </div>
+        <?php endif; ?>
+    </div>
+		<div class="grouped-selected-product">
+			<p class="label"><?php echo __("Your ") .  $_product->getName() . " now costs " ?><span></span></p>
+		</div>
+    </div>
+	
+</div>
+<div id="validation-message-box"></div>
+<script>
+    require([
+        'jquery',
+        'Magento_Catalog/js/price-utils'
+    ], function($, priceUtils) {
+        $(function(){
+            var totalQty = 0;
+            $.each($(".grouped-items-title-wrapper .input-text.qty"), function(index, val) {
+                totalQty += parseInt($(this).val());
+            }); 
+            
+            var qtyLabel = "<div class='product-grouped-qty'><span class='qty-label'>" +totalQty + "</span> <span>Pcs Set</span></div>";
+            $(".product-info-main .page-title-wrapper").after(qtyLabel)
+
+            setTimeout(function()
+            {
+                var itemPrice = $(".parent_grouped_price span").text();
+                
+                $(".grouped-selected-product p.label span").text(itemPrice);    
+            }, 1); 
+            
+
+            $('form').on('focus', 'input[type=number]', function (e) {
+              $(this).on('mousewheel.disableScroll', function (e) {
+                e.preventDefault()
+              })
+            })
+            $('form').on('blur', 'input[type=number]', function (e) {
+              $(this).off('mousewheel.disableScroll')
+            })
+
+            $(document).on("mouseenter",".qty-action .minus", function(){
+                var item = $(this).attr("data-item");
+                $(".minus-quantity-into.minus-"+item).addClass("qty-minus-box");
+            });
+
+            $(document).on("mouseleave",".qty-action .minus", function(){
+                var item = $(this).attr("data-item");
+                $(".minus-quantity-into.minus-"+item).removeClass("qty-minus-box");
+            });
+
+            $(document).on("click",".qty-action .minus", function(){
+                var itemid = $(this).attr("data-item");
+                var itemPrice = $("#product-price-"+itemid).attr("data-price-amount");
+                var totalItemPrice = $(".parent_grouped_price").attr("data-price-amount");
+                
+                var qty = $(".grouped-product-"+ itemid + " .qty-action .input-text").val();
+                if (qty != 1){
+                    var qtyLabel = $(".product-grouped-qty .qty-label").text();
+                    qtyLabel = parseInt(qtyLabel) - 1;
+                    qty = qty - 1;
+                    $(".product-grouped-qty .qty-label").text(qtyLabel);
+                    $(".grouped-product-"+ itemid + " .qty-action .input-text").val(qty);
+                    $(".grouped-product-"+ itemid + " .qty-action .qty-show").text(qty);
+
+                    var newPrice = parseInt(totalItemPrice - itemPrice);
+
+                    $(".parent_grouped_price").attr("data-price-amount", newPrice);
+                    $(".parent_grouped_price span").text(priceUtils.formatPrice(newPrice));
+                    $(".grouped-selected-product p.label span").text(priceUtils.formatPrice(newPrice));
+                    if (qty == 1) {
+                    	$(".grouped-product-"+ itemid + " .qty-action span.qty-set").text("piece");	
+                    }
+                    else{
+                    	$(".grouped-product-"+ itemid + " .qty-action span.qty-set").text("pieces");
+                    }
+                    
+                }
+                else{
+                	$(".grouped-product-"+ itemid + " .qty-action span.qty-set").text("piece");
+                }
+            });
+            $(document).on("click", ".qty-action .plus", function(){ 
+                var itemid = $(this).attr("data-item");
+                var itemPrice = $("#product-price-"+itemid).attr("data-price-amount");
+                var totalItemPrice = $(".parent_grouped_price").attr("data-price-amount");
+                var newPrice = parseInt(totalItemPrice) + parseInt(itemPrice);
+                $(".parent_grouped_price").attr("data-price-amount", newPrice);
+                $(".parent_grouped_price span").text(priceUtils.formatPrice(newPrice));
+                $(".grouped-selected-product p.label span").text(priceUtils.formatPrice(newPrice));
+
+                var qty = $(".grouped-product-"+ itemid + " .qty-action .input-text").val();      
+                qty++;
+                var qtyLabel = $(".product-grouped-qty .qty-label").text();
+                qtyLabel = parseInt(qtyLabel) + 1;
+                $(".product-grouped-qty .qty-label").text(qtyLabel);
+                $(".grouped-product-"+ itemid + " .qty-action .input-text").val(qty);
+                $(".grouped-product-"+ itemid + " .qty-action .qty-show").text(qty);
+
+                 $(".grouped-product-"+ itemid + " .qty-action span.qty-set").text("pieces");
+            });
+        })
+    });
+</script>

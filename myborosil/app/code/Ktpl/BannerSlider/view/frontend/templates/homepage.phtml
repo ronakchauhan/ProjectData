@@ -1,0 +1,98 @@
+<div id="fullpage">
+   
+    <section class="landing-slider section section-header-block" style="clear:both">
+        <?php echo $this->getLayout()->createBlock('Ktpl\BannerSlider\Block\Banner')->setTemplate('Ktpl_BannerSlider::bannerslider.phtml')->toHtml(); ?>
+    </section>
+	
+	<section class="split-images section container-section-two" style="clear:both">
+        <div class="container-fluid">
+            <div class="row">
+            	
+                <div class="col-lg-6 col-md-6 text-wrap item storage" style="width: 50%;float: left;">
+                    <div class="col-xs-12 text-content top-10">
+                        <p class="text-light-md">Because you want your family to enjoy</p>
+                        <p class="text-semibold-md">fresh, healthy food.</p>
+                        <button class="btn explore-button">Explore Storage</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 text-wrap item appliances" style="width: 50%;float: left;">
+                    <div class="col-xs-12 text-content top-10">
+                        <p class="text-light-md">Thoughtfully designed to take care</p>
+                        <p class="text-semibold-md"><span class="text-light-md">of your</span> smallest kitchen needs.</p>
+                        <button class="btn explore-button">Explore Appliances</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>        
+    
+    
+    <section class="full-banner section fp-auto-height" style="clear:both">
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-xs-12 no-padding text-wrap item gourmet">
+                    <div class="col-xs-12 text-content">
+                        <p class="text-semibold-lg">Cook, store, freeze, heat.</p>
+                        <p class="text-light-lg">Do more than just serve in it.</p>
+                        <button class="btn explore-button">Explore SERVEWARE</button>
+                    </div>
+                </div>
+          
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="split-images section fp-auto-height" style="clear:both">
+        <div class="container-fluid">
+            <div class="row">                
+                <div class="col-lg-6 col-md-6  text-wrap item carafes" style="width: 50%;float: left;">
+                    <div class="col-xs-12 text-content top-10">
+                        <p class="text-semibold-md">Carafes.<span class="text-light-md"> Not just great for serving </span></p>
+                        <p class="text-light-md">the tea but brewing it too</p>
+                        <button class="btn explore-button">Explore DRINKWARE</button>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-6 col-md-6  text-wrap  item glasses" style="width: 50%;float: left;">
+                    <div class="col-xs-12 text-content top-10">
+                        <p class="text-semibold-md">Elegant Glasses</p>
+                        <p class="text-light-md">for every occasion</p>
+                        <button class="btn explore-button">Explore DRINKWARE</button>
+                    </div>
+                </div>                
+            </div>        
+        </div>        
+    </section>  
+    
+        
+    <section class="section blog-testimonial" style="clear:both">    	
+        <?php echo $this->getLayout()->createBlock('Ktpl\Blog\Block\Post\FavouritePost')->setTemplate('Ktpl_Blog::favourite/blog_posts.phtml')->toHtml(); ?> 
+		<div class="block-testimonial-slider">
+			<?php echo $this->getLayout()->createBlock('Ktpl\Testimonial\Block\Testimonial')->setTemplate('Ktpl_Testimonial::testimonial_slider.phtml')->toHtml(); ?> 
+		</div>
+	</section> 	
+	<div class="section footer-container-block" style="height: auto !important; clear: both; float: left; width: 100%;"></div>
+
+</div><!--end of fullpage -->
+      
+ 
+    <script  type="text/javascript">       
+		require([
+			'jquery', 
+			'FullPage'
+		], function($){
+			$(function(){
+				$('header.page-header').prependTo('.section-header-block');
+				$('.register-product').prependTo('.section-header-block');
+				$('.page-footer').appendTo('.footer-container-block');		
+				$('.copyright').appendTo('.footer-container-block');		
+				$('#fullpage').fullpage({
+					responsiveWidth:'900'
+				});
+			})
+		});
+    </script> 
+  
